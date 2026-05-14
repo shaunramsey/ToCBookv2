@@ -1,5 +1,5 @@
-# Status of Finite Automata Designer
-* Generated on: **2026-05-14** at **14:40:08**
-* Build number **4**
+# Theory of Computation v2 Build Information {.unnumbered}
+* Generated on: **2026-05-14** at **14:42:42**
+* Build number **5**
 * [Go Back](README.md) - go to the Readme
 * [Latest Build](build/web/index.html) - go to the last build

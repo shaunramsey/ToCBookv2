@@ -9,7 +9,7 @@ CURRENT_DATE=$(date "+%Y-%m-%d")
 CURRENT_TIME=$(date "+%H:%M:%S")
 
 quarto render --to html
-echo "# Status of Finite Automata Designer"  > "$OUTPUT_FILE"
+echo "# Theory of Computation v2 Build Information {.unnumbered}"  > "$OUTPUT_FILE"
 echo "* Generated on: **$CURRENT_DATE** at **$CURRENT_TIME**" >> "$OUTPUT_FILE"
 
 

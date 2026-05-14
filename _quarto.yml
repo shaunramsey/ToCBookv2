@@ -9,6 +9,7 @@ book:
   date: "4/2/2026"
   chapters:
     - index.qmd
+    - status.qmd
     - acknowledgements.qmd
     - dedication.qmd
     - part: Part I - Sets and Regular Languages

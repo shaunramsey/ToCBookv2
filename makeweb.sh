@@ -8,7 +8,7 @@ FILE="counter.txt"
 CURRENT_DATE=$(date "+%Y-%m-%d")
 CURRENT_TIME=$(date "+%H:%M:%S")
 
-quarto render --to html
+
 echo "# Theory of Computation v2 Build Information {.unnumbered}"  > "$OUTPUT_FILE"
 echo "* Generated on: **$CURRENT_DATE** at **$CURRENT_TIME**" >> "$OUTPUT_FILE"
 
@@ -26,3 +26,4 @@ echo "$NEW_NUM" > "$FILE"
 echo "* Build number **$NEW_NUM**" >> "$OUTPUT_FILE"
 
 echo "Output successfully written to $OUTPUT_FILE"
+quarto render --to html

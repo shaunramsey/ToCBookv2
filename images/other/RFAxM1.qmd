@@ -1,0 +1,35 @@
+::: {#fig-RFAxM1}
+
+```{.tikz}
+\begin{tikzpicture}[scale=0.2]
+\tikzstyle{every node}+=[inner sep=0pt]
+\draw [black] (15.1,-11.6) circle (3);
+\draw (15.1,-11.6) node {$A$};
+\draw [black] (32,-11.6) circle (3);
+\draw (32,-11.6) node {$B$};
+\draw [black] (43.1,-11.6) circle (3);
+\draw (43.1,-11.6) node {$acc$};
+\draw [black] (43.1,-11.6) circle (2.4);
+\draw [black] (17.754,-10.212) arc (112.03845:67.96155:15.446);
+\fill [black] (29.35,-10.21) -- (28.79,-9.45) -- (28.42,-10.38);
+\draw (23.55,-8.58) node [above] {$1$};
+\draw [black] (29.993,-13.815) arc (-50.63352:-129.36648:10.158);
+\fill [black] (17.11,-13.82) -- (17.41,-14.71) -- (18.04,-13.94);
+\draw (23.55,-16.62) node [below] {$1$};
+\draw [black] (9.9,-5.4) -- (13.17,-9.3);
+\draw (8,-4.91) node [above] {$M1$};
+\fill [black] (13.17,-9.3) -- (13.04,-8.37) -- (12.27,-9.01);
+\draw [black] (13.28,-13.97) arc (-9.79629:-297.79629:2.25);
+\draw (8.34,-15.67) node [left] {$0$};
+\fill [black] (12.11,-11.6) -- (11.41,-10.97) -- (11.24,-11.95);
+\draw [black] (31.979,-8.612) arc (208.13659:-79.86341:2.25);
+\draw (35.93,-5.02) node [above] {$0$};
+\fill [black] (34.36,-9.77) -- (35.3,-9.83) -- (34.83,-8.95);
+\draw [black] (35,-11.6) -- (40.1,-11.6);
+\fill [black] (40.1,-11.6) -- (39.3,-11.1) -- (39.3,-12.1);
+\draw (37.55,-12.1) node [below] {$\\0$};
+\end{tikzpicture}
+```
+
+A caption maybe
+:::

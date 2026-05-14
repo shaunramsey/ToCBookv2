@@ -1,0 +1,19 @@
+
+Use svg for html files.
+change width/height in the svg file for best results.
+Or can do this:
+inkscape --actions="page-fit-to-selection" -o RFAxM1.svg RFAxM1.svg
+inkscape --actions="export-area-drawing;export-margin:10" -o output.svg input.svg
+
+
+
+svg2tikz --figonly test.svg > test.tex
+
+
+use render to get the html files:
+quarto render --to html
+
+quarto publish gh-pages
+
+latex testsvg.tex
+dvisvgm testsvg.dvi

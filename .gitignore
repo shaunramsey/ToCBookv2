@@ -1,0 +1,11 @@
+# Quarto project files
+/.quarto/
+/_*.local
+
+# Rendered output (omit if you want to track HTML/PDF versions)
+/_site/
+/docs/
+*_cache/
+
+# Quarto Notebooks
+**/*.quarto_ipynb

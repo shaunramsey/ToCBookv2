@@ -1,0 +1,74 @@
+# Sets
+This chapter is meant to be a quick introduction to sets. It is placed here so that it may be easily referenced.
+
+::: {.callout-important}
+## Learning Objectives
+- An Introduction to Sets
+- Set-Builder Notation
+- Set Operations
+:::
+
+## Sets
+
+Sets are a collection objects where there is no ordering. Elements are not repeated or counted. Sets can contain any object, including other sets, or they can be empty. The ***empty set*** is denoted by $\emptyset$ or $\{\}$ and is sometimes called the null set. Typically we use curly brackets to denote set notation. Thus a set described in enumeration notation as $\{a,b,c\}$ is a set that contains elements $a$, $b$, and $c$. The order of the elements does not matter. Thus $\{a,b,c\}$ is the same set as $\{b,c,a\}$ or $\{b, a, c\}$. If $d$ were added to this set, we would have a new set $\{a,b,c,d\}$, which is different from the original set. If $a$ were added to the original set, we would still have the same set $\{a,b,c\}$ because $a$ is already an element of the set. Thus, elements are not repeated or counted in sets. 
+
+We will use ***enumeration notation*** right away to start describing important elements for this book. Enumeration notation is most often used when all items in a set can be easily described, the set is finite, or when a pattern can be easily inferred. Since easily inferred is subjective, we find it best to be explicit in our descriptions and notations.
+
+Occasionally, set notation is easier than describing a set in English. For example, "the set containing the set that contains a" can be written as $\{\{a\}\}$, which is easier to read and understand than the English description. This is an example of a set that contains another set. The inner set $\{a\}$ is an element of the outer set $\{\{a\}\}$. The inner set $\{a\}$ contains the element $a$. Thus, $a$ is an element of the inner set $\{a\}$, and the inner set $\{a\}$ is an element of the outer set $\{\{a\}\}$.
+
+As some sets are infinite, we need a way to describe them without enumerating all of their elements. ***Set-builder notation*** is a way to describe sets by stating the properties that its members must satisfy. For example, the set of all even integers can be described in set-builder notation as $\{x \mid x \text{ is an even integer}\}$. This can be read as "the set of all $x$ such that $x$ is an even integer". The vertical bar $|$ can be read as "such that". In programming we often think of this pipe as an "OR" symbol, but we must think of it differently when it is in set-builder notation. Another example is $\{w \mid w$ is a list of letters with one letter containing an $a\}$, which can be read as "the set of all $w$ such that $w$ is a list of letters and one of those letters is an $a$". Think of this notation in two pieces. The first piece is the variable $w$ that represents the elements of the set. The second piece is the condition that describes the properties of the elements of the set. In this case, the condition is that $w$ is a list of letters and one of those letters is an $a$. This is not unlike a variable assignment in programming. We are assigning the variable $w$ to represent the elements of the set, and we are describing the properties of those elements with the condition.
+
+::: {#exercise-subset-notation .callout-note}
+## Subset Notation Exercise
+- Write the set of all positive integers in set-builder notation.
+- Write the set of all counting numbers in enumeration notation.
+:::
+
+
+A ***subset*** is a collection of the elements of a set. For example, if we have the set $\{a,b,c\}$, then $\{a,b\}$ is a subset of $\{a,b,c\}$ because it contains only elements that are in $\{a,b,c\}$. We can also say that $\{a,b,c\}$ is a superset of $\{a,b\}$ because it contains all the elements of $\{a,b\}$. The empty set is a subset of every set because it does not contain any elements that are not in any other set. Thus, $\emptyset$ is a subset of every set. We use the symbol $\subseteq$ to denote subset and $\supseteq$ to denote superset. Thus, we can write $\{a,b\} \subseteq \{a,b,c\}$ and $\{a,b,c\} \supseteq \{a,b\}$.
+
+::: {#exercise-subsets .callout-note}
+## Subset Exercise
+- List all the subsets of the set $\{a,b,c\}$.
+:::
+
+When we are new to sets, this new vocabulary and its usage can be overwhelming. It is important to practice using this vocabulary and notation to become comfortable with it. The more you practice, the more natural it will become. We will be using it throughout the book, and thus you will have plenty of opportunities to practice. 
+
+The ***power set*** of a set is the set of all subsets of that set. For example, the power set of $\{a,b\}$ is $\{\emptyset, \{a\}, \{b\}, \{a,b\}\}$. The power set of a set with $n$ elements has $2^n$ elements. Thus, the power set of a set with 2 elements has $2^2 = 4$ elements, which we can see in the example above. The power set of a set with 3 elements has $2^3 = 8$ elements, and so on. The power set of a set is denoted by $\mathcal{P}(S)$, where $S$ is the original set. Thus, we can write $\mathcal{P}(\{a,b\}) = \{\emptyset, \{a\}, \{b\}, \{a,b\}\}$.
+
+::: {#exercise-powerset .callout-note}
+## Power Set Exercise
+- If $L = \{k,i,d\}$, what is $\mathcal{P}(L)$? 
+:::
+
+The ***union*** of two sets $A$ and $B$ is the set of all elements that are in $A$ or in $B$ (or in both). The union of $A$ and $B$ is denoted by $A \cup B$. For example, if $A = \{a,b\}$ and $B = \{b,c\}$, then $A \cup B = \{a,b,c\}$. Remember that sets do not care about order and duplication.
+
+::: {#exercise-union .callout-note}
+## Union Exercises
+- If $L = \{k,i,d\}$ and $K = \{f,e,d\}$, what is $L \cup K$? 
+- What is $\emptyset \cup \emptyset$?
+:::
+
+The ***intersection*** of two sets $A$ and $B$ is the set of all elements that are in both $A$ and $B$. The intersection of $A$ and $B$ is denoted by $A \cap B$. For example, if $A = \{a,b\}$ and $B = \{b,c\}$, then $A \cap B = \{b\}$. It is not uncommon for the intersection of two sets to be the empty set. For example, the intersection of the set of positive integers and the set of negative integers is simply $\emptyset$. 
+
+::: {#exercise-intersection .callout-note}
+## Intersection Exercises
+- If $L = \{k,i,d\}$ and $K = \{f,e,d\}$, what is $L \cap K$?
+- What is $\emptyset \cap \emptyset$?
+:::
+
+To get comfortable with these new terms and operators, we must use them. We will be using them throughout the book, and thus you will have plenty of opportunities to practice. The more you practice, the more natural it will become. Occasionally, these concepts will appear as we tackle the material in the following chapters. Most things we talk about in this class are sets, because sets help us talk about collections of objects.
+
+## Exercises
+
+1. Write a set of all even integers in enumeration set notation. Use ellipsis where needed.
+2. Write a set of all non-positive integers in set builder notation.
+3. What is the power set of $\{d,o,g\}$?
+4. How many elements does the power set of $\{a,b,c,d,e,f,g,h,i,j\}$ have?
+5. What is the union of $\{c,p,t,n\}$ and $\{u,s,a\}$?
+6. What is the intersection of $\{c,p,t,n\}$ and $\{u,s,a\}$?
+7. How many subsets does the set $\{a\}$ have?
+8. If $D = \{a,b,y,ab,ba,by,ay,bay,abba,baby\}$ and $E = \{ w \mid w $ is any English word $\}$, what is $D \cup E$?
+9. If $D = \{a,b,y,ab,ba,by,ay,bay,abba,baby\}$ and $E = \{ w \mid w $ is any English word $\}$, what is $D \cap E$?
+10. Is the set of integers $\mathbb{Z}$ a subset of the set of real numbers $\mathbb{R}$? Why or why not?
+

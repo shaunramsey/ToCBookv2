@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="391.16797"
+   height="150.24219"
+   version="1.1"
+   id="svg11"
+   sodipodi:docname="test3.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs11" />
+  <sodipodi:namedview
+     id="namedview11"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     fit-margin-top="1000"
+     fit-margin-left="1000"
+     fit-margin-right="1000"
+     fit-margin-bottom="1000" />
+  <circle
+     stroke="#000000"
+     stroke-width="1"
+     fill="none"
+     cx="80.667969"
+     cy="84.242188"
+     id="ellipse1"
+     r="30" />
+  <text
+     x="73.667969"
+     y="90.242188"
+     font-family="'Times New Roman'"
+     font-size="20px"
+     id="text1">A</text>
+  <circle
+     stroke="#000000"
+     stroke-width="1"
+     fill="none"
+     cx="249.66797"
+     cy="84.242188"
+     id="ellipse2"
+     r="30" />
+  <text
+     x="242.66797"
+     y="90.242188"
+     font-family="'Times New Roman'"
+     font-size="20px"
+     id="text2">B</text>
+  <circle
+     stroke="#000000"
+     stroke-width="1"
+     fill="none"
+     cx="360.66797"
+     cy="84.242188"
+     id="ellipse3"
+     r="30" />
+  <text
+     x="347.66797"
+     y="90.242188"
+     font-family="'Times New Roman'"
+     font-size="20px"
+     id="text3">acc</text>
+  <circle
+     stroke="#000000"
+     stroke-width="1"
+     fill="none"
+     cx="360.66797"
+     cy="84.242188"
+     id="ellipse4"
+     r="24" />
+  <path
+     stroke="#000000"
+     stroke-width="1"
+     fill="none"
+     d="m 107.21197,70.364187 a 154.456,154.456 0 0 1 115.912,0"
+     id="path4" />
+  <polygon
+     fill="#000000"
+     stroke-width="1"
+     points="284.665,104.255 293.956,102.622 288.417,94.985 "
+     id="polygon4"
+     transform="translate(-70.832031,-32.257812)" />
+  <text
+     x="159.66797"
+     y="50.242188"
+     font-family="'Times New Roman'"
+     font-size="20px"
+     id="text4">1</text>
+  <path
+     stroke="#000000"
+     stroke-width="1"
+     fill="none"
+     d="m 229.59997,106.39519 a 101.583,101.583 0 0 1 -128.864,0"
+     id="path5" />
+  <polygon
+     fill="#000000"
+     stroke-width="1"
+     points="180.924,139.862 171.568,138.653 174.582,147.593 "
+     id="polygon5"
+     transform="translate(-70.832031,-32.257812)" />
+  <text
+     x="159.66797"
+     y="150.24219"
+     font-family="'Times New Roman'"
+     font-size="20px"
+     id="text5">1</text>
+  <polygon
+     stroke="#000000"
+     stroke-width="1"
+     points="99.5,54.5 132.222,93.514 "
+     id="polygon6"
+     transform="translate(-70.832031,-32.257812)" />
+  <text
+     x="-0.33203125"
+     y="13.242188"
+     font-family="'Times New Roman'"
+     font-size="20px"
+     id="text6">M₁</text>
+  <polygon
+     fill="#000000"
+     stroke-width="1"
+     points="123.25,90.598 132.222,93.514 130.912,84.172 "
+     id="polygon7"
+     transform="translate(-70.832031,-32.257812)" />
+  <path
+     stroke="#000000"
+     stroke-width="1"
+     fill="none"
+     d="m 62.464969,107.94119 a 22.5,22.5 0 1 1 -11.68,-23.732002"
+     id="path7" />
+  <text
+     x="2.6679688"
+     y="131.24219"
+     font-family="'Times New Roman'"
+     font-size="20px"
+     id="text7">0</text>
+  <polygon
+     fill="#000000"
+     stroke-width="1"
+     points="112.883,120.033 121.617,116.467 114.584,110.178 "
+     id="polygon8"
+     transform="translate(-70.832031,-32.257812)" />
+  <path
+     stroke="#000000"
+     stroke-width="1"
+     fill="none"
+     d="m 249.45697,54.360187 a 22.5,22.5 0 1 1 23.801,11.538001"
+     id="path8" />
+  <text
+     x="283.66797"
+     y="14.242188"
+     font-family="'Times New Roman'"
+     font-size="20px"
+     id="text8">0</text>
+  <polygon
+     fill="#000000"
+     stroke-width="1"
+     points="348.787,89.974 344.09,98.156 353.503,98.793 "
+     id="polygon9"
+     transform="translate(-70.832031,-32.257812)" />
+  <polygon
+     stroke="#000000"
+     stroke-width="1"
+     points="350.5,116.5 401.5,116.5 "
+     id="polygon10"
+     transform="translate(-70.832031,-32.257812)" />
+  <polygon
+     fill="#000000"
+     stroke-width="1"
+     points="393.5,121.5 401.5,116.5 393.5,111.5 "
+     id="polygon11"
+     transform="translate(-70.832031,-32.257812)" />
+  <text
+     x="297.66797"
+     y="105.24219"
+     font-family="'Times New Roman'"
+     font-size="20px"
+     id="text11">\0</text>
+</svg>

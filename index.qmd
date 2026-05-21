@@ -1,7 +1,7 @@
 # Preface {.unnumbered}
 
-- © 2021--2026 by Shaun D. Ramsey, Ph.D. All rights reserved.
-- Version 0.103 -- Licensing TBD
+- © 2021--2026 by Shaun D. Ramsey Sr., Ph.D. All rights reserved.
+- Version 0.104 -- Licensing TBD
 
-- Contributing Author: Emilee Daniels 
+- Contributor: Emilee Daniels 
 - Contributor: Shaun D. Ramsey II

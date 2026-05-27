@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Define the target file name
-OUTPUT_FILE="status.qmd"
+OUTPUT_FILE="book/status.qmd"
 FILE="counter.txt"
 
 # Format the date and time strings
@@ -27,3 +27,4 @@ echo "* Build number **$NEW_NUM**" >> "$OUTPUT_FILE"
 
 echo "Output successfully written to $OUTPUT_FILE"
 quarto render --to html
+echo "Version **$NEW_NUM** ready for publication"

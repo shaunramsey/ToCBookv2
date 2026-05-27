@@ -1,3 +1,0 @@
-# Theory of Computation v2 Build Information {.unnumbered}
-* Generated on: **2026-05-21** at **17:27:51**
-* Build number **57**

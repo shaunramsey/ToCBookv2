@@ -1,0 +1,37 @@
+# Finite Automata For Developers (RFAs)
+
+This chapter discusses strategies for understanding and working with Ramsey's Finite Automata (RFAs) with null transitions and halt states. We will cover the basics of RFAs, including their definition, how to construct them, and how to use them to recognize languages. Some approaches are slightly unique, but it is designed to help developers understand the material in a way that is intuitive and practical, especially for programmers or thinking about these problems in a programmatic way. We will be using examples and exercises to help practice and solidify our understanding of RFAs. By the end of this chapter, we should have a good grasp of what RFAs are, how they are slightly different from DFAs, and how to use them effectively.
+
+::: {.callout-important}
+## Learning Objectives
+- Halt States
+- C-String string representations
+- End of string (EOS), \0, and Null transitions
+:::
+
+## Ramsey's Finite Automata (RFAs)
+
+We introduce an additional kind of state. It is a special accept state that also halts the machine, the ***halt and accept state*** denoted as **ha** or **acc** with a double circle. Machines can have a halt and reject state, *hr** as well, sometimes synonmous with a null or trap state depending on the type of finite machine we're using. If the machine ever enters the halt and accept state, it halts and accepts the input string as being in the language of the machine. We'll add some additional power to the Ramsey Finite Automata (RFAs) presented in this book to align with our notions as programmers as well, but first, let's give some background on why we use the notation that we do.
+
+In a programming language like C, strings are arrays of characters that are terminated by the null character. In C++ this is represented as '\0'. In an ASCII table, this is character 0 - often considered a non-printable character although NUL may be seen if you try to print it out in some situations. The character '0' is number 48 on the ASCII table. In any case, a string like "hello" is actually stored as an array of 6 characters. One character for 'h', 'e', 'l', 'l', and 'o' and then one more for the terminating character -- the null character or \0. We'll denote detecting the end of a string (and later the end of other things) by using the null character. This means that we'll see \0 on some of our transitions to denote that we've detected the end of a string. Typically this is non-traditional and finite automata run until they eat all the input symbols, but we find this can be a helpful tool when thinking about these machines as developers. Some examples of this expression will be explored below. 
+
+The end of string (EOS) character is the null character \0. 
+
+
+::: {#exercise-DFAs .callout-note}
+## Deterministic Finite Automata Exercise
+- Write the language in the machine of @fig-RFAxM2 in set-builder notation.
+- If we mark A as an accept state and remove B as an accept state in @fig-RFAxM2, what is the new language of the machine?
+- Make a machine that can accept any string with an even number of 1s.
+- Make a machine that can accept any string with $3n$ number of 0s where $n \geq 0$. The number of 1s does not matter.
+:::
+
+
+## Traditional Finite Automata vs Ramsey Finite Automata (RFA)
+
+Deterministic Finite Automata (DFAs) and RFAs differ because RFAs add halt states and null transitions. As shown in the stoplight example @fig-RFAxM1, in the real world, many FA will operate continuously. DFAs can have many accept states but RFAs should have one (ha). When a DFA finishes processing an input string, it will accept if it is in an accept state (state with a double circle), otherwise it will reject the input string. In an RFA, processing stops when ha is touched. RFAs are not more powerful, but they operate more closely to how we would write simple pattern recognizers in our own code. In addition, these additional operators work similarly to machines we'll look at in the future. As motivation for RFAs, imagine a language that only needs to look at the first symbol of an input string; strings that begin with an a only require looking at that first character. Such a machine could immediately halt and accept or halt and reject based on that very first symbol and that is exactly the code you'd write. So, an RFA can model the code you'd write by immediately taking a halt-and-accept state to end processing after viewing the first letter. 
+
+Converting between the formats is not difficult but it can require some elements of nondeterminism that we'll see in a future chapter. 
+To turn a traditional DFA into an RFA follow two simple steps. Add a transition from each of those former accept states to a new halt and accept state on a \0 transition. Then turn every accept state from the DFA into a normal state. Other optimizations might exist, but this is a full conversion from DFA to RFA.
+Converting from an RFA to a traditional FA is a bit more complicated as we must take special care to end in an accept state which does not halt. We'll use some elements from the nondeterministic chapter to make this transition. Ultimately, we can replace \0 transitions with ~ transitions. 
+The main point is that the two models are not that different and we can convert between them with a little bit of work. The RFA model is more convenient for some purposes but the traditional DFA model can be useful in other areas. Different FA models appear in different places as more powerful tools in certain situations and to give access to different proof techniques (we'll see four total in this book). Using the right tools for the job is part of the process of becoming a good computer scientist.

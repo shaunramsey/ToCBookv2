@@ -1,0 +1,149 @@
+# Deterministic Finite Automata (DFAs)
+
+This chapter discusses strategies for understanding and working with deterministic finite automata (DFAs). We will cover the basics of DFAs, including their definition, how to construct them, and how to use them to recognize languages. We will be using examples and exercises to help practice and solidify our understanding of DFAs. By the end of this chapter, we should have a good grasp of what DFAs are, how they work, and how to use them effectively.
+
+::: {.callout-important}
+## Learning Objectives
+- Definition of Determinism, Strings, and Languages
+- Strategies for Understanding and Constructing DFAs
+- Using DFAs to Describe Languages
+:::
+
+## Alphabets, Strings, and Languages
+
+To start thinking about theory of computation, we define a few useful terms. An ***alphabet*** is a finite set of symbols. For example, the binary alphabet is $\Sigma = \{0,1\}$.  A ***string*** is a finite sequence of symbols from an alphabet. A string is not a set and order matters. Some example strings, using the binary alphabet, are $1011$ and $0101$. These are not unlike a string defined with quotation marks in a programming language like C++. We might write `"1011"` in C++ to represent a string. `"1011"` is a string that contains 4 characters. In this book, we refer to the characters as symbols, although, at times, the symbols have meaning. `'0'` is a symbol, an element of an alphabet, but it may also mean the digit 0. In this book, the ***empty string*** is denoted by a tilde, `~`. The empty string is a string that contains no symbols. We often use empty strings in programming as well. In C++, we might set a string equal to the empty string, denoted by `""`. A ***language*** is a set of strings. The alphabet of the language is the set of symbols that can be used to create the strings in the language. We might have a language that contains all strings of even length. This language contains strings such as `""`, `00`, `11`, `0101`, and so on if we're using a binary alphabet. The language of all strings of even length over the binary alphabet can be denoted as $L = \{w \mid w$ is a binary string of even length$\}$. This is an example of a language that contains an infinite number of strings. We will be working with languages that contain both finite and infinite numbers of strings. Test understanding of these definitions with the following exercises.
+
+::: {#exercise-language-definitions .callout-note}
+## Alphabets, Strings, and Languages Exercise
+- If the alphabet of a language is $\Sigma = \{a, b\}$, give an example of a string that is in the language.
+- Give a possible alphabet for a language that contains the strings `dog` and `kid`.
+- Give a possible language that contains the strings `dog` and `kid`.
+- If the alphabet of a language is $\Sigma = \{a, b, c\}$, how many possible strings could it contain?
+:::
+
+As we continue, we will use these terms, alphabet, string, and language, frequently. Our alphabets are finite sets that define the characters that are allowed in our strings. Our strings are like words; they are an ordered list of characters. Our languages are sets of strings and they will often be infinite sets (having an unbounded number of strings).
+
+## Finite Automata (FA)
+
+***Finite automata (FA)*** are a type of computational model. In this text we will use the word **machine** synonymously with automata. Automata utilize ***states*** as a kind of finite memory. We might say that a FA can be used to determine if an input string is in the language of the machine. We will use some words interchangably at first and then expand their definitions. A machine **recognizes** a language but many machines may recognize the same language. States are represented using circles and machines are made up of states with transitions between them. In our diagrams, a state with a straight arrow pointing at it (not from another state) is the ***start state***. A state with a double circle is an ***accept state***. When a machine (specifically a DFA) processes a string, it will end in some state. If that state is an accept state, the machine accepts the string. If it is not, the machine rejects the string. The set of strings a machine accepts is the language of the machine. In the next chapter we'll introduce more pieces for FAs to move things in line with how we think as programmers. But it is useful to understand this traditional model first.
+
+
+
+Let's explore the idea of FA with some real world examples.
+In figure @fig-RFAxM1, we explore a sample state machine that we often see. Let's take a look before we dive in.
+
+::: {#fig-RFAxM1}
+::: {.light-content}
+![](/images/RL/RFAxM1-black.svg)
+:::
+
+::: {.dark-content}
+![](/images/RL/RFAxM1-white.svg)
+:::
+
+Red-Yellow-Green - The Stoplight State Machine
+:::
+
+In figure @fig-RFAxM1, we see three states represented by circles: Red (RED), Green (GRN), and Yellow (YEL). There are no accept states. The arrows describe how we can transition from one state to the next. For example, to transition from Yellow to Red, we must see the end of a timer - denoted by t in the diagram. To go from Red to Green, a certain timer must trigger, but also, someone must be waiting at the sensor - denoted by s. This is a state machine for a side street. The side street never turns green unless someone is waiting at the sensor. Lastly, we turn the stoplight yellow after some time has passed and there is no longer someone waiting at the sensor. You might imagine slightly more complex logic on this transition, but to get us started, this is sufficient. Putting it all together, we have the state machine of a stop light. There are no accept states here and so the language being recognized by the machine is empty, but you can see the basics of how state machines are all around us from signals to controllers of other basic machinery. 
+
+Let's examine a traditional deterministic finite automata that fits within the concepts of our work in theory of computation. Examine @fig-RFAxM2 for a moment before we discuss it. Maybe we can decipher it's language already!
+
+
+::: {#fig-RFAxM2}
+::: {.light-content}
+![](/images/RL/RFAxM2-black.svg)
+:::
+
+::: {.dark-content}
+![](/images/RL/RFAxM2-white.svg)
+:::
+
+A simple deterministic finite automata (DFA)
+:::
+
+Could we figure out it's language? Let's take a look at @fig-RFAxM2 a second time. What are some things that we notice? Well, when we see an input of 1, we stay in the same state. This means that an input of 1 will not move us around the states. We stay put when we *eat* an input of 1. On the other hand, an input of 0 does force us to change states. So, one 0 takes us away but another 0 brings us back. Lastly, we note that B is our accept state. To get there we need to see a 0. To stay there we need to see an even number of 0s. So, ignoring 1s, we end up in B after an odd number of 0s (an even number plus 1 to get us there to start with). This tells us ALL the strings that are recognized by this machine. Remember that the set of strings recognized by a machine is the language of the machine. In this case the language is all strings that have an odd number of 0s. Let's practice with our set notation and play with this FA in the next exercises.
+
+::: {#exercise-DFAs .callout-note}
+## Deterministic Finite Automata Exercise
+- Name a few real world situations that likely are driven by state machines.
+- Write the language in the machine of @fig-RFAxM2 in set-builder notation.
+- If we mark A as an accept state and remove B as an accept state in @fig-RFAxM2, what is the new language of the machine?
+- Make a machine that can accept any string with an even number of 1s.
+- Make a machine that can accept any string with $3n$ number of 0s where $n \geq 0$. The number of 1s does not matter.
+:::
+
+
+## Frequently Used Language Elements
+Now that we have a basic understanding of DFAs, it'll be useful to take a look at some commonly used features of DFAs that we use.
+Let's start with strings that begin with a sequence. Perhaps you're looking at a language defined as $\{w \mid w$ begins with $01\}$.
+To build this DFA, we'll need four states. A start state, a state where we have "seen a 0", a state where we have "seen 0 followed by 1", and an accept state. Pause and we'll try to sort this one out in the empty diagram below.
+
+::: {#fig-RFAxEmpty}
+::: {.light-content}
+![](/images/RL/RFAxEmpty-black.svg)
+:::
+
+::: {.dark-content}
+![](/images/RL/RFAxEmpty-white.svg)
+:::
+
+What transitions are needed to complete this diagram?
+:::
+
+
+## Determinism
+
+::: {#fig-transition-table-RFAxM2}
+
+```{=html}
+<style type="text/css">
+.tg  {border-collapse:collapse;border-spacing:0;}
+
+.tg td{border-color:black; border-bottom: 0px;
+    border-style:solid;font-family:Arial, sans-serif;font-size:14px;
+  overflow:hidden;padding:10px 5px;word-break:normal;}
+
+body.quarto-dark .tg td{border-color:black; border-bottom: 0px;
+    border-style:solid;font-family:Arial, sans-serif;font-size:14px;
+  overflow:hidden;padding:10px 5px;word-break:normal;}
+
+.tg th{border-color:black;border-style:solid;border-bottom:1px;font-family:Arial, sans-serif;font-size:14px;
+  font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
+
+body.quarto-dark .tg th{border-color:white;border-style:solid;border-bottom:1px;font-family:Arial, sans-serif;font-size:14px;
+  font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
+
+.tg .tg-wp8o{border-color:#000000;text-align:center;vertical-align:top}
+body.quarto-dark .tg .tg-wp8o{border-color:#ffffff;text-align:center;vertical-align:center}
+
+.tg .tg-wp8o1{border-color:#000000;border-width:0px 1p 0px 0px;text-align:center;vertical-align:top}
+body.quarto-dark .tg .tg-wp8o1{border-color:#ffffff;border-width:0px 1p 0px 0px;text-align:center;vertical-align:center}
+
+.table {border-bottom: 0px; border-top: 0px}
+.rightcell8888 {border-right: 1px}
+</style>
+<table class="tg"><thead>
+  <tr>
+    <th class="tg-wp8o rightcell8888">&nbsp;</th>
+    <th class="tg-wp8o">A</th>
+    <th class="tg-wp8o">B</th>
+  </tr></thead>
+<tbody>
+  <tr>
+    <td class="tg-wp8o rightcell8888">0</td>
+    <td class="tg-wp8o">B</td>
+    <td class="tg-wp8o">A</td>
+  </tr>
+  <tr>
+    <td class="tg-wp8o rightcell8888">1</td>
+    <td class="tg-wp8o">A</td>
+    <td class="tg-wp8o">B</td>
+  </tr>
+</tbody>
+</table>
+```
+
+Transition Table of @fig-RFAxM2 
+:::
+
+Other information follows.

@@ -68,7 +68,7 @@ To get comfortable with these new terms and operators, we must use them. We will
 5. What is the union of $\{c,p,t,n\}$ and $\{u,s,a\}$?
 6. What is the intersection of $\{c,p,t,n\}$ and $\{u,s,a\}$?
 7. How many subsets does the set $\{a\}$ have?
-8. If $D = \{a,b,y,ab,ba,by,ay,bay,abba,baby\}$ and $E = \{ w \mid w $ is any English word $\}$, what is $D \cup E$?
-9. If $D = \{a,b,y,ab,ba,by,ay,bay,abba,baby\}$ and $E = \{ w \mid w $ is any English word $\}$, what is $D \cap E$?
+8. If $D = \{a,b,y,ab,ba,by,ay,bay,abba,baby\}$ and $E = \{ w \mid w$ is any English word $\}$, what is $D \cup E$?
+9. If $D = \{a,b,y,ab,ba,by,ay,bay,abba,baby\}$ and $E = \{ w \mid w$ is any English word $\}$, what is $D \cap E$?
 10. Is the set of integers, $\mathbb{Z}$, a subset of the set of real numbers, $\mathbb{R}$? Why or why not?
 

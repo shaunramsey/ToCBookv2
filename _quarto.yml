@@ -4,27 +4,27 @@ project:
 
 book:
   title: "Theory of Computation: An Introduction For Programmers"
+  cover-image: book/cover.svg
   author: 
     - name: "Shaun D. Ramsey, Ph.D."
   date: "4/2/2026"
   chapters:
     - index.qmd
-    - status.qmd
-    - acknowledgements.qmd
-    - dedication.qmd
+    - book/status.qmd
+    - book/acknowledgements.qmd
+    - book/dedication.qmd
     - part: Part I - Sets and Regular Languages
       chapters:
-        - sets.qmd
-        - dfas.qmd
+        - I/sets.qmd
+        - I/dfas.qmd
+        - I/rfas.qmd
     - part: Part II - Context-Free Languages
       chapters:
-        - context-free-languages.qmd
+        - II/context-free-languages.qmd
     - part: Part III - Turing Machines and Computability
       chapters:
-        - turing-machines.qmd
-    - intro.qmd
-    - summary.qmd
-    - references.qmd
+        - III/turing-machines.qmd
+    - book/references.qmd
 
 bibliography: references.bib
 

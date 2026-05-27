@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>6&nbsp; Summary – Theory of Computation: An Introduction For Programmers</title>
+<title>2&nbsp; Deterministic Finite Automata (DFAs) – Theory of Computation: An Introduction For Programmers</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -26,29 +26,32 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<link href="./references.html" rel="next">
-<link href="./intro.html" rel="prev">
-<script src="site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-d0ae9245876894da5ac7e18953ecc5cc.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-5ccb035bea26c1e21f80f44cf7c27909.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-aa873432a3c62897e6c2091c0d30a948.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="site_libs/bootstrap/bootstrap-5ccb035bea26c1e21f80f44cf7c27909.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../I/rfas.html" rel="next">
+<link href="../I/sets.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-d0ae9245876894da5ac7e18953ecc5cc.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-5ccb035bea26c1e21f80f44cf7c27909.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-aa873432a3c62897e6c2091c0d30a948.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-5ccb035bea26c1e21f80f44cf7c27909.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -77,6 +80,35 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -251,7 +283,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./summary.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Summary</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../I/sets.html">Part I - Sets and Regular Languages</a></li><li class="breadcrumb-item"><a href="../I/dfas.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Deterministic Finite Automata (DFAs)</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -266,7 +298,7 @@ ul.task-list li input[type="checkbox"] {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">Theory of Computation: An Introduction For Programmers</a> 
+      <a href="../">Theory of Computation: An Introduction For Programmers</a> 
         <div class="sidebar-tools-main">
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
@@ -281,25 +313,25 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link">
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Preface</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./status.html" class="sidebar-item-text sidebar-link">
+  <a href="../book/status.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Theory of Computation v2 Build Information</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./acknowledgements.html" class="sidebar-item-text sidebar-link">
+  <a href="../book/acknowledgements.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Acknowledgements</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./dedication.html" class="sidebar-item-text sidebar-link">
+  <a href="../book/dedication.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Dedication</span></a>
   </div>
 </li>
@@ -314,14 +346,20 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./sets.html" class="sidebar-item-text sidebar-link">
+  <a href="../I/sets.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Sets</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./dfas.html" class="sidebar-item-text sidebar-link">
+  <a href="../I/dfas.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Deterministic Finite Automata (DFAs)</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../I/rfas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Finite Automata For Developers (RFAs)</span></span></a>
   </div>
 </li>
       </ul>
@@ -337,8 +375,8 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./context-free-languages.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">context-free-languages.html</span></span></a>
+  <a href="../II/context-free-languages.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">context-free-languages.html</span></span></a>
   </div>
 </li>
       </ul>
@@ -354,27 +392,15 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./turing-machines.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">turing-machines.html</span></span></a>
+  <a href="../III/turing-machines.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">turing-machines.html</span></span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./summary.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Summary</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./references.html" class="sidebar-item-text sidebar-link">
+  <a href="../book/references.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">References</span></a>
   </div>
 </li>
@@ -383,16 +409,25 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#alphabets-strings-and-languages" id="toc-alphabets-strings-and-languages" class="nav-link active" data-scroll-target="#alphabets-strings-and-languages"><span class="header-section-number">2.1</span> Alphabets, Strings, and Languages</a></li>
+  <li><a href="#finite-automata-fa" id="toc-finite-automata-fa" class="nav-link" data-scroll-target="#finite-automata-fa"><span class="header-section-number">2.2</span> Finite Automata (FA)</a></li>
+  <li><a href="#frequently-used-language-elements" id="toc-frequently-used-language-elements" class="nav-link" data-scroll-target="#frequently-used-language-elements"><span class="header-section-number">2.3</span> Frequently Used Language Elements</a></li>
+  <li><a href="#determinism" id="toc-determinism" class="nav-link" data-scroll-target="#determinism"><span class="header-section-number">2.4</span> Determinism</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../I/sets.html">Part I - Sets and Regular Languages</a></li><li class="breadcrumb-item"><a href="../I/dfas.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Deterministic Finite Automata (DFAs)</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Summary</span></h1>
+<h1 class="title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Deterministic Finite Automata (DFAs)</span></h1>
 </div>
 
 
@@ -409,9 +444,186 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>In summary, this book has no content whatsoever.</p>
+<p>This chapter discusses strategies for understanding and working with deterministic finite automata (DFAs). We will cover the basics of DFAs, including their definition, how to construct them, and how to use them to recognize languages. We will be using examples and exercises to help practice and solidify our understanding of DFAs. By the end of this chapter, we should have a good grasp of what DFAs are, how they work, and how to use them effectively.</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Learning Objectives
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>Definition of Determinism, Strings, and Languages</li>
+<li>Strategies for Understanding and Constructing DFAs</li>
+<li>Using DFAs to Describe Languages</li>
+</ul>
+</div>
+</div>
+<section id="alphabets-strings-and-languages" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="alphabets-strings-and-languages"><span class="header-section-number">2.1</span> Alphabets, Strings, and Languages</h2>
+<p>To start thinking about theory of computation, we define a few useful terms. An <strong><em>alphabet</em></strong> is a finite set of symbols. For example, the binary alphabet is <span class="math inline">\(\Sigma = \{0,1\}\)</span>. A <strong><em>string</em></strong> is a finite sequence of symbols from an alphabet. A string is not a set and order matters. Some example strings, using the binary alphabet, are <span class="math inline">\(1011\)</span> and <span class="math inline">\(0101\)</span>. These are not unlike a string defined with quotation marks in a programming language like C++. We might write <code>"1011"</code> in C++ to represent a string. <code>"1011"</code> is a string that contains 4 characters. In this book, we refer to the characters as symbols, although, at times, the symbols have meaning. <code>'0'</code> is a symbol, an element of an alphabet, but it may also mean the digit 0. In this book, the <strong><em>empty string</em></strong> is denoted by a tilde, <code>~</code>. The empty string is a string that contains no symbols. We often use empty strings in programming as well. In C++, we might set a string equal to the empty string, denoted by <code>""</code>. A <strong><em>language</em></strong> is a set of strings. The alphabet of the language is the set of symbols that can be used to create the strings in the language. We might have a language that contains all strings of even length. This language contains strings such as <code>""</code>, <code>00</code>, <code>11</code>, <code>0101</code>, and so on if we’re using a binary alphabet. The language of all strings of even length over the binary alphabet can be denoted as <span class="math inline">\(L = \{w \mid w\)</span> is a binary string of even length<span class="math inline">\(\}\)</span>. This is an example of a language that contains an infinite number of strings. We will be working with languages that contain both finite and infinite numbers of strings. Test understanding of these definitions with the following exercises.</p>
+<div id="exercise-language-definitions" class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Alphabets, Strings, and Languages Exercise
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>If the alphabet of a language is <span class="math inline">\(\Sigma = \{a, b\}\)</span>, give an example of a string that is in the language.</li>
+<li>Give a possible alphabet for a language that contains the strings <code>dog</code> and <code>kid</code>.</li>
+<li>Give a possible language that contains the strings <code>dog</code> and <code>kid</code>.</li>
+<li>If the alphabet of a language is <span class="math inline">\(\Sigma = \{a, b, c\}\)</span>, how many possible strings could it contain?</li>
+</ul>
+</div>
+</div>
+<p>As we continue, we will use these terms, alphabet, string, and language, frequently. Our alphabets are finite sets that define the characters that are allowed in our strings. Our strings are like words; they are an ordered list of characters. Our languages are sets of strings and they will often be infinite sets (having an unbounded number of strings).</p>
+</section>
+<section id="finite-automata-fa" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="finite-automata-fa"><span class="header-section-number">2.2</span> Finite Automata (FA)</h2>
+<p><strong><em>Finite automata (FA)</em></strong> are a type of computational model. In this text we will use the word <strong>machine</strong> synonymously with automata. Automata utilize <strong><em>states</em></strong> as a kind of finite memory. We might say that a FA can be used to determine if an input string is in the language of the machine. We will use some words interchangably at first and then expand their definitions. A machine <strong>recognizes</strong> a language but many machines may recognize the same language. States are represented using circles and machines are made up of states with transitions between them. In our diagrams, a state with a straight arrow pointing at it (not from another state) is the <strong><em>start state</em></strong>. A state with a double circle is an <strong><em>accept state</em></strong>. When a machine (specifically a DFA) processes a string, it will end in some state. If that state is an accept state, the machine accepts the string. If it is not, the machine rejects the string. The set of strings a machine accepts is the language of the machine. In the next chapter we’ll introduce more pieces for FAs to move things in line with how we think as programmers. But it is useful to understand this traditional model first.</p>
+<p>Let’s explore the idea of FA with some real world examples. In figure <a href="#fig-RFAxM1" class="quarto-xref">Figure&nbsp;<span>2.1</span></a>, we explore a sample state machine that we often see. Let’s take a look before we dive in.</p>
+<div id="fig-RFAxM1" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-RFAxM1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="light-content">
+<p><a href="../images/RL/RFAxM1-black.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Figure&nbsp;2.1: Red-Yellow-Green - The Stoplight State Machine"><img src="../images/RL/RFAxM1-black.svg" class="img-fluid figure-img"></a></p>
+</div>
+<div class="dark-content">
+<p><a href="../images/RL/RFAxM1-white.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="Figure&nbsp;2.1: Red-Yellow-Green - The Stoplight State Machine"><img src="../images/RL/RFAxM1-white.svg" class="img-fluid figure-img"></a></p>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-RFAxM1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.1: Red-Yellow-Green - The Stoplight State Machine
+</figcaption>
+</figure>
+</div>
+<p>In figure <a href="#fig-RFAxM1" class="quarto-xref">Figure&nbsp;<span>2.1</span></a>, we see three states represented by circles: Red (RED), Green (GRN), and Yellow (YEL). There are no accept states. The arrows describe how we can transition from one state to the next. For example, to transition from Yellow to Red, we must see the end of a timer - denoted by t in the diagram. To go from Red to Green, a certain timer must trigger, but also, someone must be waiting at the sensor - denoted by s. This is a state machine for a side street. The side street never turns green unless someone is waiting at the sensor. Lastly, we turn the stoplight yellow after some time has passed and there is no longer someone waiting at the sensor. You might imagine slightly more complex logic on this transition, but to get us started, this is sufficient. Putting it all together, we have the state machine of a stop light. There are no accept states here and so the language being recognized by the machine is empty, but you can see the basics of how state machines are all around us from signals to controllers of other basic machinery.</p>
+<p>Let’s examine a traditional deterministic finite automata that fits within the concepts of our work in theory of computation. Examine <a href="#fig-RFAxM2" class="quarto-xref">Figure&nbsp;<span>2.2</span></a> for a moment before we discuss it. Maybe we can decipher it’s language already!</p>
+<div id="fig-RFAxM2" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-RFAxM2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="light-content">
+<p><a href="../images/RL/RFAxM2-black.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-3" title="Figure&nbsp;2.2: A simple deterministic finite automata (DFA)"><img src="../images/RL/RFAxM2-black.svg" class="img-fluid figure-img"></a></p>
+</div>
+<div class="dark-content">
+<p><a href="../images/RL/RFAxM2-white.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-4" title="Figure&nbsp;2.2: A simple deterministic finite automata (DFA)"><img src="../images/RL/RFAxM2-white.svg" class="img-fluid figure-img"></a></p>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-RFAxM2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.2: A simple deterministic finite automata (DFA)
+</figcaption>
+</figure>
+</div>
+<p>Could we figure out it’s language? Let’s take a look at <a href="#fig-RFAxM2" class="quarto-xref">Figure&nbsp;<span>2.2</span></a> a second time. What are some things that we notice? Well, when we see an input of 1, we stay in the same state. This means that an input of 1 will not move us around the states. We stay put when we <em>eat</em> an input of 1. On the other hand, an input of 0 does force us to change states. So, one 0 takes us away but another 0 brings us back. Lastly, we note that B is our accept state. To get there we need to see a 0. To stay there we need to see an even number of 0s. So, ignoring 1s, we end up in B after an odd number of 0s (an even number plus 1 to get us there to start with). This tells us ALL the strings that are recognized by this machine. Remember that the set of strings recognized by a machine is the language of the machine. In this case the language is all strings that have an odd number of 0s. Let’s practice with our set notation and play with this FA in the next exercises.</p>
+<div id="exercise-DFAs" class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Deterministic Finite Automata Exercise
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>Name a few real world situations that likely are driven by state machines.</li>
+<li>Write the language in the machine of <a href="#fig-RFAxM2" class="quarto-xref">Figure&nbsp;<span>2.2</span></a> in set-builder notation.</li>
+<li>If we mark A as an accept state and remove B as an accept state in <a href="#fig-RFAxM2" class="quarto-xref">Figure&nbsp;<span>2.2</span></a>, what is the new language of the machine?</li>
+<li>Make a machine that can accept any string with an even number of 1s.</li>
+<li>Make a machine that can accept any string with <span class="math inline">\(3n\)</span> number of 0s where <span class="math inline">\(n \geq 0\)</span>. The number of 1s does not matter.</li>
+</ul>
+</div>
+</div>
+</section>
+<section id="frequently-used-language-elements" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="frequently-used-language-elements"><span class="header-section-number">2.3</span> Frequently Used Language Elements</h2>
+<p>Now that we have a basic understanding of DFAs, it’ll be useful to take a look at some commonly used features of DFAs that we use. Let’s start with strings that begin with a sequence. Perhaps you’re looking at a language defined as <span class="math inline">\(\{w \mid w\)</span> begins with <span class="math inline">\(01\}\)</span>. To build this DFA, we’ll need four states. A start state, a state where we have “seen a 0”, a state where we have “seen 0 followed by 1”, and an accept state. Pause and we’ll try to sort this one out in the empty diagram below.</p>
+<div id="fig-RFAxEmpty" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-RFAxEmpty-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="light-content">
+<p><a href="../images/RL/RFAxEmpty-black.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-5" title="Figure&nbsp;2.3: Caption"><img src="../images/RL/RFAxEmpty-black.svg" class="img-fluid figure-img"></a></p>
+</div>
+<div class="dark-content">
+<p><a href="../images/RL/RFAxEmpty-white.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-6" title="Figure&nbsp;2.3: Caption"><img src="../images/RL/RFAxEmpty-white.svg" class="img-fluid figure-img"></a></p>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-RFAxEmpty-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.3: Caption
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="determinism" class="level2" data-number="2.4">
+<h2 data-number="2.4" class="anchored" data-anchor-id="determinism"><span class="header-section-number">2.4</span> Determinism</h2>
+<div id="fig-transition-table-RFAxM2" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-transition-table-RFAxM2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<style type="text/css">
+.tg  {border-collapse:collapse;border-spacing:0;}
+
+.tg td{border-color:black; border-bottom: 0px;
+    border-style:solid;font-family:Arial, sans-serif;font-size:14px;
+  overflow:hidden;padding:10px 5px;word-break:normal;}
+
+body.quarto-dark .tg td{border-color:black; border-bottom: 0px;
+    border-style:solid;font-family:Arial, sans-serif;font-size:14px;
+  overflow:hidden;padding:10px 5px;word-break:normal;}
+
+.tg th{border-color:black;border-style:solid;border-bottom:1px;font-family:Arial, sans-serif;font-size:14px;
+  font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
+
+body.quarto-dark .tg th{border-color:white;border-style:solid;border-bottom:1px;font-family:Arial, sans-serif;font-size:14px;
+  font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
+
+.tg .tg-wp8o{border-color:#000000;text-align:center;vertical-align:top}
+body.quarto-dark .tg .tg-wp8o{border-color:#ffffff;text-align:center;vertical-align:center}
+
+.tg .tg-wp8o1{border-color:#000000;border-width:0px 1p 0px 0px;text-align:center;vertical-align:top}
+body.quarto-dark .tg .tg-wp8o1{border-color:#ffffff;border-width:0px 1p 0px 0px;text-align:center;vertical-align:center}
+
+.table {border-bottom: 0px; border-top: 0px}
+.rightcell8888 {border-right: 1px}
+</style>
+
+<table class="tg caption-top table">
+<thead>
+<tr class="header">
+<th class="tg-wp8o rightcell8888" data-quarto-table-cell-role="th">&nbsp;</th>
+<th class="tg-wp8o" data-quarto-table-cell-role="th">A</th>
+<th class="tg-wp8o" data-quarto-table-cell-role="th">B</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td class="tg-wp8o rightcell8888">0</td>
+<td class="tg-wp8o">B</td>
+<td class="tg-wp8o">A</td>
+</tr>
+<tr class="even">
+<td class="tg-wp8o rightcell8888">1</td>
+<td class="tg-wp8o">A</td>
+<td class="tg-wp8o">B</td>
+</tr>
+</tbody>
+</table>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-transition-table-RFAxM2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.4: Transition Table of <a href="#fig-RFAxM2" class="quarto-xref">Figure&nbsp;<span>2.2</span></a>
+</figcaption>
+</figure>
+</div>
+<p>Other information follows.</p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -829,17 +1041,49 @@ ul.task-list li input[type="checkbox"] {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./intro.html" class="pagination-link" aria-label="Introduction">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Introduction</span></span>
+      <a href="../I/sets.html" class="pagination-link" aria-label="Sets">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Sets</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./references.html" class="pagination-link" aria-label="References">
-        <span class="nav-page-text">References</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../I/rfas.html" class="pagination-link" aria-label="Finite Automata For Developers (RFAs)">
+        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Finite Automata For Developers (RFAs)</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
 </div> <!-- /content -->
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
+(function() {
+  let previousOnload = window.onload;
+  window.onload = () => {
+    if (previousOnload) {
+      previousOnload();
+    }
+    lightboxQuarto.on('slide_before_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      const href = trigger.getAttribute('href');
+      if (href !== null) {
+        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+        if (imgEl !== null) {
+          const srcAttr = imgEl.getAttribute("src");
+          if (srcAttr && srcAttr.startsWith("data:")) {
+            slideConfig.href = srcAttr;
+          }
+        }
+      } 
+    });
+  
+    lightboxQuarto.on('slide_after_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(slideNode);
+      }
+    });
+  
+  };
+  
+})();
+          </script>
 
 
 

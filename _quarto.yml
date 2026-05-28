@@ -7,7 +7,7 @@ book:
   title: "Theory of Computation: An Introduction For Programmers"
   cover-image: book/cover.svg
   description: "An undergraduate Theory of Computation text with components designed for developers."
-  favicon: book/favicon.png
+  favicon: favicon.png
   open-graph: 
     image: https://shaunramsey.github.io/TocBookv2/images/Icon-512.png
   twitter-card:
@@ -59,4 +59,4 @@ format:
 
 resources:
   - images/Icon-512.png
-  - book/favicon.png
+  - favicon.png

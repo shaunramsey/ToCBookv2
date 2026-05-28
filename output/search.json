@@ -2,7 +2,7 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "Theory of Computation: An Introduction For Programmers - MAINTITLE",
+    "title": "Theory of Computation: An Introduction For Programmers",
     "section": "",
     "text": "Preface\n\n© 2021–2026 by Shaun D. Ramsey Sr., Ph.D. All rights reserved.\nVersion 0.104 – Licensing TBD\nContributor: Emilee Daniels\nContributor: Shaun D. Ramsey II",
     "crumbs": [
@@ -14,7 +14,7 @@
     "href": "book/status.html",
     "title": "Theory of Computation v2 Build Information",
     "section": "",
-    "text": "Generated on: 2026-05-28 at 16:30:02\nBuild number 115",
+    "text": "Generated on: 2026-05-28 at 16:34:54\nBuild number 117",
     "crumbs": [
       "Theory of Computation v2 Build Information"
     ]

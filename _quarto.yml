@@ -4,15 +4,15 @@ project:
 
 
 book:
-  title: "Theory of Computation: An Introduction For Programmers - MAINTITLE"
+  title: "Theory of Computation: An Introduction For Programmers"
   cover-image: book/cover.svg
   description: "An undergraduate Theory of Computation text with components designed for developers."
   favicon: book/favicon.png
   open-graph: 
-    image: https://shaunramsey.github.io/TocBookv2/book/cover.svg
+    image: https://shaunramsey.github.io/TocBookv2/images/Icon-512.png
   twitter-card:
     card-style: summary_large_image
-    image: https://shaunramsey.github.io/TocBookv2/book/cover.svg
+    image: https://shaunramsey.github.io/TocBookv2/images/Icon-512.png
 
   
   author: 
@@ -57,4 +57,5 @@ format:
     default-image-extension: tex
     documentclass: scrreprt
 
-
+resources:
+  - images/Icon-512.png

@@ -2,9 +2,12 @@ project:
   type: book
   output-dir: output
 
+
 book:
   title: "Theory of Computation: An Introduction For Programmers"
   cover-image: book/cover.svg
+  favicon: book/favicon.png
+  
   author: 
     - name: "Shaun D. Ramsey, Ph.D."
   date: "4/2/2026"

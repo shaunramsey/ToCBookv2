@@ -6,6 +6,8 @@ project:
 book:
   title: "Theory of Computation: An Introduction For Programmers"
   cover-image: book/cover.svg
+  image: book/preview2.png
+  description: "An undergraduate Theory of Computation text with components designed for developers."
   favicon: book/favicon.png
   twitter-card: true
   

@@ -1,0 +1,12 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "https://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+
+<svg width="132" height="90" version="1.1" xmlns="http://www.w3.org/2000/svg">
+	<polygon stroke="#ff9900" stroke-width="1" points="0,0 29,29"/>
+	<polygon fill="#ff9900" stroke-width="1" points="29,29 19,26 26,19"/>
+	<polygon fill="#ff0000" stroke-width="1" points="79,62 88,65 81,72"/>
+	<path stroke="#ff0000" stroke-width="1" fill="none" d="M 78.282,37.633 A 20.000,20.000 0 1 1 78.282,62.367"/>
+	<text fill="#ff0000" stroke="#ff0000" x="116.800" y="53.500" font-family="Courier New" font-size="14">r</text>
+	<ellipse stroke="#ffcc00" stroke-width="1" fill="none" cx="50.000" cy="50.000" rx="30" ry="30"/>
+	<text fill="#ffcc00" stroke="#ffcc00" x="43.400" y="55.500" font-family="Courier New" font-size="22">R</text>
+</svg>

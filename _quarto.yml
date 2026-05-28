@@ -6,11 +6,14 @@ project:
 book:
   title: "Theory of Computation: An Introduction For Programmers - MAINTITLE"
   cover-image: book/cover.svg
-  image: book/cover.svg
+  image:  book/cover.svg
   description: "An undergraduate Theory of Computation text with components designed for developers."
   favicon: book/favicon.png
-  open-graph: true
-  twitter-card: true
+  open-graph: 
+    image: book/cover.svg
+  twitter-card:
+    card-style: summary_large_image
+    image: book/cover.svg
 
   
   author: 

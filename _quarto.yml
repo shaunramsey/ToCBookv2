@@ -9,7 +9,15 @@ book:
   image: book/preview2.png
   description: "An undergraduate Theory of Computation text with components designed for developers."
   favicon: book/favicon.png
-  twitter-card: true
+  open-graph:
+    title: "Theory of Computation: An Introduction For Programmers"
+    description: "An undergraduate Theory of Computation text with components designed for developers."
+    image: book/preview2.png
+  twitter-card:
+    title: "Theory of Computation: An Introduction For Programmers"
+    description: "An undergraduate Theory of Computation text with components designed for developers."
+    image: book/preview2.png
+
   
   author: 
     - name: "Shaun D. Ramsey, Ph.D."

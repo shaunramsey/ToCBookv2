@@ -1,0 +1,33 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "https://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+
+<svg width="390" height="140" version="1.1" xmlns="http://www.w3.org/2000/svg">
+
+	<polygon stroke="white" stroke-width="1" points="0.000,0.000 28.787,28.787"/>
+	<polygon fill="white" stroke-width="1" points="28.787,28.787 19.191,25.971 25.971,19.191"/>
+	<path stroke="white" stroke-width="1" fill="none" d="M 62.367,78.282 A 20.000,20.000 0 1 1 37.633,78.282"/>
+	<polygon fill="white" stroke-width="1" points="37.633,78.282 35.119,87.961 28.130,81.396"/>
+	<text fill="white" stroke="white" x="45.800" y="124.500" font-family="Courier New" font-size="14">1</text>
+	<path stroke="white" stroke-width="1" fill="none" d="M 78.469,40.633 A 195.000,195.000 0 0 1 171.531,40.633"/>
+	<polygon fill="white" stroke-width="1" points="171.531,40.633 161.865,43.195 164.153,33.883"/>
+	<text fill="white" stroke="white" x="120.800" y="27.300" font-family="Courier New" font-size="14">0</text>
+	<path stroke="white" stroke-width="1" fill="none" d="M 188.746,78.744 A 20.000,20.000 0 1 1 171.256,61.254"/>
+	<polygon fill="white" stroke-width="1" points="171.256,61.254 162.635,66.320 162.335,56.736"/>
+	<text fill="white" stroke="white" x="145.595" y="103.705" font-family="Courier New" font-size="14">0</text>
+	<path stroke="white" stroke-width="1" fill="none" d="M 228.469,40.633 A 195.000,195.000 0 0 1 321.531,40.633"/>
+	<polygon fill="white" stroke-width="1" points="321.531,40.633 311.865,43.195 314.153,33.883"/>
+	<text fill="white" stroke="white" x="270.800" y="27.300" font-family="Courier New" font-size="14">1</text>
+	<path stroke="white" stroke-width="1" fill="none" d="M 321.531,59.367 A 195.000,195.000 0 0 1 228.469,59.367"/>
+	<polygon fill="white" stroke-width="1" points="228.469,59.367 238.135,56.805 235.847,66.117"/>
+	<text fill="white" stroke="white" x="270.800" y="79.700" font-family="Courier New" font-size="14">0</text>
+	<path stroke="white" stroke-width="1" fill="none" d="M 330.161,72.461 A 187.500,187.500 0 0 1 69.839,72.461"/>
+	<polygon fill="white" stroke-width="1" points="69.839,72.461 79.484,75.102 72.828,82.004"/>
+	<text fill="white" stroke="white" x="195.800" y="139.700" font-family="Courier New" font-size="14">1</text>
+	<ellipse stroke="white" stroke-width="1" fill="none" cx="50.000" cy="50.000" rx="30" ry="30"/>
+	<text fill="white" stroke="white" x="36.800" y="55.500" font-family="Courier New" font-size="22">st</text>
+	<ellipse stroke="white" stroke-width="1" fill="none" cx="200.000" cy="50.000" rx="30" ry="30"/>
+	<text fill="white" stroke="white" x="186.800" y="55.500" font-family="Courier New" font-size="22">e0</text>
+	<ellipse stroke="white" stroke-width="1" fill="none" cx="350.000" cy="50.000" rx="30" ry="30"/>
+	<ellipse stroke="white" stroke-width="1" fill="none" cx="350.000" cy="50.000" rx="25" ry="25"/>
+	<text fill="white" stroke="white" x="330.200" y="55.500" font-family="Courier New" font-size="22">e01</text>
+</svg>

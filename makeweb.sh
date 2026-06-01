@@ -24,7 +24,8 @@ NEW_NUM=$((NUM + 1))
 # Write back to file
 echo "$NEW_NUM" > "$FILE"
 echo "* Build number **$NEW_NUM**" >> "$OUTPUT_FILE"
-
+echo "* Copying svgs from fatosvg repository"
+cp /Users/sramsey2/fatosvg/fatosvg/fa/svg/*.svg images/RL/.
 echo "Output successfully written to $OUTPUT_FILE"
 quarto render --to html
 echo "Version **$NEW_NUM** ready for publication"

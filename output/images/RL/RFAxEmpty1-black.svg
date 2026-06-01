@@ -1,0 +1,17 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "https://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+
+<svg width="390" height="240" version="1.1" xmlns="http://www.w3.org/2000/svg">
+
+	<polygon stroke="black" stroke-width="1" points="0.000,0.000 28.787,28.787"/>
+	<polygon fill="black" stroke-width="1" points="28.787,28.787 19.191,25.971 25.971,19.191"/>
+	<ellipse stroke="black" stroke-width="1" fill="none" cx="50.000" cy="50.000" rx="30" ry="30"/>
+	<text fill="black" stroke="black" x="36.800" y="55.500" font-family="Courier New" font-size="22">st</text>
+	<ellipse stroke="black" stroke-width="1" fill="none" cx="200.000" cy="50.000" rx="30" ry="30"/>
+	<text fill="black" stroke="black" x="186.800" y="55.500" font-family="Courier New" font-size="22">c0</text>
+	<ellipse stroke="black" stroke-width="1" fill="none" cx="350.000" cy="50.000" rx="30" ry="30"/>
+	<ellipse stroke="black" stroke-width="1" fill="none" cx="350.000" cy="50.000" rx="25" ry="25"/>
+	<text fill="black" stroke="black" x="330.200" y="55.500" font-family="Courier New" font-size="22">c01</text>
+	<ellipse stroke="black" stroke-width="1" fill="none" cx="125.000" cy="200.000" rx="30" ry="30"/>
+	<text fill="black" stroke="black" x="111.800" y="205.500" font-family="Courier New" font-size="22">\0</text>
+</svg>

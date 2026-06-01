@@ -1,7 +1,7 @@
 <?xml version="1.0" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "https://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 
-<svg width="540" height="90" version="1.1" xmlns="http://www.w3.org/2000/svg">
+<svg width="390" height="240" version="1.1" xmlns="http://www.w3.org/2000/svg">
 
 	<polygon stroke="white" stroke-width="1" points="0.000,0.000 28.787,28.787"/>
 	<polygon fill="white" stroke-width="1" points="28.787,28.787 19.191,25.971 25.971,19.191"/>
@@ -10,14 +10,8 @@
 	<ellipse stroke="white" stroke-width="1" fill="none" cx="200.000" cy="50.000" rx="30" ry="30"/>
 	<text fill="white" stroke="white" x="186.800" y="55.500" font-family="Courier New" font-size="22">c0</text>
 	<ellipse stroke="white" stroke-width="1" fill="none" cx="350.000" cy="50.000" rx="30" ry="30"/>
+	<ellipse stroke="white" stroke-width="1" fill="none" cx="350.000" cy="50.000" rx="25" ry="25"/>
 	<text fill="white" stroke="white" x="330.200" y="55.500" font-family="Courier New" font-size="22">c01</text>
-	<ellipse stroke="white" stroke-width="1" fill="none" cx="500.000" cy="50.000" rx="30" ry="30"/>
-	<ellipse stroke="white" stroke-width="1" fill="none" cx="500.000" cy="50.000" rx="25" ry="25"/>
-	<text fill="white" stroke="white" x="480.200" y="55.500" font-family="Courier New" font-size="22">acc</text>
 	<ellipse stroke="white" stroke-width="1" fill="none" cx="125.000" cy="200.000" rx="30" ry="30"/>
-	<text fill="white" stroke="white" x="111.800" y="205.500" font-family="Courier New" font-size="22">20</text>
-	<ellipse stroke="white" stroke-width="1" fill="none" cx="275.000" cy="200.000" rx="30" ry="30"/>
-	<text fill="white" stroke="white" x="261.800" y="205.500" font-family="Courier New" font-size="22">21</text>
-	<ellipse stroke="white" stroke-width="1" fill="none" cx="425.000" cy="200.000" rx="30" ry="30"/>
-	<text fill="white" stroke="white" x="411.800" y="205.500" font-family="Courier New" font-size="22">22</text>
+	<text fill="white" stroke="white" x="111.800" y="205.500" font-family="Courier New" font-size="22">\0</text>
 </svg>

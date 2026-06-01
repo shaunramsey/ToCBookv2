@@ -4,21 +4,22 @@ This chapter discusses strategies for understanding and working with determinist
 
 ::: {.callout-important}
 ## Learning Objectives
-- Definition of Determinism, Strings, and Languages
+- Definitions Machines, Strings, and Languages
 - Strategies for Understanding and Constructing DFAs
 - Using DFAs to Describe Languages
+- Definition of Determinism
 :::
 
 ## Alphabets, Strings, and Languages
 
-To start thinking about theory of computation, we define a few useful terms. An ***alphabet*** is a finite set of symbols. For example, the binary alphabet is $\Sigma = \{0,1\}$.  A ***string*** is a finite sequence of symbols from an alphabet. A string is not a set and order matters. Some example strings, using the binary alphabet, are $1011$ and $0101$. These are not unlike a string defined with quotation marks in a programming language like C++. We might write `"1011"` in C++ to represent a string. `"1011"` is a string that contains 4 characters. In this book, we refer to the characters as symbols, although, at times, the symbols have meaning. `'0'` is a symbol, an element of an alphabet, but it may also mean the digit 0. In this book, the ***empty string*** is denoted by a tilde, `~`. The empty string is a string that contains no symbols. We often use empty strings in programming as well. In C++, we might set a string equal to the empty string, denoted by `""`. A ***language*** is a set of strings. The alphabet of the language is the set of symbols that can be used to create the strings in the language. We might have a language that contains all strings of even length. This language contains strings such as `""`, `00`, `11`, `0101`, and so on if we're using a binary alphabet. The language of all strings of even length over the binary alphabet can be denoted as $L = \{w \mid w$ is a binary string of even length$\}$. This is an example of a language that contains an infinite number of strings. We will be working with languages that contain both finite and infinite numbers of strings. Test understanding of these definitions with the following exercises.
+To start thinking about theory of computation, we define a few useful terms. An ***alphabet*** is a finite set of symbols. For example, the binary alphabet is $\{0,1\}$.  A ***string*** is a finite sequence of symbols from an alphabet. A string is not a set and order matters. Some example strings, using the binary alphabet, are $1011$ and $0101$. These are not unlike a string defined with quotation marks in a programming language like C++. We might write `"1011"` in C++ to represent a string. `"1011"` is a string that contains 4 characters. In this book, we refer to the characters as symbols, although, at times, the symbols have meaning. `'0'` is a symbol, an element of an alphabet, but it may also mean the digit 0. In this book, the ***empty string*** is denoted by a tilde, `~`. The empty string is a string that contains no symbols. We often use empty strings in programming as well. In C++, we might set a string equal to the empty string, denoted by `""`. A ***language*** is a set of strings. The alphabet of the language is the set of symbols that can be used to create the strings in the language. We might have a language that contains all strings of even length. This language contains strings such as `""`, `00`, `11`, `0101`, and so on if we're using a binary alphabet. The language of all strings of even length over the binary alphabet can be denoted as $L = \{w \mid w$ is a binary string of even length$\}$. This is an example of a language that contains an infinite number of strings. We will be working with languages that contain both finite and infinite numbers of strings. Test understanding of these definitions with the following exercises.
 
 ::: {#exercise-language-definitions .callout-note}
 ## Alphabets, Strings, and Languages Exercise
-- If the alphabet of a language is $\Sigma = \{a, b\}$, give an example of a string that is in the language.
+- If the alphabet of a language is $\{a, b\}$, give an example of a string that is in the language.
 - Give a possible alphabet for a language that contains the strings `dog` and `kid`.
 - Give a possible language that contains the strings `dog` and `kid`.
-- If the alphabet of a language is $\Sigma = \{a, b, c\}$, how many possible strings could it contain?
+- If the alphabet of a language is $\{a, b, c\}$, how many possible strings could it contain?
 :::
 
 As we continue, we will use these terms, alphabet, string, and language, frequently. Our alphabets are finite sets that define the characters that are allowed in our strings. Our strings are like words; they are an ordered list of characters. Our languages are sets of strings and they will often be infinite sets (having an unbounded number of strings).
@@ -74,24 +75,130 @@ Could we figure out it's language? Let's take a look at @fig-RFAxM2 a second tim
 
 
 ## Frequently Used Language Elements
-Now that we have a basic understanding of DFAs, it'll be useful to take a look at some commonly used features of DFAs that we use.
+Now that we have a basic understanding of DFAs, it'll be useful to take a look at some commonly used features of DFAs.
 Let's start with strings that begin with a sequence. Perhaps you're looking at a language defined as $\{w \mid w$ begins with $01\}$.
-To build this DFA, we'll need four states. A start state, a state where we have "seen a 0", a state where we have "seen 0 followed by 1", and an accept state. Pause and we'll try to sort this one out in the empty diagram below.
+To build this DFA, we'll need four states. A start state, a state where we have "seen a 0", a state where we have "seen 0 followed by 1". The "seen 0 followed by 1" is an accept state because now we know our string begins with 0 followed by 1. We'll also need a null or trap state. This is a state that you enter and you can never reject. Strings that enter this state are doomed to be rejected. Pause and we'll try to sort this one out in the empty diagram below.
 
-::: {#fig-RFAxEmpty}
+
+::: {#fig-RFAxEmpty1}
 ::: {.light-content}
-![](/images/RL/RFAxEmpty-black.svg)
+![](/images/RL/RFAxEmpty1-black.svg)
 :::
 
 ::: {.dark-content}
-![](/images/RL/RFAxEmpty-white.svg)
+![](/images/RL/RFAxEmpty1-white.svg)
 :::
 
-What transitions are needed to complete this diagram?
+What transitions are needed to complete this diagram for strings starting in 01?
 :::
 
+@fig-RFAxEmpty1 should have two arrows going to the trap state. We note that every state has a transition "out" on both a 0 and a 1. This is what makes our machine deterministic (more on that later). You'll also notice that once we are "happy" with our answer, we have states that loop to themselves on all inputs. These are states that have no other transitions out of them and thus, "eat" the rest of input until accept or reject can be determined. This may seem a little silly, and indeed is part of the motivation for RFAs in the next chapter. Take a look and compare your solution by selecting the reveal below.
+
+<details>
+<summary>The Solution Revealed - M3</summary>
+
+::: {#fig-RFAxM3}
+::: {.light-content}
+![](/images/RL/RFAxM3-black.svg)
+:::
+
+::: {.dark-content}
+![](/images/RL/RFAxM3-white.svg)
+:::
+
+The language of this machine is the set of all strings that start with "01".
+:::
+
+</details>
+
+Another common pattern are strings that "end" in a sequence. Let's focus on strings that end in "01". This DFA will need only 3 states. There is no trap state because, we keep processing the string until we get to the end. Only when we are at the end do we know what the last two characters should have been. A blank template is below for us to try our a solution.
+
+
+
+::: {#fig-RFAxEmpty2}
+::: {.light-content}
+![](/images/RL/RFAxEmpty2-black.svg)
+:::
+
+::: {.dark-content}
+![](/images/RL/RFAxEmpty2-white.svg)
+:::
+
+What transitions are needed to complete this diagram for strings starting in 01? 
+:::
+
+<details>
+<summary>The Solution Revealed - M4</summary>
+
+::: {#fig-RFAxM4}
+::: {.light-content}
+![](/images/RL/RFAxM4-black.svg)
+:::
+
+::: {.dark-content}
+![](/images/RL/RFAxM4-white.svg)
+:::
+
+The language of this machine is the set of all strings that end in "01".
+:::
+
+</details>
+
+Next up are strings that contain certain symbols. Continuing our example, we may look for strings that contain "01". These strings can begin with any symbol and end in any symbol. You can attack this using @fig-RFAxEmpty2! This means it also only needs three states. Once you've "seen" 01, you can accept, so some of the transitions change ever so slightly. See the results in @fig-RFAxM5 below!
+
+::: {#fig-RFAxM5}
+::: {.light-content}
+![](/images/RL/RFAxM5-black.svg)
+:::
+
+::: {.dark-content}
+![](/images/RL/RFAxM5-white.svg)
+:::
+
+The language of this machine is the set of all strings that contain "01" anywhere in the string.
+:::
+
+</details>
+
+We've now seen four trends in DFAs that are quite common. Strings that do modular counting, like @fig-RFAxM2,
+strings that start with a sequence like @fig-RFAxM3,
+strings that end with a sequence like @fig-RFAxM4,
+and strings that contain a sequence like @fig-RFAxM5. Turns out DFAs can do even more, but let's practice these latest pieces.
+
+
+::: {#exercise-DFAs-2 .callout-note}
+## Deterministic Finite Automata Common Exercise
+- Create a machine that starts with 000.
+- Create a machine that ends with 111.
+- Create a machine that contains 010.
+- Create a machine that start with a 1 AND end with a 0.
+:::
+
+## Modular Arithmetic
+
+This section requires a moderate level of comfort with binary numbers and the modulus operator, but we build some of the key components and reminders in this section. With the limited memory of a DFA, it is quite surprising that DFAs can perform modular arithmetic. When thinking of a number as a binary number, adding a 0 to the end of a number is the same as multiplying it by 2. In decimal "3" becomes "30" when we add the 0. In binary "10", or 2, becomes "100", or 4, when we add a 0. When adding a 1 we're multiplying by 2 and then adding 1 in binary. Thus "100" or 4, becomes "1001" or 9. In decimal, adding a 1 is multipying by 10 and adding 1; 30 becomes 301 = 30\*10 + 1. In turns out, that multiplications and additions to a number also apply to numbers classification in modulus. Remember, modulus is like the remainder after long division - and in programming we generally use % to represent the modular operator. Thus 4%3 and 1%3 are both 1, 2%3 and 5%3 are 2, 3%3 and 6%3 are 0. Let's look at 1010, or 10 in decimal. 10 should be 1%3. Before looking at the number, we're in 0%3. When we look at the first 1, we're now in 1 because 1%3 is 1. Taking in the next 0 multiplies the number by 2 (the number 2 now) and the same with modulus, so we're in 2%3. The next 1 is times 2 plus 1, so the number is now 5 (2\*2+1), and the modulus is 2%3 (because 5%3 is 2). Now the final 0 makes our number,5\*2=10, and it does the same to our modulus (times 2). 2*2=4 and 4%3 = 1. Thus, by processing each symbol, we can track the modulus and "end" in the final modulus. Let's look at the mod 3 machine in @fig-RFAxMod3.
+
+::: {#fig-RFAxMod3}
+::: {.light-content}
+![](/images/RL/RFAxMod3-black.svg)
+:::
+
+::: {.dark-content}
+![](/images/RL/RFAxMod3-white.svg)
+:::
+
+This machine computes the input mod 3; it accepts strings representing binary numbers divisible by 3.
+:::
+
+In this machine, the state labeled 0 is the 0 mod 3 state and similarly with 1 and 2. While no division is taking place, by using the bit of number theory that our modulus follows our computations on a number, we can build a state machine to 
 
 ## Determinism
+
+In this chapter, we have been assuming that our machines are deterministic finite automata. A machine is deterministic, if we can trace the path through the machine with a single finger and we never fall off. If a machine is defined formally with a set of states, $Q$ and an input alphabet, $A$, then $Q \times A$ is the cartesian product of those two sets. This means that given an element of $Q \times A$ it can be listed as $(q,a)$ where $q$ is an element of Q (a state) and $a$ is an element of $A$ an input symbol. A machine is deterministic if for every element of $Q \times A$ there is a single result in the transition table that is also an element of $Q$. Writing this fully mathematically, we might say $Q \times A \rightarrow Q$. To put this in terms of developers (especially typed), the transition table is a function that returns a Q given a Q and an A. In code you might write the signature as: 
+
+```Q f(Q,A);``` 
+
+Given any Q and an A, we always know exactly which Q we'll get to. That's deterministic. There is no guess work, no branching, we run the function and go where it tells us. Taking a look at @fig-RFAxM2, we have built a transition table below.
 
 ::: {#fig-transition-table-RFAxM2}
 
@@ -146,4 +253,45 @@ body.quarto-dark .tg .tg-wp8o1{border-color:#ffffff;border-width:0px 1p 0px 0px;
 Transition Table of @fig-RFAxM2 
 :::
 
-Other information follows.
+Notice that every cell in this table has a single value. ```f(A,0)``` returns $B$. ```f(B,1)``` returns $B$ also. We start in the start state and every transition "deterministically" tells us where to go next. Determinism is great in the sense that we can directly look up where we should go next in a table like this. It is useful in processing with a machine and also in proofs! Sometimes it can be harder for humans to create these machines and thus several of the following chapters discuss variants of these machines to enable easier human processing or proof techniques. Something could be nondeterministic if it could end up in more than one state, fall off the machine, or freely jump around the machine without eating input. We'll tackle nondeterminism in future chapters.
+
+::: {#exercise-DFAs-3 .callout-note}
+## Modularity and Determinism in DFAs Exercise
+- How many states does a mod 10 machine require?
+- Build the mod 4 machine.
+- Build a machine for strings that end in "00".
+- Compare the previous two exercise answers.
+- Define determinism in your own words. 
+- List three ways to tell if a machine is not deterministic?
+:::
+
+
+## Exercises
+1.  What is the language of the following machine?
+
+
+::: {.light-content}
+![](/images/RL/RFAxEx1-black.svg)
+:::
+
+::: {.dark-content}
+![](/images/RL/RFAxEx1-white.svg)
+:::
+
+
+2. What is the language of the following machine?
+
+::: {.light-content}
+![](/images/RL/RFAxEx2-black.svg)
+:::
+
+::: {.dark-content}
+![](/images/RL/RFAxEx2-white.svg)
+:::
+
+3. Another mac
+4. Create a machine that contains the substring "ab" with an alphabet of {a,b}.
+5. Create a machine that ends with "baa" with an alphabet of {a,b}.
+6. Create a machine that can have any number of "01" repeated 0 or more times.
+7. Create a machine that computes mod 5 similar to the @fig-RFAxMod3 machine.
+

@@ -45,7 +45,7 @@ In figure @fig-RFAxM1, we explore a sample state machine that we often see. Let'
 Red-Yellow-Green - The Stoplight State Machine
 :::
 
-In figure @fig-RFAxM1, we see three states represented by circles: Red (RED), Green (GRN), and Yellow (YEL). There are no accept states. The arrows describe how we can transition from one state to the next. For example, to transition from Yellow to Red, we must see the end of a timer - denoted by t in the diagram. To go from Red to Green, a certain timer must trigger, but also, someone must be waiting at the sensor - denoted by s. This is a state machine for a side street. The side street never turns green unless someone is waiting at the sensor. Lastly, we turn the stoplight yellow after some time has passed and there is no longer someone waiting at the sensor. You might imagine slightly more complex logic on this transition, but to get us started, this is sufficient. Putting it all together, we have the state machine of a stop light. There are no accept states here and so the language being recognized by the machine is empty, but you can see the basics of how state machines are all around us from signals to controllers of other basic machinery. 
+In figure @fig-RFAxM1, we see three states represented by circles: Red (RED), Green (GRN), and Yellow (YEL). There are no accept states. The arrows describe how we can transition from one state to the next. For example, to transition from Yellow to Red, we must see the end of a timer - denoted by t in the diagram. To go from Red to Green, a certain timer must trigger, but also, someone must be waiting at the sensor - denoted by s. This is a state machine for a side street. The side street never turns green unless someone is waiting at the sensor. Lastly, we turn the stoplight yellow after some time has passed and there is no longer someone waiting at the sensor. We might imagine slightly more complex logic on this transition, but to get us started, this is sufficient. Putting it all together, we have the state machine of a stop light. There are no accept states here and so the language being recognized by the machine is empty, but we can see the basics of how state machines are all around us from signals to controllers of other basic machinery. 
 
 Let's examine a traditional deterministic finite automata that fits within the concepts of our work in theory of computation. Examine @fig-RFAxM2 for a moment before we discuss it. Maybe we can decipher it's language already!
 
@@ -76,8 +76,8 @@ Could we figure out it's language? Let's take a look at @fig-RFAxM2 a second tim
 
 ## Frequently Used Language Elements
 Now that we have a basic understanding of DFAs, it'll be useful to take a look at some commonly used features of DFAs.
-Let's start with strings that begin with a sequence. Perhaps you're looking at a language defined as $\{w \mid w$ begins with $01\}$.
-To build this DFA, we'll need four states. A start state, a state where we have "seen a 0", a state where we have "seen 0 followed by 1". The "seen 0 followed by 1" is an accept state because now we know our string begins with 0 followed by 1. We'll also need a null or trap state. This is a state that you enter and you can never reject. Strings that enter this state are doomed to be rejected. Pause and we'll try to sort this one out in the empty diagram below.
+Let's start with strings that begin with a sequence. Perhaps we're looking at a language defined as $\{w \mid w$ begins with $01\}$.
+To build this DFA, we'll need four states. A start state, a state where we have "seen a 0", a state where we have "seen 0 followed by 1". The "seen 0 followed by 1" is an accept state because now we know our string begins with 0 followed by 1. We'll also need a null or trap state. This is a state that we enter and we can never leave or accept. Strings that enter this state are doomed to be rejected. Pause and we'll try to sort this one out in the empty diagram below.
 
 
 ::: {#fig-RFAxEmpty1}
@@ -92,7 +92,7 @@ To build this DFA, we'll need four states. A start state, a state where we have 
 What transitions are needed to complete this diagram for strings starting in 01?
 :::
 
-@fig-RFAxEmpty1 should have two arrows going to the trap state. We note that every state has a transition "out" on both a 0 and a 1. This is what makes our machine deterministic (more on that later). You'll also notice that once we are "happy" with our answer, we have states that loop to themselves on all inputs. These are states that have no other transitions out of them and thus, "eat" the rest of input until accept or reject can be determined. This may seem a little silly, and indeed is part of the motivation for RFAs in the next chapter. Take a look and compare your solution by selecting the reveal below.
+@fig-RFAxEmpty1 should have two arrows going to the trap state. We note that every state has a transition "out" on both a 0 and a 1. This is what makes our machine deterministic (more on that later). We also notice that we have states that loop to themselves on all inputs. These are states that have no other transitions out of them and thus, "eat" the rest of input until accept or reject can be determined. This may seem a little silly, and indeed is part of the motivation for RFAs in the next chapter. Take a look and compare your solution by selecting the reveal below.
 
 <details>
 <summary>The Solution Revealed - M3</summary>
@@ -144,7 +144,7 @@ The language of this machine is the set of all strings that end in "01".
 
 </details>
 
-Next up are strings that contain certain symbols. Continuing our example, we may look for strings that contain "01". These strings can begin with any symbol and end in any symbol. You can attack this using @fig-RFAxEmpty2! This means it also only needs three states. Once you've "seen" 01, you can accept, so some of the transitions change ever so slightly. See the results in @fig-RFAxM5 below!
+Next up are strings that contain certain symbols. Continuing our example, we may look for strings that contain "01". These strings can begin with any symbol and end in any symbol. We can attack this using @fig-RFAxEmpty2! This means it also only needs three states. Once we've "seen" 01, we can accept, so some of the transitions change ever so slightly. See the results in @fig-RFAxM5 below!
 
 ::: {#fig-RFAxM5}
 ::: {.light-content}
@@ -194,7 +194,7 @@ In this machine, the state labeled 0 is the 0 mod 3 state and similarly with 1 a
 
 ## Determinism
 
-In this chapter, we have been assuming that our machines are deterministic finite automata. A machine is deterministic, if we can trace the path through the machine with a single finger and we never fall off. If a machine is defined formally with a set of states, $Q$ and an input alphabet, $A$, then $Q \times A$ is the cartesian product of those two sets. This means that given an element of $Q \times A$ it can be listed as $(q,a)$ where $q$ is an element of Q (a state) and $a$ is an element of $A$ an input symbol. A machine is deterministic if for every element of $Q \times A$ there is a single result in the transition table that is also an element of $Q$. Writing this fully mathematically, we might say $Q \times A \rightarrow Q$. To put this in terms of developers (especially typed), the transition table is a function that returns a Q given a Q and an A. In code you might write the signature as: 
+In this chapter, we have been assuming that our machines are deterministic finite automata. A machine is deterministic, if we can trace the path through the machine with a single finger and we never fall off. If a machine is defined formally with a set of states, $Q$ and an input alphabet, $A$, then $Q \times A$ is the cartesian product of those two sets. This means that given an element of $Q \times A$ it can be listed as $(q,a)$ where $q$ is an element of Q (a state) and $a$ is an element of $A$ an input symbol. A machine is deterministic if for every element of $Q \times A$ there is a single result in the transition table that is also an element of $Q$. Writing this fully mathematically, we might say $Q \times A \rightarrow Q$. To put this in terms of developers (especially typed), the transition table is a function that returns a Q given a Q and an A. In code we might write the signature as: 
 
 ```Q f(Q,A);``` 
 
@@ -302,7 +302,7 @@ Notice that every cell in this table has a single value. ```f(A,0)``` returns $B
 <details> <summary>Hint</summary>
 - What is required of the number of 0s to be in the top row?
 - What is required to progress down one column?
-- Both must be true to get to C, so your answer should include "AND".
+- Both must be true to get to C, so our answer should include "AND".
 </details>
 
 4. What is the language of the following machine?

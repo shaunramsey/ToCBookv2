@@ -124,7 +124,7 @@ Another common pattern are strings that "end" in a sequence. Let's focus on stri
 ![](/images/RL/RFAxEmpty2-white.svg)
 :::
 
-What transitions are needed to complete this diagram for strings starting in 01? 
+What transitions are needed to complete this diagram for strings that end in 01? 
 :::
 
 <details>
@@ -289,9 +289,35 @@ Notice that every cell in this table has a single value. ```f(A,0)``` returns $B
 ![](/images/RL/RFAxEx2-white.svg)
 :::
 
-3. Another mac
-4. Create a machine that contains the substring "ab" with an alphabet of {a,b}.
-5. Create a machine that ends with "baa" with an alphabet of {a,b}.
-6. Create a machine that can have any number of "01" repeated 0 or more times.
-7. Create a machine that computes mod 5 similar to the @fig-RFAxMod3 machine.
+3. What is the language of the following machine?
+
+::: {.light-content}
+![](/images/RL/RFAxEx3-black.svg)
+:::
+
+::: {.dark-content}
+![](/images/RL/RFAxEx3-white.svg)
+:::
+
+<details> <summary>Hint</summary>
+- What is required of the number of 0s to be in the top row?
+- What is required to progress down one column?
+- Both must be true to get to C, so your answer should include "AND".
+</details>
+
+4. What is the language of the following machine?
+
+::: {.light-content}
+![](/images/RL/RFAxEx4-black.svg)
+:::
+
+::: {.dark-content}
+![](/images/RL/RFAxEx4-white.svg)
+:::
+
+5. Create a machine that contains the substring "ab" with an alphabet of {a,b}.
+6. Create a machine that ends with "baa" with an alphabet of {a,b}.
+7. Create a machine that can have any number of "01" repeated 0 or more times.
+8. Create a machine that computes mod 8 similar to the @fig-RFAxMod3 machine. Take a look at the path of 0s in the machine.
+9. Create a machine that computes mod 7 similar to the @fig-RFAxMod3 machine.
 

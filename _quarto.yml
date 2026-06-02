@@ -28,6 +28,7 @@ book:
         - I/sets.qmd
         - I/dfas.qmd
         - I/rfas.qmd
+        - I/nfas.qmd
     - part: Part II - Context-Free Languages
       chapters:
         - II/context-free-languages.qmd

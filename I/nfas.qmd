@@ -1,0 +1,17 @@
+# Non-deterministic Finite Automata (NFAs)
+
+This chapter discusses strategies for understanding and working with non-deterministic finite automata (NFAs). We will cover the basics of NFAs, including their definition, how to construct them, and how to use them to recognize languages. We will be using examples and exercises to help practice and solidify our understanding of NFAs. By the end of this chapter, we should have a good grasp of what NFAs are, how they work, and how to use them effectively.
+
+::: {.callout-important}
+## Learning Objectives
+- Elements of Non-determinism
+- Strategies for Understanding and Constructing NFAs
+- Parallelism in NFAs
+- Power Sets
+:::
+
+## Non-deterministic Moves in Finite Automata
+
+## Power Set
+
+## Exercises

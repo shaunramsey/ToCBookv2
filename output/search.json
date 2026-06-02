@@ -14,7 +14,7 @@
     "href": "book/status.html",
     "title": "Theory of Computation v2 Build Information",
     "section": "",
-    "text": "Generated on: 2026-06-02 at 15:54:20\nBuild number 155",
+    "text": "Generated on: 2026-06-02 at 16:05:28\nBuild number 157",
     "crumbs": [
       "Theory of Computation v2 Build Information"
     ]
@@ -191,6 +191,39 @@
     "crumbs": [
       "Part I - Sets and Regular Languages",
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>Finite Automata For Developers (RFAs)</span>"
+    ]
+  },
+  {
+    "objectID": "I/nfas.html",
+    "href": "I/nfas.html",
+    "title": "4  Non-deterministic Finite Automata (NFAs)",
+    "section": "",
+    "text": "4.1 Non-deterministic Moves in Finite Automata\nThis chapter discusses strategies for understanding and working with non-deterministic finite automata (NFAs). We will cover the basics of NFAs, including their definition, how to construct them, and how to use them to recognize languages. We will be using examples and exercises to help practice and solidify our understanding of NFAs. By the end of this chapter, we should have a good grasp of what NFAs are, how they work, and how to use them effectively.",
+    "crumbs": [
+      "Part I - Sets and Regular Languages",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Non-deterministic Finite Automata (NFAs)</span>"
+    ]
+  },
+  {
+    "objectID": "I/nfas.html#power-set",
+    "href": "I/nfas.html#power-set",
+    "title": "4  Non-deterministic Finite Automata (NFAs)",
+    "section": "4.2 Power Set",
+    "text": "4.2 Power Set",
+    "crumbs": [
+      "Part I - Sets and Regular Languages",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Non-deterministic Finite Automata (NFAs)</span>"
+    ]
+  },
+  {
+    "objectID": "I/nfas.html#exercises",
+    "href": "I/nfas.html#exercises",
+    "title": "4  Non-deterministic Finite Automata (NFAs)",
+    "section": "4.3 Exercises",
+    "text": "4.3 Exercises",
+    "crumbs": [
+      "Part I - Sets and Regular Languages",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Non-deterministic Finite Automata (NFAs)</span>"
     ]
   }
 ]

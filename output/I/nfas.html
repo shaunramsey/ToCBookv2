@@ -6,11 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Shaun D. Ramsey, Ph.D.">
-<meta name="dcterms.date" content="2026-04-02">
 <meta name="description" content="An undergraduate Theory of Computation text designed for developers.">
 
-<title>Theory of Computation: An Introduction For Programmers</title>
+<title>4&nbsp; Non-deterministic Finite Automata (NFAs) – Theory of Computation: An Introduction For Programmers</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -29,29 +27,30 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<link href="./book/status.html" rel="next">
-<link href="./favicon.png" rel="icon" type="image/png">
-<script src="site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-d0ae9245876894da5ac7e18953ecc5cc.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-5ccb035bea26c1e21f80f44cf7c27909.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-aa873432a3c62897e6c2091c0d30a948.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="site_libs/bootstrap/bootstrap-5ccb035bea26c1e21f80f44cf7c27909.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../II/context-free-languages.html" rel="next">
+<link href="../I/rfas.html" rel="prev">
+<link href="../favicon.png" rel="icon" type="image/png">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-d0ae9245876894da5ac7e18953ecc5cc.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-5ccb035bea26c1e21f80f44cf7c27909.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-aa873432a3c62897e6c2091c0d30a948.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-5ccb035bea26c1e21f80f44cf7c27909.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -81,11 +80,11 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 
 
-<meta property="og:title" content="Theory of Computation: An Introduction For Programmers">
+<meta property="og:title" content="4&nbsp; Non-deterministic Finite Automata (NFAs) – Theory of Computation: An Introduction For Programmers">
 <meta property="og:description" content="An undergraduate Theory of Computation text designed for developers.">
 <meta property="og:image" content="https://shaunramsey.github.io/ToCBookv2/images/Icon-512.png">
 <meta property="og:site_name" content="Theory of Computation: An Introduction For Programmers">
-<meta name="twitter:title" content="Theory of Computation: An Introduction For Programmers">
+<meta name="twitter:title" content="4&nbsp; Non-deterministic Finite Automata (NFAs) – Theory of Computation: An Introduction For Programmers">
 <meta name="twitter:description" content="An undergraduate Theory of Computation text designed for developers.">
 <meta name="twitter:image" content="https://shaunramsey.github.io/ToCBookv2/images/Icon-512.png">
 <meta name="twitter:card" content="summary_large_image">
@@ -262,7 +261,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Preface</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../I/sets.html">Part I - Sets and Regular Languages</a></li><li class="breadcrumb-item"><a href="../I/nfas.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Non-deterministic Finite Automata (NFAs)</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -277,7 +276,7 @@ ul.task-list li input[type="checkbox"] {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">Theory of Computation: An Introduction For Programmers</a> 
+      <a href="../">Theory of Computation: An Introduction For Programmers</a> 
         <div class="sidebar-tools-main">
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
@@ -292,25 +291,25 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Preface</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./book/status.html" class="sidebar-item-text sidebar-link">
+  <a href="../book/status.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Theory of Computation v2 Build Information</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./book/acknowledgements.html" class="sidebar-item-text sidebar-link">
+  <a href="../book/acknowledgements.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Acknowledgements</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./book/dedication.html" class="sidebar-item-text sidebar-link">
+  <a href="../book/dedication.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Dedication</span></a>
   </div>
 </li>
@@ -325,25 +324,25 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./I/sets.html" class="sidebar-item-text sidebar-link">
+  <a href="../I/sets.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Sets</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./I/dfas.html" class="sidebar-item-text sidebar-link">
+  <a href="../I/dfas.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Deterministic Finite Automata (DFAs)</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./I/rfas.html" class="sidebar-item-text sidebar-link">
+  <a href="../I/rfas.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Finite Automata For Developers (RFAs)</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./I/nfas.html" class="sidebar-item-text sidebar-link">
+  <a href="../I/nfas.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Non-deterministic Finite Automata (NFAs)</span></span></a>
   </div>
 </li>
@@ -360,7 +359,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./II/context-free-languages.html" class="sidebar-item-text sidebar-link">
+  <a href="../II/context-free-languages.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">context-free-languages.html</span></span></a>
   </div>
 </li>
@@ -377,7 +376,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./III/turing-machines.html" class="sidebar-item-text sidebar-link">
+  <a href="../III/turing-machines.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">turing-machines.html</span></span></a>
   </div>
 </li>
@@ -385,7 +384,7 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./book/references.html" class="sidebar-item-text sidebar-link">
+  <a href="../book/references.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">References</span></a>
   </div>
 </li>
@@ -399,7 +398,9 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#preface" id="toc-preface" class="nav-link active" data-scroll-target="#preface">Preface</a></li>
+  <li><a href="#non-deterministic-moves-in-finite-automata" id="toc-non-deterministic-moves-in-finite-automata" class="nav-link active" data-scroll-target="#non-deterministic-moves-in-finite-automata"><span class="header-section-number">4.1</span> Non-deterministic Moves in Finite Automata</a></li>
+  <li><a href="#power-set" id="toc-power-set" class="nav-link" data-scroll-target="#power-set"><span class="header-section-number">4.2</span> Power Set</a></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">4.3</span> Exercises</a></li>
   </ul>
 </nav>
     </div>
@@ -407,33 +408,16 @@ ul.task-list li input[type="checkbox"] {
 <main class="content" id="quarto-document-content">
 
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../I/sets.html">Part I - Sets and Regular Languages</a></li><li class="breadcrumb-item"><a href="../I/nfas.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Non-deterministic Finite Automata (NFAs)</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Theory of Computation: An Introduction For Programmers</h1>
+<h1 class="title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Non-deterministic Finite Automata (NFAs)</span></h1>
 </div>
 
-<div>
-  <div class="description">
-    An undergraduate Theory of Computation text designed for developers.
-  </div>
-</div>
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Shaun D. Ramsey, Ph.D. </p>
-          </div>
-  </div>
     
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">April 2, 2026</p>
-    </div>
-  </div>
   
     
   </div>
@@ -443,15 +427,33 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-
-<section id="preface" class="level1 unnumbered">
-<h1 class="unnumbered">Preface</h1><p><img src="book/cover.svg" title="Theory of Computation: An Introduction For Programmers" class="quarto-cover-image nolightbox img-fluid"></p>
+<p>This chapter discusses strategies for understanding and working with non-deterministic finite automata (NFAs). We will cover the basics of NFAs, including their definition, how to construct them, and how to use them to recognize languages. We will be using examples and exercises to help practice and solidify our understanding of NFAs. By the end of this chapter, we should have a good grasp of what NFAs are, how they work, and how to use them effectively.</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Learning Objectives
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <ul>
-<li><p>© 2021–2026 by Shaun D. Ramsey Sr., Ph.D.&nbsp;All rights reserved.</p></li>
-<li><p>Version 0.104 – Licensing TBD</p></li>
-<li><p>Contributor: Emilee Daniels</p></li>
-<li><p>Contributor: Shaun D. Ramsey II</p></li>
+<li>Elements of Non-determinism</li>
+<li>Strategies for Understanding and Constructing NFAs</li>
+<li>Parallelism in NFAs</li>
+<li>Power Sets</li>
 </ul>
+</div>
+</div>
+<section id="non-deterministic-moves-in-finite-automata" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="non-deterministic-moves-in-finite-automata"><span class="header-section-number">4.1</span> Non-deterministic Moves in Finite Automata</h2>
+</section>
+<section id="power-set" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="power-set"><span class="header-section-number">4.2</span> Power Set</h2>
+</section>
+<section id="exercises" class="level2" data-number="4.3">
+<h2 data-number="4.3" class="anchored" data-anchor-id="exercises"><span class="header-section-number">4.3</span> Exercises</h2>
 
 
 </section>
@@ -872,10 +874,13 @@ ul.task-list li input[type="checkbox"] {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="../I/rfas.html" class="pagination-link" aria-label="Finite Automata For Developers (RFAs)">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Finite Automata For Developers (RFAs)</span></span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./book/status.html" class="pagination-link" aria-label="Theory of Computation v2 Build Information">
-        <span class="nav-page-text">Theory of Computation v2 Build Information</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../II/context-free-languages.html" class="pagination-link" aria-label="context-free-languages.html">
+        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">context-free-languages.html</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

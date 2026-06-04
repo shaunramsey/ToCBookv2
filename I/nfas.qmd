@@ -60,7 +60,17 @@ Parallelism by taking a transition with the same input to two different states.
 
 These types of transitions are often useful when we would like to process two different paths of thought, similar to a union. In the example above, the figure demonstrates that the string starts with "10" or "11". Falling off on a 0 in state C allows us to ignore those characters and truly focus on what we care about for that path. Free transitions and forked transitions are great tools for expanding our expressive power in a finite automata with ease. Expressing an OR expression in a DFA might require carefuly layering in the pathways in an intermingled fashion, but with an NFA, we can separate out the decisions easily. 
 
-We have seen three elements of non-determinism. We can fall off a machine, ending (rejecting) the processing line for that input. We can take a free transition, extending our processing line for an input (creating parallelism). We may also transition to another state on more than one input! In the end this results in a slightly different transition table and function. Now, our return could be a set of states, or no states at all. Our transition function may take us from any number of states on a given input symbol (taking free transitions immediately). In C++ code we might now have a processing transition function that looks like:
+We have seen three elements of non-determinism. We can fall off a machine, ending (rejecting) the processing line for that input. We can take a free transition, extending our processing line for an input (creating parallelism). We may also transition to another state on more than one input! Let's practice some of the features of NFAs in the following exercise.
+
+::: {#exercise-NFAs-creating .callout-note}
+## Creating Non-deterministic Finite Automata Exercise
+- Take the DFA in @fig-DFAxM1 and the DFA in @fig-DFAxM2 and creat an NFA that accepts strings that are accept by either machine. Creating an "OR" or union of two languages is very easy with NFAs. Free transitions are your friend here.
+- Create an NFA that begins with "101". Allow your machine to let things fall off!
+- Create an NFA that ends with "101". Hint, add a loop to your start state on "0,1". This allows your machine to "guess" when it is at the end.
+:::
+
+
+In the end our NFAs have a slightly different transition table and function. Now, our return could be a set of states, or no states at all. Our transition function may take us from any number of states on a given input symbol (taking free transitions immediately). In C++ code we might now have a processing transition function that looks like:
 
 ```std::vector<Q> f(std::vector<Q>,A);``` 
 
@@ -217,8 +227,28 @@ States are listed in simplified form in the diagram, such that "BEF" represents 
 The fully converted diagram of the NFA in @fig-NFAxM3 using the power set construction.
 :::
 
-Now that we've tackled the conversion until we've run out of leads, let's take a look at the diagram. We've arranged the diagram such that the three states that include E are grouped on the left. State E tracks an odd # of 1s. The two states with C are grouped along the bottom row and include the states that track an odd number of 0s. You'll notice these 4 states are all accept states. The start state is somewhat isolated in the middle. Looking at the diagram as a whole, as we move from left to right, we're flipping modality of 1 and as we move up and down we're flipping the modality of 0. Lastly, strings that end in a 1 after an odd number of 0s are encoded by F. Looking at the diagram, an input of 1 always leads to an accept state. Thus if we end in a 1, we accept. Why does this work? Well, if we had seen an odd number of 0s, a 1 won't change that and we'll stay in an accept state.
-If we had seen an even number of 0s, we'll be in the top half of the diagram. If we're on the right side (even number of 0s), seeing a 1 will take us to {B, E, F}. That's an odd number of 1s anyway, but it also ends in a 1 so it is an accept state. If we're on the left side (looking at an odd number of 1s and already accepting), we'll move to {B, D, F} and accept since F is an accept state. Using this power set construction is really quite an amazing way to convert **any** NFA into a DFA. The number of states can grow exponentially (the power set has size $2^n$ afterall), and typically more states are required than in the NFA counterpart. Even so, it proves that NFAs and DFAs are equivalent in terms of the languages that they can recognize and it provides an algorithmic process for performing the conversion..
 </details>
 
+Now that we've tackled the conversion until we've run out of leads, let's take a look at the diagram. We've arranged the diagram such that the three states that include E are grouped on the left. State E tracks an odd # of 1s. The two states with C are grouped along the bottom row and include the states that track an odd number of 0s. You'll notice these 4 states are all accept states. The start state is somewhat isolated in the middle. Looking at the diagram as a whole, as we move from left to right, we're flipping modality of 1 and as we move up and down we're flipping the modality of 0. Lastly, strings that end in a 1 after an odd number of 0s are encoded by F. Looking at the diagram, an input of 1 always leads to an accept state. Thus if we end in a 1, we accept. Why does this work? Well, if we had seen an odd number of 0s, a 1 won't change that and we'll stay in an accept state.
+If we had seen an even number of 0s, we'll be in the top half of the diagram. If we're on the right side (even number of 0s), seeing a 1 will take us to {B, E, F}. That's an odd number of 1s anyway, but it also ends in a 1 so it is an accept state. If we're on the left side (looking at an odd number of 1s and already accepting), we'll move to {B, D, F} and accept since F is an accept state. Using this power set construction is really quite an amazing way to convert **any** NFA into a DFA. The number of states can grow exponentially (the power set has size $2^n$ afterall), and typically more states are required than in the NFA counterpart. Even so, it proves that NFAs and DFAs are equivalent in terms of the languages that they can recognize and it provides an algorithmic process for performing the conversion.
+
+
+::: {#exercise-nfa-to-dfa .callout-note}
+## Power Set Exercise
+- How many states might the DFA have if we convert @fig-NFAxM1 using power set construction?
+- Convert the NFA in @fig-NFAxM1 to a DFA using the power set construction. 
+- @fig-NFAxM2 has 4 states. How large is the power set of those states?
+- How many elements of the power set of states in @fig-NFAxM2 would be accept states?
+- Convert the NFA in @fig-NFAxM2 to a DFA using the power set construction. Something strange happens here. Why?
+:::
+
 ## Exercises
+
+1. Build an NFA for strings that start with a 0, end with a 0 and may contain any number of 0s and 1s in the middle.
+2. Build an NFA for strings that begin with either 001 or 10. It may be followed by any number of 0s and 1s.
+3. Build an NFA with alphabet {1,3,7} that recognizes any string that contains "1337".
+4.
+5.
+6.
+7.
+8.

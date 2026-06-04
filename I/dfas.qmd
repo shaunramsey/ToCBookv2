@@ -192,7 +192,7 @@ This machine computes the input mod 3; it accepts strings representing binary nu
 
 In this machine, the state labeled 0 is the 0 mod 3 state and similarly with 1 and 2. While no division is taking place, by using the bit of number theory that our modulus follows our computations on a number, we can build a state machine to 
 
-## Determinism
+## Determinism {#sec-determinism}
 
 In this chapter, we have been assuming that our machines are deterministic finite automata. A machine is deterministic, if we can trace the path through the machine with a single finger and we never fall off. If a machine is defined formally with a set of states, $Q$ and an input alphabet, $A$, then $Q \times A$ is the cartesian product of those two sets. This means that given an element of $Q \times A$ it can be listed as $(q,a)$ where $q$ is an element of Q (a state) and $a$ is an element of $A$ an input symbol. A machine is deterministic if for every element of $Q \times A$ there is a single result in the transition table that is also an element of $Q$. Writing this fully mathematically, we might say $Q \times A \rightarrow Q$. To put this in terms of developers (especially typed), the transition table is a function that returns a Q given a Q and an A. In code we might write the signature as: 
 

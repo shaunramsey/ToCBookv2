@@ -25,7 +25,13 @@ NEW_NUM=$((NUM + 1))
 echo "$NEW_NUM" > "$FILE"
 echo "* Build number **$NEW_NUM**" >> "$OUTPUT_FILE"
 echo "* Copying svgs from fatosvg repository"
-cp /Users/sramsey2/fatosvg/fatosvg/fa/svg/*.svg images/RL/.
+
+
+if [[ "$OSTYPE" == "msys" || "$OSTYPE" == "cygwin" ]]; then
+    cp /c/Users/hog21/svg/fa/svg/*.svg images/RL/.
+else
+    cp /Users/sramsey2/fatosvg/fatosvg/fa/svg/*.svg images/RL/.
+fi
 echo "Output successfully written to $OUTPUT_FILE"
 quarto render --to html
 echo "Version **$NEW_NUM** ready for publication"

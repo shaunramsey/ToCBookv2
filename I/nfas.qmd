@@ -60,11 +60,11 @@ Parallelism by taking a transition with the same input to two different states.
 
 These types of transitions are often useful when we would like to process two different paths of thought, similar to a union. In the example above, the figure demonstrates that the string starts with "10" or "11". Falling off on a 0 in state C allows us to ignore those characters and truly focus on what we care about for that path. Free transitions and forked transitions are great tools for expanding our expressive power in a finite automata with ease. Expressing an OR expression in a DFA might require carefuly layering in the pathways in an intermingled fashion, but with an NFA, we can separate out the decisions easily. 
 
-We have seen three elements of non-determinism. We can fall off a machine, ending (rejecting) the processing line for that input. We can take a free transition, extending our processing line for an input (creating parallelism). We may also transition to another state on more than one input! In the end this results in a slightly different transition table and function. Now, our return could be a set of states, or no states at all. Our transition function may take us from any number of states on a given input symbol (taking free transitions immediately). In code we might now have a processing transition function that looks like:
+We have seen three elements of non-determinism. We can fall off a machine, ending (rejecting) the processing line for that input. We can take a free transition, extending our processing line for an input (creating parallelism). We may also transition to another state on more than one input! In the end this results in a slightly different transition table and function. Now, our return could be a set of states, or no states at all. Our transition function may take us from any number of states on a given input symbol (taking free transitions immediately). In C++ code we might now have a processing transition function that looks like:
 
-```vector<Q> f(vector<Q>,A);``` 
+```std::vector<Q> f(std::vector<Q>,A);``` 
 
-However, to formally describe the NFA itself, we can still use a transition table centered on states. Let's make a transition table for the NFA in @fig-NFAxM3. This NFA has free jumps to two parallel processing segments. Those segments, in turn, have forked transitions. Can you sort out the language of this machine?
+However, to formally describe the NFA itself, we can still use a transition table centered around a slightly differ. Let's make a transition table for the NFA in @fig-NFAxM3. This NFA has free jumps to two parallel processing segments. Those segments, in turn, have forked transitions. Can you sort out the language of this machine?
 
 ::: {#fig-NFAxM3}
 ::: {.light-content}
@@ -77,6 +77,8 @@ However, to formally describe the NFA itself, we can still use a transition tabl
 
 Demonstrating the power of NFAs.
 :::
+
+The transition table of @fig-NFAxM3 is a bit more complex than our previous transition tables as shown in @fig-transition-table-NFAxM3. Notice that we have a row dedicated to free transitions, ~. In addition we notice that our transitions now leave us in a set of states rather than in a single state. Sometimes that set of states is empty - meaning we fall off the machine. This table looks a little different than our programming minded function from above. This is because, programmatically, we can take the free jumps immediately. However, in the transition table, we show them separately. Take a look at the transition table before we proceed to describing it formally with matematical language.
 
 ::: {#fig-transition-table-NFAxM3}
 
@@ -112,30 +114,109 @@ body.quarto-dark .tg .tg-wp8o1{border-color:#ffffff;border-width:0px 1p 0px 0px;
     <th class="tg-wp8o rightcell8888">&nbsp;</th>
     <th class="tg-wp8o">A</th>
     <th class="tg-wp8o">B</th>
+    <th class="tg-wp8o">C</th>
+    <th class="tg-wp8o">D</th>
+    <th class="tg-wp8o">E</th>
+    <th class="tg-wp8o">F</th>
+    
   </tr></thead>
 <tbody>
   <tr>
     <td class="tg-wp8o rightcell8888">0</td>
-    <td class="tg-wp8o">B</td>
-    <td class="tg-wp8o">A</td>
+    <td class="tg-wp8o">{}</td>
+    <td class="tg-wp8o">{C}</td>
+    <td class="tg-wp8o">{B}</td>
+        <td class="tg-wp8o">{D}</td>
+        <td class="tg-wp8o">{E}</td>
+        <td class="tg-wp8o">{}</td>
   </tr>
   <tr>
     <td class="tg-wp8o rightcell8888">1</td>
-    <td class="tg-wp8o">A</td>
-    <td class="tg-wp8o">B</td>
+    <td class="tg-wp8o">{}</td>
+    <td class="tg-wp8o">{B, F}</td>
+    <td class="tg-wp8o">{C}</td>
+    <td class="tg-wp8o">{E}</td>
+    <td class="tg-wp8o">{D}</td>
+    <td class="tg-wp8o">{}</td>
+  </tr>
+    <tr>
+    <td class="tg-wp8o rightcell8888">~</td>
+    <td class="tg-wp8o">{B,D}</td>
+    <td class="tg-wp8o">{}</td>
+    <td class="tg-wp8o">{}</td>
+    <td class="tg-wp8o">{}</td>
+    <td class="tg-wp8o">{}</td>
+    <td class="tg-wp8o">{}</td>
   </tr>
 </tbody>
 </table>
 ```
 
-Transition Table of @fig-RFAxM2 
+Transition Table of @fig-NFAxM3.
 :::
 
+So, our old transition function was $Q \times A \rightarrow Q$. Q is our set of states and A is our input alphabet. This is great for DFAs. For NFAs, our transition table requires $A \cup \tilde$ for potential input consideration, to include the free transition. The transition function now returns a set of states. The set of all possible subsets of a set is called the power set and we denote it as $P(Q)$. Recall that $\times$ is our cartesian product as seen in @sec-determinism, our determinism section. We'll tackle more on the power set later, but for now it suffices to say that it means we can land in some, all, or none of the states of Q. PUtting things together, our transition function is $Q \times (A \cup \tilde) \rightarrow P(Q)$. Processing then consists of, first looking up the free transitions and taking those immediately, then consuming the input symbol and looking up the transitions for that symbol. This process is repeated until we have consumed all the input symbols (or we hit a halt and accept if using the Ramsey variants). If any of the paths lead us to an accept state, then we accept the string.
 
 
-Sometimes this situation is called a guess. The machine is "guessing" whether it should be in state A or state B. This kind of guessing can lead to exponential growth in the processing of an NFA. 
+The forks, or parallels in NFAs are sometimes called a guess. The machine is "guessing" whether it should be in state A or state B. Calling it a guess hints at how these sorts of machines are sometimes used in practice - with a backtracking algorithm. While it is outside of the scope of this book, state-space search is rife with pitfalls, and when developing with finite automata (or more likely, their equivalents) we must take care with our machines to avoid poor computational efficiency or performance. Specifially, "poor" guessing can lead to exponential growth in the processing of an NFA. Ultimately, however, we are limited by a certain number of states and branches, which is hinted at in our transition table by the use of the power set, $P(Q)$. 
 
 
 ## Power Set
+
+The power set of a set is the set of all possible subsets of that set, including the empty set. For example, if we have a set $Q = \{A,B,C\}$, then the power set of $Q$, denoted as $P(Q)$, would be:
+$$P(Q) = \{\emptyset, \{A\}, \{B\}, \{C\}, \{A,B\}, \{A,C\}, \{B,C\}, \{A,B,C\}\}$$
+
+Recall that the empty set, $\emptyset$, is a set with no elements, {}. You'll notice here that the power set of a set with three elements has 8 subsets. Let's explore the power set in the following excercises.
+
+::: {#exercise-power-set .callout-note}
+## Power Set Exercise
+- Explain the power set in your own words.
+- What is the power set of the set $\{A, B\}$? How many elements does it have?
+- Imagine we added a state to the set Q = {A, B, C} listed above. The new power set would have all the elements P(Q) listed above, and also all those subsets again with the additional element D. So, how many elements does the power set of $\{A, B, C, D\}$ have?
+- How many elements does the power set of a set of size $n$ have?
+:::
+
+Since the power set of a state set from an NFA encompasses all possible subsets of states, it can be used to represent the state of an NFA, encompassing all of its parallel processing into a single descriptor - the set of all states we are in at any particular point of processing the NFA. 
+
+A power set will have $2^n$ subsets, where $n$ is the number of elements of the original set. So a slightly complex NFA, like the one in @fig-NFAxM3 with 6 states, could have as many as 64 subsets. At any given time in processing that NFA, we are in one of those 64 subsets. Let's tackle that idea a bit more directly. Imagine that we will exhaustively track everywhere the machine can reach - every possible subset it can actually touch.
+
+- We start in state A, with free transitions to B and D (we take all free transitions immediately). Thus, the start configuration is {A, B, D}.
+- From {A, B, D}, if we read a 0, A falls off, B goes to C, and D goes to D Thus we are now in the configuration {C,D}.
+- From {A, B, D}, we read a 1, A falls off, B goes to B *and* F, and D goes to E. Thus we are now in the configuration {B,E,F}.
+- From {C,D}, if we read a 0, C goes to B and D goes to itself - leaving us in {B, D}.
+- From {C,D}, if we read a 1, C goes to C and D goes to E - leaving us in {C, E}.
+
+Let's pause to see how this may look as a diagram thus far in @fig-NFAxPower1.
+
+::: {#fig-NFAxPower1}
+::: {.light-content}
+![](/images/RL/NFAxPower1-black.svg)
+:::
+
+::: {.dark-content}
+![](/images/RL/NFAxPower1-white.svg)
+:::
+
+Processing an NFA with the power set.
+:::
+
+States are listed in simplified form in the diagram, such that "BEF" represents the set of states {B, E, F}. The diagram is already growing quite rapidly. After considering only two jumps, we could be in any one of four states. Can you follow the logic to finish the diagram?
+
+<details>
+<summary>The fully converted diagram of the NFA in @fig-NFAxM3 using power set construction.</summary>
+
+::: {#fig-NFAxPower2}
+::: {.light-content}
+![](/images/RL/NFAxPower2-black.svg)
+:::
+
+::: {.dark-content}
+![](/images/RL/NFAxPower2-white.svg)
+:::
+
+The fully converted diagram of the NFA in @fig-NFAxM3 using the power set construction.
+:::
+
+</details>
 
 ## Exercises

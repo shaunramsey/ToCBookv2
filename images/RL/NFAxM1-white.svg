@@ -1,0 +1,22 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "https://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+
+<svg width="240" height="130" version="1.1" xmlns="http://www.w3.org/2000/svg">
+
+	<polygon stroke="white" stroke-width="1" points="0.000,0.000 28.787,28.787"/>
+	<polygon fill="white" stroke-width="1" points="28.787,28.787 19.191,25.971 25.971,19.191"/>
+	<path stroke="white" stroke-width="1" fill="none" d="M 78.469,40.633 A 195.000,195.000 0 0 1 171.531,40.633"/>
+	<polygon fill="white" stroke-width="1" points="171.531,40.633 161.865,43.195 164.153,33.883"/>
+	<text fill="white" stroke="white" x="120.800" y="27.300" font-family="Courier New" font-size="14">~</text>
+	<path stroke="white" stroke-width="1" fill="none" d="M 78.744,61.254 A 20.000,20.000 0 1 1 61.254,78.744"/>
+	<polygon fill="white" stroke-width="1" points="61.254,78.744 66.320,87.365 56.736,87.665"/>
+	<text fill="white" stroke="white" x="101.005" y="103.705" font-family="Courier New" font-size="14">a</text>
+	<path stroke="white" stroke-width="1" fill="none" d="M 188.746,78.744 A 20.000,20.000 0 1 1 171.256,61.254"/>
+	<polygon fill="white" stroke-width="1" points="171.256,61.254 162.635,66.320 162.335,56.736"/>
+	<text fill="white" stroke="white" x="140.595" y="103.705" font-family="Courier New" font-size="14">b</text>
+	<ellipse stroke="white" stroke-width="1" fill="none" cx="50.000" cy="50.000" rx="30" ry="30"/>
+	<text fill="white" stroke="white" x="43.400" y="55.500" font-family="Courier New" font-size="22">A</text>
+	<ellipse stroke="white" stroke-width="1" fill="none" cx="200.000" cy="50.000" rx="30" ry="30"/>
+	<ellipse stroke="white" stroke-width="1" fill="none" cx="200.000" cy="50.000" rx="25" ry="25"/>
+	<text fill="white" stroke="white" x="193.400" y="55.500" font-family="Courier New" font-size="22">B</text>
+</svg>

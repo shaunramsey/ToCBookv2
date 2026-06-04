@@ -12,6 +12,130 @@ This chapter discusses strategies for understanding and working with non-determi
 
 ## Non-deterministic Moves in Finite Automata
 
+As yet another extension of expression in finite automata, we introduce some potentially non-deterministic moves to our deterministic finite automata. These moves may allow a pathway to split or fall off the machine. Sometimes we mention multiple paths as guesses or parallelism. We will use this chapter to introduce those ideas in pieces. First, let's introduce a new transition symbol. We call this a **free** transition and it is denoted in our book as **~**. Thus, when you see a **~** transition, that transition can be taken without consuming an input symbol. Let's look at a simple example in @fig-NFAxM1.
+
+::: {#fig-NFAxM1}
+::: {.light-content}
+![](/images/RL/NFAxM1-black.svg)
+:::
+
+::: {.dark-content}
+![](/images/RL/NFAxM1-white.svg)
+:::
+
+Accepts any string with any number of a's followed by any number of b's.
+:::
+
+In @fig-NFAxM1 we notice that we stay in state A when we see inputs of a's and we stay in state B when we see inputs of b's. However, the transition between A and B is a free transition, ~. This means, that we may take this transition whenever we like. The best way to think of this processing is that ~ jumps are taken immediately and whenever possible. This does mean that a machine can be in more than one state at a time. When we start the machine we are in the states A and B, or written as a set, {A,B}. If the input string is "ab", the next step needs to consume an a. When we do that, A takes us to state A and B falls off the machine (a non-deterministic move). This leaves us in state A, but the free jump allows us to go back to state B again immediately. So, on an a, this machine leaves us back in the set {A, B}. When we read a b, state A has no b transition and thus that pathway falls off the machine. However, state B leaves us back to B, so we're now in state B or the set of states is now just {B}. Now that we're done processing this string, one of the paths led us to an accept, so we would accept the string "ab". We'll explore this in the following exercise.
+
+::: {#exercise-NFAs .callout-note}
+## Non-deterministic Finite Automata Free Transitions Exercise
+- Find a string that falls completely off the machine in @fig-NFAxM1 - where there are no more existing pathways.
+- Find a string that remains in all the states of @fig-NFAxM1 throughout it's entire processing.
+- Find a string that remains in State A of @fig-NFAxM1 for only one step.
+:::
+
+In @fig-NFAxM1 we saw a machine that uses a free transition, free jump, or ~, to create a situation where processing the machine requires us to think of being in multiple states at once. However, in an NFA, intentional parallelism can also be created by forking the processing of an input character to multiple states. In other words, imagine a state in which a transition occurs on an input symbol to more than one state. Let's look at a small example again as seen in @fig-NFAxM2.
+
+::: {#fig-NFAxM2}
+::: {.light-content}
+![](/images/RL/NFAxM2-black.svg)
+:::
+
+::: {.dark-content}
+![](/images/RL/NFAxM2-white.svg)
+:::
+
+Parallelism by taking a transition with the same input to two different states.
+:::
+
+@fig-NFAxM2 demonstrates that we make transition from A on a 1 to two different states. If the input is "111" then the first 1 is consumed and leaves us in the states {B,C}. Just like before with a free transitions, we're in aprocessing situation in which we may need to process multiple paths. If any of these paths succeed, then the string is accepted. In this case, 111 takes us from A to {B,C} to {D} and then to {D} to finish the processing. The bottom path ends in an accept state and thus we accept this string. Let's explore this machine in the following exercise.
+
+::: {#exercise-NFAs .callout-note}
+## Non-deterministic Finite Automata Free Transitions Exercise
+- What symbol falls off the machine in @fig-NFAxM2 immediately?
+- What string falls off the machine entirely after more than one step in @fig-NFAxM2?
+- What is the language of the machine in @fig-NFAxM2?
+:::
+
+These types of transitions are often useful when we would like to process two different paths of thought, similar to a union. In the example above, the figure demonstrates that the string starts with "10" or "11". Falling off on a 0 in state C allows us to ignore those characters and truly focus on what we care about for that path. Free transitions and forked transitions are great tools for expanding our expressive power in a finite automata with ease. Expressing an OR expression in a DFA might require carefuly layering in the pathways in an intermingled fashion, but with an NFA, we can separate out the decisions easily. 
+
+We have seen three elements of non-determinism. We can fall off a machine, ending (rejecting) the processing line for that input. We can take a free transition, extending our processing line for an input (creating parallelism). We may also transition to another state on more than one input! In the end this results in a slightly different transition table and function. Now, our return could be a set of states, or no states at all. Our transition function may take us from any number of states on a given input symbol (taking free transitions immediately). In code we might now have a processing transition function that looks like:
+
+```vector<Q> f(vector<Q>,A);``` 
+
+However, to formally describe the NFA itself, we can still use a transition table centered on states. Let's make a transition table for the NFA in @fig-NFAxM3. This NFA has free jumps to two parallel processing segments. Those segments, in turn, have forked transitions. Can you sort out the language of this machine?
+
+::: {#fig-NFAxM3}
+::: {.light-content}
+![](/images/RL/NFAxM3-black.svg)
+:::
+
+::: {.dark-content}
+![](/images/RL/NFAxM3-white.svg)
+:::
+
+Demonstrating the power of NFAs.
+:::
+
+::: {#fig-transition-table-NFAxM3}
+
+```{=html}
+<style type="text/css">
+.tg  {border-collapse:collapse;border-spacing:0;}
+
+.tg td{border-color:black; border-bottom: 0px;
+    border-style:solid;font-family:Arial, sans-serif;font-size:14px;
+  overflow:hidden;padding:10px 5px;word-break:normal;}
+
+body.quarto-dark .tg td{border-color:black; border-bottom: 0px;
+    border-style:solid;font-family:Arial, sans-serif;font-size:14px;
+  overflow:hidden;padding:10px 5px;word-break:normal;}
+
+.tg th{border-color:black;border-style:solid;border-bottom:1px;font-family:Arial, sans-serif;font-size:14px;
+  font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
+
+body.quarto-dark .tg th{border-color:white;border-style:solid;border-bottom:1px;font-family:Arial, sans-serif;font-size:14px;
+  font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
+
+.tg .tg-wp8o{border-color:#000000;text-align:center;vertical-align:top}
+body.quarto-dark .tg .tg-wp8o{border-color:#ffffff;text-align:center;vertical-align:center}
+
+.tg .tg-wp8o1{border-color:#000000;border-width:0px 1p 0px 0px;text-align:center;vertical-align:top}
+body.quarto-dark .tg .tg-wp8o1{border-color:#ffffff;border-width:0px 1p 0px 0px;text-align:center;vertical-align:center}
+
+.table {border-bottom: 0px; border-top: 0px}
+.rightcell8888 {border-right: 1px}
+</style>
+<table class="tg"><thead>
+  <tr>
+    <th class="tg-wp8o rightcell8888">&nbsp;</th>
+    <th class="tg-wp8o">A</th>
+    <th class="tg-wp8o">B</th>
+  </tr></thead>
+<tbody>
+  <tr>
+    <td class="tg-wp8o rightcell8888">0</td>
+    <td class="tg-wp8o">B</td>
+    <td class="tg-wp8o">A</td>
+  </tr>
+  <tr>
+    <td class="tg-wp8o rightcell8888">1</td>
+    <td class="tg-wp8o">A</td>
+    <td class="tg-wp8o">B</td>
+  </tr>
+</tbody>
+</table>
+```
+
+Transition Table of @fig-RFAxM2 
+:::
+
+
+
+Sometimes this situation is called a guess. The machine is "guessing" whether it should be in state A or state B. This kind of guessing can lead to exponential growth in the processing of an NFA. 
+
+
 ## Power Set
 
 ## Exercises

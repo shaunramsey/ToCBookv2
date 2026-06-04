@@ -1,0 +1,62 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "https://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+
+<svg width="540" height="430" version="1.1" xmlns="http://www.w3.org/2000/svg">
+
+	<polygon stroke="white" stroke-width="1" points="0.000,0.000 28.787,28.787"/>
+	<polygon fill="white" stroke-width="1" points="28.787,28.787 19.191,25.971 25.971,19.191"/>
+	<path stroke="white" stroke-width="1" fill="none" d="M 78.469,40.633 A 195.000,195.000 0 0 1 171.531,40.633"/>
+	<polygon fill="white" stroke-width="1" points="171.531,40.633 161.865,43.195 164.153,33.883"/>
+	<text fill="white" stroke="white" x="120.800" y="27.300" font-family="Courier New" font-size="14">~</text>
+	<path stroke="white" stroke-width="1" fill="none" d="M 59.992,78.281 A 434.583,434.583 0 0 1 78.541,245.216"/>
+	<polygon fill="white" stroke-width="1" points="78.541,245.216 74.498,236.069 84.053,236.872"/>
+	<text fill="white" stroke="white" x="84.340" y="163.107" font-family="Courier New" font-size="14">~</text>
+	<path stroke="white" stroke-width="1" fill="none" d="M 210.608,77.999 A 137.708,137.708 0 0 1 210.608,147.001"/>
+	<polygon fill="white" stroke-width="1" points="210.608,147.001 208.165,137.304 217.448,139.707"/>
+	<text fill="white" stroke="white" x="222.000" y="116.000" font-family="Courier New" font-size="14">1</text>
+	<path stroke="white" stroke-width="1" fill="none" d="M 228.282,162.633 A 20.000,20.000 0 1 1 228.282,187.367"/>
+	<polygon fill="white" stroke-width="1" points="228.282,187.367 237.961,189.881 231.396,196.870"/>
+	<text fill="white" stroke="white" x="266.800" y="178.500" font-family="Courier New" font-size="14">0</text>
+	<path stroke="white" stroke-width="1" fill="none" d="M 188.746,78.744 A 20.000,20.000 0 1 1 171.256,61.254"/>
+	<polygon fill="white" stroke-width="1" points="171.256,61.254 162.635,66.320 162.335,56.736"/>
+	<text fill="white" stroke="white" x="145.595" y="103.705" font-family="Courier New" font-size="14">1</text>
+	<path stroke="white" stroke-width="1" fill="none" d="M 228.469,40.633 A 195.000,195.000 0 0 1 321.531,40.633"/>
+	<polygon fill="white" stroke-width="1" points="321.531,40.633 311.865,43.195 314.153,33.883"/>
+	<text fill="white" stroke="white" x="270.800" y="27.300" font-family="Courier New" font-size="14">0</text>
+	<path stroke="white" stroke-width="1" fill="none" d="M 362.367,78.282 A 20.000,20.000 0 1 1 337.633,78.282"/>
+	<polygon fill="white" stroke-width="1" points="337.633,78.282 335.119,87.961 328.130,81.396"/>
+	<text fill="white" stroke="white" x="345.800" y="124.500" font-family="Courier New" font-size="14">1</text>
+	<path stroke="white" stroke-width="1" fill="none" d="M 321.531,59.367 A 195.000,195.000 0 0 1 228.469,59.367"/>
+	<polygon fill="white" stroke-width="1" points="228.469,59.367 238.135,56.805 235.847,66.117"/>
+	<text fill="white" stroke="white" x="270.800" y="79.700" font-family="Courier New" font-size="14">0</text>
+	<path stroke="white" stroke-width="1" fill="none" d="M 63.746,303.744 A 20.000,20.000 0 1 1 46.256,286.254"/>
+	<polygon fill="white" stroke-width="1" points="46.256,286.254 37.635,291.320 37.335,281.736"/>
+	<text fill="white" stroke="white" x="20.595" y="328.705" font-family="Courier New" font-size="14">0</text>
+	<path stroke="white" stroke-width="1" fill="none" d="M 196.531,284.367 A 195.000,195.000 0 0 1 103.469,284.367"/>
+	<polygon fill="white" stroke-width="1" points="103.469,284.367 113.135,281.805 110.847,291.117"/>
+	<text fill="white" stroke="white" x="145.800" y="304.700" font-family="Courier New" font-size="14">1</text>
+	<path stroke="white" stroke-width="1" fill="none" d="M 253.282,262.633 A 20.000,20.000 0 1 1 253.282,287.367"/>
+	<polygon fill="white" stroke-width="1" points="253.282,287.367 262.961,289.881 256.396,296.870"/>
+	<text fill="white" stroke="white" x="291.800" y="278.500" font-family="Courier New" font-size="14">0</text>
+	<path stroke="white" stroke-width="1" fill="none" d="M 103.469,265.633 A 195.000,195.000 0 0 1 196.531,265.633"/>
+	<polygon fill="white" stroke-width="1" points="196.531,265.633 186.865,268.195 189.153,258.883"/>
+	<text fill="white" stroke="white" x="145.800" y="252.300" font-family="Courier New" font-size="14">1</text>
+	<path stroke="white" stroke-width="1" fill="none" d="M 91.763,250.148 A 221.042,221.042 0 0 1 172.074,185.898"/>
+	<polygon fill="white" stroke-width="1" points="172.074,185.898 166.176,193.974 162.092,185.298"/>
+	<text fill="white" stroke="white" x="116.933" y="208.041" font-family="Courier New" font-size="14">0</text>
+	<ellipse stroke="white" stroke-width="1" fill="none" cx="50.000" cy="50.000" rx="30" ry="30"/>
+	<text fill="white" stroke="white" x="43.400" y="55.500" font-family="Courier New" font-size="22">A</text>
+	<ellipse stroke="white" stroke-width="1" fill="none" cx="200.000" cy="50.000" rx="30" ry="30"/>
+	<text fill="white" stroke="white" x="193.400" y="55.500" font-family="Courier New" font-size="22">B</text>
+	<ellipse stroke="white" stroke-width="1" fill="none" cx="75.000" cy="275.000" rx="30" ry="30"/>
+	<text fill="white" stroke="white" x="68.400" y="280.500" font-family="Courier New" font-size="22">D</text>
+	<ellipse stroke="white" stroke-width="1" fill="none" cx="350.000" cy="50.000" rx="30" ry="30"/>
+	<ellipse stroke="white" stroke-width="1" fill="none" cx="350.000" cy="50.000" rx="25" ry="25"/>
+	<text fill="white" stroke="white" x="343.400" y="55.500" font-family="Courier New" font-size="22">C</text>
+	<ellipse stroke="white" stroke-width="1" fill="none" cx="225.000" cy="275.000" rx="30" ry="30"/>
+	<ellipse stroke="white" stroke-width="1" fill="none" cx="225.000" cy="275.000" rx="25" ry="25"/>
+	<text fill="white" stroke="white" x="218.400" y="280.500" font-family="Courier New" font-size="22">E</text>
+	<ellipse stroke="white" stroke-width="1" fill="none" cx="200.000" cy="175.000" rx="30" ry="30"/>
+	<ellipse stroke="white" stroke-width="1" fill="none" cx="200.000" cy="175.000" rx="25" ry="25"/>
+	<text fill="white" stroke="white" x="193.400" y="180.500" font-family="Courier New" font-size="22">F</text>
+</svg>

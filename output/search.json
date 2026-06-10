@@ -22,11 +22,11 @@
   {
     "objectID": "book/acknowledgements.html",
     "href": "book/acknowledgements.html",
-    "title": "Acknowledgements",
+    "title": "Acknowledgments",
     "section": "",
-    "text": "We would like to thank Washington College and the Libby and Douglass Cater Society of Junior Fellows at Washington College for supporting this work. We would like to thank all the students who tackled this material over the years. It created this unique method of introducing, using and interacting with the material.",
+    "text": "We would like to thank Washington College, the John S. Toll Fellows, and the Libby and Douglass Cater Society of Junior Fellows at Washington College for supporting this work. We would like to thank all the students who tackled this material over the years. It created this unique method of introducing, using and interacting with the material.\nThis work is inspired by two books directed at introducing the theory of computation: Sipser (1996) and Goddard (2008). After using these books, we’ve landed on approach that is more directly targeted at developers without diving deeply into compiler options. While a compilers course might have a similar thread to theory of computation (regular expressions and then grammars), the focus in a compilers course is ultimately about using these pieces to build a language. The approach in our theory of computation introduction is to lead students to the ultimate goal of the theoretical limits of computation. We do so by leaning on and potentially expanding on their knowledge as developers.\n\n\n\n\nGoddard, Wayne. 2008. Introducing the Theory of Computation. Jones; Bartlett Learning.\n\n\nSipser, Michael. 1996. Introduction to the Theory of Computation. PWS Publishing Company.",
     "crumbs": [
-      "Acknowledgements"
+      "Acknowledgments"
     ]
   },
   {
@@ -235,6 +235,16 @@
     "crumbs": [
       "Part I - Sets and Regular Languages",
       "<span class='chapter-number'>4</span>  <span class='chapter-title'>Non-deterministic Finite Automata (NFAs)</span>"
+    ]
+  },
+  {
+    "objectID": "book/references.html",
+    "href": "book/references.html",
+    "title": "References",
+    "section": "",
+    "text": "Goddard, Wayne. 2008. Introducing the Theory of Computation.\nJones; Bartlett Learning.\n\n\nSipser, Michael. 1996. Introduction to the Theory of\nComputation. PWS Publishing Company.",
+    "crumbs": [
+      "References"
     ]
   }
 ]

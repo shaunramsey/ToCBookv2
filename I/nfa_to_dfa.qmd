@@ -1,0 +1,168 @@
+# NFAs to DFAs
+
+This chapter gives the elements of a proof that the class of languages accepted by NFAs is not different than DFAs. Since all DFAs are triviall NFAs, we know that NFAs are at least as "powerful" as DFAs. However, in this chapter we show, by contruction, that NFAs are not more powerful than DFAs. The parallel processing achieved with NFAs can effectively be linearized into a DFA. We will lean on the power set (see @sec-powerset) to complete our construction.
+
+::: {.callout-important}
+## Learning Objectives
+- Conversion of NFAs to DFAs via the power set
+- NFAs and DFAs recognize the same class of languages.
+:::
+
+
+
+
+Let's begin with a new NFA and a review.
+
+::: {#exercise-nfa-to-dfa-review .callout-note}
+## Review Exercise
+- How many elements are in the power set of the set of states of @fig-NFAxM4?
+- What is the language of the top path of the NFA in @fig-NFAxM4?
+- What is the language of the bottom path in @fig-NFAxM4?
+- What is the language of the NFA in @fig-NFAxM4?
+:::
+
+::: {#fig-NFAxM4}
+::: {.light-content}
+![](/images/RL/NFAxM4-black.svg)
+:::
+
+::: {.dark-content}
+![](/images/RL/NFAxM4-white.svg)
+:::
+
+What is the language of this machine?
+:::
+
+The power set of the set of states of @fig-NFAxM4 is a good place to start thinking about the conversion of the NFA to a DFA.
+Since the power set can include all possible configurations of the NFA at any given time. The NFA has 5 states, so we need 5 positions to track where a processed string is at any time. Either it is in A or it isn't, either it is in B or it isn't, and so on. Combining those we end up with *2^5=32* potential configurations. However, we'll likely need much less. At any point in time, we'll take free jumps immediately (although this machine does not have any). The power set (see @sec-powerset) of the states of the NFA is then the "name" for the states in the new DFA.
+
+- To start, this machine begins in {A}. A is the start state and there are no configurations to or from it. 
+- If we're in A, and we see a 0, we go nowhere - we fall off. This is the empty set of states, {} or $\emptyset$. We call this the null state.
+- Any inputs from the empty set, leads us back to the empty set, so 0 and 1 lead from the null state back to itself.
+- If we're in A and we see a 1, we go to both B and D. Thus {A} transitions to {B, D} on a 1.
+- When we process {B, D} we consider all the places we may reach from either. On a 1, B goes to itself, D goes to D and E. Thus, from {B, D} we get to {B, D, E}
+- On a 0 from {B, D}, B and D go to themselves, but B goes to C. So on a 0 from {B, D} we get to {B, C, D}. 
+- Let's find out what happens in {B, D, E}. E always falls off, so {B, D, E} does the same thing as {B, D}. On 1, {B, D, E} and on 0, {B, C, D}.
+- Something similar happens in {B, C, D}. On 1, {B, D, E} and on a 0, back to itself.
+- We have no new states to process. Since if any thread is an accept in an NFA, any state with a C or E is an accept state in our new DFA. These are states {B, D, E} and {B, C, D}.
+
+There we have it. We've converted an NFA to a DFA by keep tracking of the flow of all inputs from each state and encoding the subset of states that we're in as a new state in the DFA. See @fig-NFAxPower3 for the resulting DFA where states are listed in simplified form ({B, C, D} is listed as BCD).
+
+::: {#fig-NFAxPower3}
+::: {.light-content}
+![](/images/RL/NFAxPower3-black.svg)
+:::
+
+::: {.dark-content}
+![](/images/RL/NFAxPower3-white.svg)
+:::
+
+The results of converting @fig-NFAxM4, an NFA, into a DFA.
+:::
+
+Now is a good time to pause, look at the diagrams side-by-side and convince ourselves they are the same. It seems like, as long as we start with a 1, we are accepting. The NFA looks like "starts with a 1 and ends with a 1 or 0," but since the alphabet is {0, 1}, there are no other options to end up. Thus, we can simplify the idea by drawing a machine that starts with a 1. The DFA that we ended up with is not minimal (the minimal DFA for a language is also unique). We do not concern ourselves much with that in this book, but it is noteworthy that the DFA is "doing more work" than it is accepting. It is keeping track of the last symbol (0 is C, 1 is E) even though it doesn't change the language because it accepts both. This is not uncommon when converting an NFA to a DFA. One thing to also note is that we only needed 5 states including the null or trap state for rejects rather than the 32 theoretical maximum that is the size of the power set of states.
+
+Let's try another. Take a look at the machine in @fig-NFADFAxM2. We've seen this machine before.
+
+::: {#fig-NFADFAxM2}
+::: {.light-content}
+![](/images/RL/NFAxM4-black.svg)
+:::
+
+::: {.dark-content}
+![](/images/RL/NFAxM4-white.svg)
+:::
+
+Recall this machine from @fig-NFAxM3.
+:::
+
+Again, imagine that we will exhaustively track everywhere the machine can reach - every possible subset it can actually touch - taking free jumps immediately.
+
+- We start in state A, with free transitions to B and D (we take all free transitions immediately). Thus, the start configuration is {A, B, D}.
+- From {A, B, D}, if we read a 0, A falls off, B goes to C, and D goes to D Thus we are now in the configuration {C,D}.
+- From {A, B, D}, we read a 1, A falls off, B goes to B *and* F, and D goes to E. Thus we are now in the configuration {B,E,F}.
+- From {C,D}, if we read a 0, C goes to B and D goes to itself - leaving us in {B, D}.
+- From {C,D}, if we read a 1, C goes to C and D goes to E - leaving us in {C, E}.
+
+Since any path that accepts is an accepting path, every state that contains an accept state of the NFA, will be an accept state. So far that includes {B,E,F} (for both E and F), {C,E} (for both C and E), and {C,D} (for C). Let's pause to see how this may look as a diagram thus far in @fig-NFAxPower1.
+
+::: {#fig-NFAxPower1}
+::: {.light-content}
+![](/images/RL/NFAxPower1-black.svg)
+:::
+
+::: {.dark-content}
+![](/images/RL/NFAxPower1-white.svg)
+:::
+
+Processing an NFA with the power set.
+:::
+
+Like before, states are listed in simplified form in the diagram, such that "BEF" represents the set of states {B, E, F}. The diagram is already growing quite rapidly. After considering only two jumps, we could be in any one of four states. Can you follow the logic to finish the diagram?
+
+<details>
+<summary>The fully converted diagram of the NFA in @fig-NFAxM3 using power set construction.</summary>
+
+::: {#fig-NFAxPower2}
+::: {.light-content}
+![](/images/RL/NFAxPower2-black.svg)
+:::
+
+::: {.dark-content}
+![](/images/RL/NFAxPower2-white.svg)
+:::
+
+The fully converted diagram of the NFA in @fig-NFADFAxM2 using the power set construction.
+:::
+
+</details>
+
+Now that we've tackled the conversion until we've run out of leads, let's take a look at the diagram. We've arranged the diagram such that the three states that include E are grouped on the left. State E tracks an odd # of 1s. The two states with C are grouped along the bottom row and include the states that track an odd number of 0s. You'll notice these 4 states are all accept states. The start state is somewhat isolated in the middle. Looking at the diagram as a whole, as we move from left to right, we're flipping modality of 1 and as we move up and down we're flipping the modality of 0. Lastly, strings that end in a 1 after an odd number of 0s are encoded by F. Looking at the diagram, an input of 1 always leads to an accept state. Thus if we end in a 1, we accept. Why does this work? Well, if we had seen an odd number of 0s, a 1 won't change that and we'll stay in an accept state.
+If we had seen an even number of 0s, we'll be in the top half of the diagram. If we're on the right side (even number of 0s), seeing a 1 will take us to {B, E, F}. That's an odd number of 1s anyway, but it also ends in a 1 so it is an accept state. If we're on the left side (looking at an odd number of 1s and already accepting), we'll move to {B, D, F} and accept since F is an accept state. Using this power set construction is really quite an amazing way to convert **any** NFA into a DFA. The number of states can grow exponentially (the power set has size $2^n$), and typically more states are required than in the NFA counterpart. Even so, it proves that NFAs and DFAs are equivalent in terms of the languages that they can recognize and it provides an algorithmic process for performing the conversion.
+
+Let's tackle one last conversion with a NFA that has free transitions, ~. 
+For this we look at another familiar machine from @fig-NFAxM1.
+
+::: {#fig-NFADFAxM1}
+::: {.light-content}
+![](/images/RL/NFAxM1-black.svg)
+:::
+
+::: {.dark-content}
+![](/images/RL/NFAxM1-white.svg)
+:::
+
+Accepts any string with any number of a's followed by any number of b's.
+:::
+
+Let's pause and track to hack this one without help. Take free jumps, ~, immediately. 
+
+<details>
+<summary> Converting @fig-NFADFAxM1 to a DFA </summary>
+
+::: {#fig-NFAxPower4}
+::: {.light-content}
+![](/images/RL/NFAxPower4-black.svg)
+:::
+
+::: {.dark-content}
+![](/images/RL/NFAxPower4-white.svg)
+:::
+
+Converted the NFA of @fig-NFADFAxM1 into a DFA.
+:::
+
+</details>
+
+
+Because we take free jumps immediately, strangely, the start state is {A, B}. 
+
+
+
+
+::: {#exercise-nfa-to-dfa .callout-note}
+## NFA to DFA Exercise
+- Convert the NFA in @fig-NFAxM1 to a DFA using the power set construction. 
+- Convert the NFA in @fig-NFAxM2 to a DFA using the power set construction. Something strange happens here. Why?
+:::
+

@@ -49,7 +49,7 @@ In @fig-NFAxM1 we saw a machine that uses a free transition, free jump, or ~, to
 Parallelism by taking a transition with the same input to two different states.
 :::
 
-@fig-NFAxM2 demonstrates that we make transition from A on a 1 to two different states. If the input is "111" then the first 1 is consumed and leaves us in the states {B,C}. Just like before with free transitions, we find ourselves in a processing situation in which we may need to process multiple paths. If any of these paths succeed, then the string is accepted. In this case, 111 takes us from A to {B,C} to {D} and then to {D} to finish the processing. The bottom path ends in an accept state and thus we accept this string. Let's explore this machine in the following exercise.
+@fig-NFAxM2 demonstrates that we make transition from A on a 1 to two different states. If the input is "111" then the first 1 is consumed and leaves us in the states {B,C}. Just like before with a free transitions, we're in aprocessing situation in which we may need to process multiple paths. If any of these paths succeed, then the string is accepted. In this case, 111 takes us from A to {B,C} to {D} and then to {D} to finish the processing. The bottom path ends in an accept state and thus we accept this string. Let's explore this machine in the following exercise.
 
 ::: {#exercise-NFAs .callout-note}
 ## Non-deterministic Finite Automata Free Transitions Exercise
@@ -58,13 +58,13 @@ Parallelism by taking a transition with the same input to two different states.
 - What is the language of the machine in @fig-NFAxM2?
 :::
 
-These types of transitions are often useful when we would like to process two different paths of thought, similar to a union. In the example above, the figure demonstrates that the string starts with "10" or "11". Falling off on a 0 in state C allows us to ignore those characters and truly focus on what we care about for that path. Free transitions and forked transitions are great tools for expanding our expressive power in a finite automata with ease. Expressing an OR expression in a DFA might require carefully layering in the pathways in an intermingled fashion, but with an NFA, we can separate out the decisions easily. 
+These types of transitions are often useful when we would like to process two different paths of thought, similar to a union. In the example above, the figure demonstrates that the string starts with "10" or "11". Falling off on a 0 in state C allows us to ignore those characters and truly focus on what we care about for that path. Free transitions and forked transitions are great tools for expanding our expressive power in a finite automata with ease. Expressing an OR expression in a DFA might require carefuly layering in the pathways in an intermingled fashion, but with an NFA, we can separate out the decisions easily. 
 
 We have seen three elements of non-determinism. We can fall off a machine, ending (rejecting) the processing line for that input. We can take a free transition, extending our processing line for an input (creating parallelism). We may also transition to another state on more than one input! Let's practice some of the features of NFAs in the following exercise.
 
 ::: {#exercise-NFAs-creating .callout-note}
 ## Creating Non-deterministic Finite Automata Exercise
-- Take the DFA in @fig-RFAxM2 and the DFA in @fig-RFAxM3 and create an NFA that accepts strings that are accept by either machine. Creating an "OR" or union of two languages is very easy with NFAs. Free transitions are your friend here.
+- Take the DFA in @fig-DFAxM1 and the DFA in @fig-DFAxM2 and creat an NFA that accepts strings that are accept by either machine. Creating an "OR" or union of two languages is very easy with NFAs. Free transitions are your friend here.
 - Create an NFA that begins with "101". Allow your machine to let things fall off!
 - Create an NFA that ends with "101". Hint, add a loop to your start state on "0,1". This allows your machine to "guess" when it is at the end.
 :::
@@ -88,7 +88,7 @@ However, to formally describe the NFA itself, we can still use a transition tabl
 Demonstrating the power of NFAs.
 :::
 
-The transition table of @fig-NFAxM3 is a bit more complex than our previous transition tables as shown in @fig-transition-table-NFAxM3. Notice that we have a row dedicated to free transitions, ~. In addition we notice that our transitions now leave us in a set of states rather than in a single state. Sometimes that set of states is empty - meaning we fall off the machine. This table looks a little different than our programming minded function from above. This is because, programmatically, we can take the free jumps immediately. However, in the transition table, we show them separately. Take a look at the transition table before we proceed to describing it formally with mathematical language.
+The transition table of @fig-NFAxM3 is a bit more complex than our previous transition tables as shown in @fig-transition-table-NFAxM3. Notice that we have a row dedicated to free transitions, ~. In addition we notice that our transitions now leave us in a set of states rather than in a single state. Sometimes that set of states is empty - meaning we fall off the machine. This table looks a little different than our programming minded function from above. This is because, programmatically, we can take the free jumps immediately. However, in the transition table, we show them separately. Take a look at the transition table before we proceed to describing it formally with matematical language.
 
 ::: {#fig-transition-table-NFAxM3}
 
@@ -165,18 +165,18 @@ body.quarto-dark .tg .tg-wp8o1{border-color:#ffffff;border-width:0px 1p 0px 0px;
 Transition Table of @fig-NFAxM3.
 :::
 
-So, our old transition function was $Q \times A \rightarrow Q$. Q is our set of states and A is our input alphabet. This is great for DFAs. For NFAs, our transition table requires $A \cup \sim$ for potential input consideration, to include the free transition. The transition function now returns a set of states. The set of all possible subsets of a set is called the power set and we denote it as $P(Q)$. Recall that $\times$ is our Cartesian product as seen in @sec-determinism, our determinism section. We'll tackle more on the power set later, but for now it suffices to say that it means we can land in some, all, or none of the states of Q. Putting things together, our transition function is $Q \times (A \cup \sim) \rightarrow P(Q)$. Processing then consists of, first looking up the free transitions and taking those immediately, then consuming the input symbol and looking up the transitions for that symbol. This process is repeated until we have consumed all the input symbols (or we hit a halt and accept if using the Ramsey variants). If any of the paths lead us to an accept state, then we accept the string.
+So, our old transition function was $Q \times A \rightarrow Q$. Q is our set of states and A is our input alphabet. This is great for DFAs. For NFAs, our transition table requires $A \cup \sim$ for potential input consideration, to include the free transition. The transition function now returns a set of states. The set of all possible subsets of a set is called the power set and we denote it as $P(Q)$. Recall that $\times$ is our cartesian product as seen in @sec-determinism, our determinism section. We'll tackle more on the power set later, but for now it suffices to say that it means we can land in some, all, or none of the states of Q. PUtting things together, our transition function is $Q \times (A \cup \sim) \rightarrow P(Q)$. Processing then consists of, first looking up the free transitions and taking those immediately, then consuming the input symbol and looking up the transitions for that symbol. This process is repeated until we have consumed all the input symbols (or we hit a halt and accept if using the Ramsey variants). If any of the paths lead us to an accept state, then we accept the string.
 
 
-The forks, or parallels in NFAs are sometimes called a guess. The machine is "guessing" whether it should be in state A or state B. Calling it a guess hints at how these sorts of machines are sometimes used in practice - with a backtracking algorithm. While it is outside of the scope of this book, state-space search is rife with pitfalls, and when developing with finite automata (or more likely, their equivalents) we must take care with our machines to avoid poor computational efficiency or performance. Specifically, "poor" guessing can lead to exponential growth in the processing of an NFA. Ultimately, however, we are limited by a certain number of states and branches, which is hinted at in our transition table by the use of the power set, $P(Q)$. 
+The forks, or parallels in NFAs are sometimes called a guess. The machine is "guessing" whether it should be in state A or state B. Calling it a guess hints at how these sorts of machines are sometimes used in practice - with a backtracking algorithm. While it is outside of the scope of this book, state-space search is rife with pitfalls, and when developing with finite automata (or more likely, their equivalents) we must take care with our machines to avoid poor computational efficiency or performance. Specifially, "poor" guessing can lead to exponential growth in the processing of an NFA. Ultimately, however, we are limited by a certain number of states and branches, which is hinted at in our transition table by the use of the power set, $P(Q)$. 
 
 
-## Power Set {#sec-powerset}
+## Power Set
 
 The power set of a set is the set of all possible subsets of that set, including the empty set. For example, if we have a set $Q = \{A,B,C\}$, then the power set of $Q$, denoted as $P(Q)$, would be:
 $$P(Q) = \{\emptyset, \{A\}, \{B\}, \{C\}, \{A,B\}, \{A,C\}, \{B,C\}, \{A,B,C\}\}$$
 
-Recall that the empty set, $\emptyset$, is a set with no elements, {}. You'll notice here that the power set of a set with three elements has 8 subsets. Let's explore the power set in the following exercises.
+Recall that the empty set, $\emptyset$, is a set with no elements, {}. You'll notice here that the power set of a set with three elements has 8 subsets. Let's explore the power set in the following excercises.
 
 ::: {#exercise-power-set .callout-note}
 ## Power Set Exercise
@@ -188,52 +188,67 @@ Recall that the empty set, $\emptyset$, is a set with no elements, {}. You'll no
 
 Since the power set of a state set from an NFA encompasses all possible subsets of states, it can be used to represent the state of an NFA, encompassing all of its parallel processing into a single descriptor - the set of all states we are in at any particular point of processing the NFA. 
 
-A power set will have $2^n$ subsets, where $n$ is the number of elements of the original set. So a slightly complex NFA, like the one in @fig-NFAxM3 with 6 states, could have as many as 64 subsets. At any given time in processing that NFA, we are in one of those 64 subsets. Thinking of this in a different way, at any given time we are either in a specific state or not. So, we're either in A or not, in B or not, in C or not, and so on. Since each state has 2 options, then there are $2 \times 2 \times 2 \times 2 \times 2 \times 2$ options.
+A power set will have $2^n$ subsets, where $n$ is the number of elements of the original set. So a slightly complex NFA, like the one in @fig-NFAxM3 with 6 states, could have as many as 64 subsets. At any given time in processing that NFA, we are in one of those 64 subsets. Let's tackle that idea a bit more directly. Imagine that we will exhaustively track everywhere the machine can reach - every possible subset it can actually touch.
+
+- We start in state A, with free transitions to B and D (we take all free transitions immediately). Thus, the start configuration is {A, B, D}.
+- From {A, B, D}, if we read a 0, A falls off, B goes to C, and D goes to D Thus we are now in the configuration {C,D}.
+- From {A, B, D}, we read a 1, A falls off, B goes to B *and* F, and D goes to E. Thus we are now in the configuration {B,E,F}.
+- From {C,D}, if we read a 0, C goes to B and D goes to itself - leaving us in {B, D}.
+- From {C,D}, if we read a 1, C goes to C and D goes to E - leaving us in {C, E}.
+
+Since any path that accept is an accepting path, every state that contains an accept state of the NFA, will be an accept state. So far that includes {B,E,F} (for both E and F), {C,E} (for both C and E), and {C,D} (for C).Let's pause to see how this may look as a diagram thus far in @fig-NFAxPower1.
+
+::: {#fig-NFAxPower1}
+::: {.light-content}
+![](/images/RL/NFAxPower1-black.svg)
+:::
+
+::: {.dark-content}
+![](/images/RL/NFAxPower1-white.svg)
+:::
+
+Processing an NFA with the power set.
+:::
+
+States are listed in simplified form in the diagram, such that "BEF" represents the set of states {B, E, F}. The diagram is already growing quite rapidly. After considering only two jumps, we could be in any one of four states. Can you follow the logic to finish the diagram?
+
+<details>
+<summary>The fully converted diagram of the NFA in @fig-NFAxM3 using power set construction.</summary>
+
+::: {#fig-NFAxPower2}
+::: {.light-content}
+![](/images/RL/NFAxPower2-black.svg)
+:::
+
+::: {.dark-content}
+![](/images/RL/NFAxPower2-white.svg)
+:::
+
+The fully converted diagram of the NFA in @fig-NFAxM3 using the power set construction.
+:::
+
+</details>
+
+Now that we've tackled the conversion until we've run out of leads, let's take a look at the diagram. We've arranged the diagram such that the three states that include E are grouped on the left. State E tracks an odd # of 1s. The two states with C are grouped along the bottom row and include the states that track an odd number of 0s. You'll notice these 4 states are all accept states. The start state is somewhat isolated in the middle. Looking at the diagram as a whole, as we move from left to right, we're flipping modality of 1 and as we move up and down we're flipping the modality of 0. Lastly, strings that end in a 1 after an odd number of 0s are encoded by F. Looking at the diagram, an input of 1 always leads to an accept state. Thus if we end in a 1, we accept. Why does this work? Well, if we had seen an odd number of 0s, a 1 won't change that and we'll stay in an accept state.
+If we had seen an even number of 0s, we'll be in the top half of the diagram. If we're on the right side (even number of 0s), seeing a 1 will take us to {B, E, F}. That's an odd number of 1s anyway, but it also ends in a 1 so it is an accept state. If we're on the left side (looking at an odd number of 1s and already accepting), we'll move to {B, D, F} and accept since F is an accept state. Using this power set construction is really quite an amazing way to convert **any** NFA into a DFA. The number of states can grow exponentially (the power set has size $2^n$ afterall), and typically more states are required than in the NFA counterpart. Even so, it proves that NFAs and DFAs are equivalent in terms of the languages that they can recognize and it provides an algorithmic process for performing the conversion.
 
 
-::: {#exercise-powerset .callout-note}
+::: {#exercise-nfa-to-dfa .callout-note}
 ## Power Set Exercise
-- How many subsets can the states of @fig-NFAxM1 have?
+- How many states might the DFA have if we convert @fig-NFAxM1 using power set construction?
+- Convert the NFA in @fig-NFAxM1 to a DFA using the power set construction. 
 - @fig-NFAxM2 has 4 states. How large is the power set of those states?
 - How many elements of the power set of states in @fig-NFAxM2 would be accept states?
+- Convert the NFA in @fig-NFAxM2 to a DFA using the power set construction. Something strange happens here. Why?
 :::
-
-NFAs give us a stronger power of expression by allowing free jumps and multiple configurations. In the next chapter, we explore the relationship between NFAs and DFAs. We aim to answer the question: do NFAs and DFAs recognize the same set of languages.
-
 
 ## Exercises
-1. What is the language of the following NFA?
 
-::: {.light-content}
-![](/images/RL/NFAxEx1-black.svg)
-:::
-
-::: {.dark-content}
-![](/images/RL/NFAxEx1-white.svg)
-:::
-
-2. What is the language of the following NFA?
-
-::: {.light-content}
-![](/images/RL/NFAxEx2-black.svg)
-:::
-
-::: {.dark-content}
-![](/images/RL/NFAxEx2-white.svg)
-:::
-
-3. What is the language of the following NFA?
-
-::: {.light-content}
-![](/images/RL/NFAxEx3-black.svg)
-:::
-
-::: {.dark-content}
-![](/images/RL/NFAxEx3-white.svg)
-:::
-
-4. Build an NFA for strings that start with a 0, end with a 0 and may contain any number of 0s and 1s in the middle.
-5. Build an NFA for strings that begin with either 001 or 10. It may be followed by any number of 0s and 1s.
-6. Build an NFA with alphabet {1,3,7} that recognizes any string that contains "1337".
-7. Build an NFA that accepts binary strings that are 0 mod 4.
-
+1. Build an NFA for strings that start with a 0, end with a 0 and may contain any number of 0s and 1s in the middle.
+2. Build an NFA for strings that begin with either 001 or 10. It may be followed by any number of 0s and 1s.
+3. Build an NFA with alphabet {1,3,7} that recognizes any string that contains "1337".
+4. Build an NFA that accepts even length palindromes.
+5. Build an NFA that accepts any length palindromes. 
+6.
+7.
+8.

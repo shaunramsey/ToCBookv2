@@ -14,9 +14,6 @@
 	<path stroke="white" stroke-width="1" fill="none" d="M 210.608,77.999 A 137.708,137.708 0 0 1 210.608,147.001"/>
 	<polygon fill="white" stroke-width="1" points="210.608,147.001 208.165,137.304 217.448,139.707"/>
 	<text fill="white" stroke="white" x="222.000" y="116.000" font-family="Courier New" font-size="14">1</text>
-	<path stroke="white" stroke-width="1" fill="none" d="M 228.282,162.633 A 20.000,20.000 0 1 1 228.282,187.367"/>
-	<polygon fill="white" stroke-width="1" points="228.282,187.367 237.961,189.881 231.396,196.870"/>
-	<text fill="white" stroke="white" x="266.800" y="178.500" font-family="Courier New" font-size="14">0</text>
 	<path stroke="white" stroke-width="1" fill="none" d="M 188.746,78.744 A 20.000,20.000 0 1 1 171.256,61.254"/>
 	<polygon fill="white" stroke-width="1" points="171.256,61.254 162.635,66.320 162.335,56.736"/>
 	<text fill="white" stroke="white" x="145.595" y="103.705" font-family="Courier New" font-size="14">1</text>
@@ -41,9 +38,6 @@
 	<path stroke="white" stroke-width="1" fill="none" d="M 103.469,265.633 A 195.000,195.000 0 0 1 196.531,265.633"/>
 	<polygon fill="white" stroke-width="1" points="196.531,265.633 186.865,268.195 189.153,258.883"/>
 	<text fill="white" stroke="white" x="145.800" y="252.300" font-family="Courier New" font-size="14">1</text>
-	<path stroke="white" stroke-width="1" fill="none" d="M 91.763,250.148 A 221.042,221.042 0 0 1 172.074,185.898"/>
-	<polygon fill="white" stroke-width="1" points="172.074,185.898 166.176,193.974 162.092,185.298"/>
-	<text fill="white" stroke="white" x="116.933" y="208.041" font-family="Courier New" font-size="14">0</text>
 	<ellipse stroke="white" stroke-width="1" fill="none" cx="50.000" cy="50.000" rx="30" ry="30"/>
 	<text fill="white" stroke="white" x="43.400" y="55.500" font-family="Courier New" font-size="22">A</text>
 	<ellipse stroke="white" stroke-width="1" fill="none" cx="200.000" cy="50.000" rx="30" ry="30"/>

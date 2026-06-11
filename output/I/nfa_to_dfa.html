@@ -8,7 +8,7 @@
 
 <meta name="description" content="An undergraduate Theory of Computation text designed for developers.">
 
-<title>4&nbsp; Non-deterministic Finite Automata (NFAs) – Theory of Computation: An Introduction For Programmers</title>
+<title>5&nbsp; NFAs to DFAs – Theory of Computation: An Introduction For Programmers</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -34,8 +34,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../I/nfa_to_dfa.html" rel="next">
-<link href="../I/rfas.html" rel="prev">
+<link href="../II/context-free-languages.html" rel="next">
+<link href="../I/nfas.html" rel="prev">
 <link href="../favicon.png" rel="icon" type="image/png">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -112,11 +112,11 @@ window.Quarto = {
 };
 </script>
 
-<meta property="og:title" content="4&nbsp; Non-deterministic Finite Automata (NFAs) – Theory of Computation: An Introduction For Programmers">
+<meta property="og:title" content="5&nbsp; NFAs to DFAs – Theory of Computation: An Introduction For Programmers">
 <meta property="og:description" content="An undergraduate Theory of Computation text designed for developers.">
 <meta property="og:image" content="https://shaunramsey.github.io/ToCBookv2/images/Icon-512.png">
 <meta property="og:site_name" content="Theory of Computation: An Introduction For Programmers">
-<meta name="twitter:title" content="4&nbsp; Non-deterministic Finite Automata (NFAs) – Theory of Computation: An Introduction For Programmers">
+<meta name="twitter:title" content="5&nbsp; NFAs to DFAs – Theory of Computation: An Introduction For Programmers">
 <meta name="twitter:description" content="An undergraduate Theory of Computation text designed for developers.">
 <meta name="twitter:image" content="https://shaunramsey.github.io/ToCBookv2/images/Icon-512.png">
 <meta name="twitter:card" content="summary_large_image">
@@ -293,7 +293,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../I/sets.html">Part I - Sets and Regular Languages</a></li><li class="breadcrumb-item"><a href="../I/nfas.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Non-deterministic Finite Automata (NFAs)</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../I/sets.html">Part I - Sets and Regular Languages</a></li><li class="breadcrumb-item"><a href="../I/nfa_to_dfa.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">NFAs to DFAs</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -374,13 +374,13 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../I/nfas.html" class="sidebar-item-text sidebar-link active">
+  <a href="../I/nfas.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Non-deterministic Finite Automata (NFAs)</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../I/nfa_to_dfa.html" class="sidebar-item-text sidebar-link">
+  <a href="../I/nfa_to_dfa.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">NFAs to DFAs</span></span></a>
   </div>
 </li>
@@ -431,24 +431,16 @@ window.Quarto = {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Table of contents</h2>
-   
-  <ul>
-  <li><a href="#non-deterministic-moves-in-finite-automata" id="toc-non-deterministic-moves-in-finite-automata" class="nav-link active" data-scroll-target="#non-deterministic-moves-in-finite-automata"><span class="header-section-number">4.1</span> Non-deterministic Moves in Finite Automata</a></li>
-  <li><a href="#sec-powerset" id="toc-sec-powerset" class="nav-link" data-scroll-target="#sec-powerset"><span class="header-section-number">4.2</span> Power Set</a></li>
-  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">4.3</span> Exercises</a></li>
-  </ul>
-</nav>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../I/sets.html">Part I - Sets and Regular Languages</a></li><li class="breadcrumb-item"><a href="../I/nfas.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Non-deterministic Finite Automata (NFAs)</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../I/sets.html">Part I - Sets and Regular Languages</a></li><li class="breadcrumb-item"><a href="../I/nfa_to_dfa.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">NFAs to DFAs</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Non-deterministic Finite Automata (NFAs)</span></h1>
+<h1 class="title"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">NFAs to DFAs</span></h1>
 </div>
 
 
@@ -465,7 +457,7 @@ window.Quarto = {
 </header>
 
 
-<p>This chapter discusses strategies for understanding and working with non-deterministic finite automata (NFAs). We will cover the basics of NFAs, including their definition, how to construct them, and how to use them to recognize languages. We will be using examples and exercises to help practice and solidify our understanding of NFAs. By the end of this chapter, we should have a good grasp of what NFAs are, how they work, and how to use them effectively.</p>
+<p>This chapter gives the elements of a proof that the class of languages accepted by NFAs is not different than DFAs. Since all DFAs are triviall NFAs, we know that NFAs are at least as “powerful” as DFAs. However, in this chapter we show, by contruction, that NFAs are not more powerful than DFAs. The parallel processing achieved with NFAs can effectively be linearized into a DFA. We will lean on the power set (see <a href="nfas.html#sec-powerset" class="quarto-xref"><span>Section 4.2</span></a>) to complete our construction.</p>
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -477,283 +469,192 @@ window.Quarto = {
 </div>
 <div class="callout-body-container callout-body">
 <ul>
-<li>Elements of Non-determinism</li>
-<li>Strategies for Understanding and Constructing NFAs</li>
-<li>Parallelism in NFAs</li>
-<li>Power Sets</li>
+<li>Conversion of NFAs to DFAs via the power set</li>
+<li>NFAs and DFAs recognize the same class of languages.</li>
 </ul>
 </div>
 </div>
-<section id="non-deterministic-moves-in-finite-automata" class="level2" data-number="4.1">
-<h2 data-number="4.1" class="anchored" data-anchor-id="non-deterministic-moves-in-finite-automata"><span class="header-section-number">4.1</span> Non-deterministic Moves in Finite Automata</h2>
-<p>As yet another extension of expression in finite automata, we introduce some potentially non-deterministic moves to our deterministic finite automata. These moves may allow a pathway to split or fall off the machine. Sometimes we mention multiple paths as guesses or parallelism. We will use this chapter to introduce those ideas in pieces. First, let’s introduce a new transition symbol. We call this a <strong>free</strong> transition and it is denoted in our book as <strong>~</strong>. Thus, when you see a <strong>~</strong> transition, that transition can be taken without consuming an input symbol. Let’s look at a simple example in <a href="#fig-NFAxM1" class="quarto-xref">Figure&nbsp;<span>4.1</span></a>.</p>
-<div id="fig-NFAxM1" class="quarto-float quarto-figure quarto-figure-center anchored">
+<p>Let’s begin with a new NFA and a review.</p>
+<div id="exercise-nfa-to-dfa-review" class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Review Exercise
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>How many elements are in the power set of the set of states of <a href="#fig-NFAxM4" class="quarto-xref">Figure&nbsp;<span>5.1</span></a>?</li>
+<li>What is the language of the top path of the NFA in <a href="#fig-NFAxM4" class="quarto-xref">Figure&nbsp;<span>5.1</span></a>?</li>
+<li>What is the language of the bottom path in <a href="#fig-NFAxM4" class="quarto-xref">Figure&nbsp;<span>5.1</span></a>?</li>
+<li>What is the language of the NFA in <a href="#fig-NFAxM4" class="quarto-xref">Figure&nbsp;<span>5.1</span></a>?</li>
+</ul>
+</div>
+</div>
+<div id="fig-NFAxM4" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-NFAxM1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div aria-describedby="fig-NFAxM4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="light-content">
-<p><a href="../images/RL/NFAxM1-black.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Figure&nbsp;4.1: Accepts any string with any number of a’s followed by any number of b’s."><img src="../images/RL/NFAxM1-black.svg" class="img-fluid figure-img"></a></p>
+<p><a href="../images/RL/NFAxM4-black.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Figure&nbsp;5.1: What is the language of this machine?"><img src="../images/RL/NFAxM4-black.svg" class="img-fluid figure-img"></a></p>
 </div>
 <div class="dark-content">
-<p><a href="../images/RL/NFAxM1-white.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="Figure&nbsp;4.1: Accepts any string with any number of a’s followed by any number of b’s."><img src="../images/RL/NFAxM1-white.svg" class="img-fluid figure-img"></a></p>
+<p><a href="../images/RL/NFAxM4-white.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="Figure&nbsp;5.1: What is the language of this machine?"><img src="../images/RL/NFAxM4-white.svg" class="img-fluid figure-img"></a></p>
 </div>
 </div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-NFAxM1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;4.1: Accepts any string with any number of a’s followed by any number of b’s.
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-NFAxM4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5.1: What is the language of this machine?
 </figcaption>
 </figure>
 </div>
-<p>In <a href="#fig-NFAxM1" class="quarto-xref">Figure&nbsp;<span>4.1</span></a> we notice that we stay in state A when we see inputs of a’s and we stay in state B when we see inputs of b’s. However, the transition between A and B is a free transition, ~. This means, that we may take this transition whenever we like. The best way to think of this processing is that ~ jumps are taken immediately and whenever possible. This does mean that a machine can be in more than one state at a time. When we start the machine we are in the states A and B, or written as a set, {A,B}. If the input string is “ab”, the next step needs to consume an a. When we do that, A takes us to state A and B falls off the machine (a non-deterministic move). This leaves us in state A, but the free jump allows us to go back to state B again immediately. So, on an a, this machine leaves us back in the set {A, B}. When we read a b, state A has no b transition and thus that pathway falls off the machine. However, state B leaves us back to B, so we’re now in state B or the set of states is now just {B}. Now that we’re done processing this string, one of the paths led us to an accept, so we would accept the string “ab”. We’ll explore this in the following exercise.</p>
-<div id="exercise-NFAs" class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Non-deterministic Finite Automata Free Transitions Exercise
-</div>
-</div>
-<div class="callout-body-container callout-body">
+<p>The power set of the set of states of <a href="#fig-NFAxM4" class="quarto-xref">Figure&nbsp;<span>5.1</span></a> is a good place to start thinking about the conversion of the NFA to a DFA. Since the power set can include all possible configurations of the NFA at any given time. The NFA has 5 states, so we need 5 positions to track where a processed string is at any time. Either it is in A or it isn’t, either it is in B or it isn’t, and so on. Combining those we end up with <em>2^5=32</em> potential configurations. However, we’ll likely need much less. At any point in time, we’ll take free jumps immediately (although this machine does not have any). The power set (see <a href="nfas.html#sec-powerset" class="quarto-xref"><span>Section 4.2</span></a>) of the states of the NFA is then the “name” for the states in the new DFA.</p>
 <ul>
-<li>Find a string that falls completely off the machine in <a href="#fig-NFAxM1" class="quarto-xref">Figure&nbsp;<span>4.1</span></a> - where there are no more existing pathways.</li>
-<li>Find a string that remains in all the states of <a href="#fig-NFAxM1" class="quarto-xref">Figure&nbsp;<span>4.1</span></a> throughout it’s entire processing.</li>
-<li>Find a string that remains in State A of <a href="#fig-NFAxM1" class="quarto-xref">Figure&nbsp;<span>4.1</span></a> for only one step.</li>
+<li>To start, this machine begins in {A}. A is the start state and there are no configurations to or from it.</li>
+<li>If we’re in A, and we see a 0, we go nowhere - we fall off. This is the empty set of states, {} or <span class="math inline">\(\emptyset\)</span>. We call this the null state.</li>
+<li>Any inputs from the empty set, leads us back to the empty set, so 0 and 1 lead from the null state back to itself.</li>
+<li>If we’re in A and we see a 1, we go to both B and D. Thus {A} transitions to {B, D} on a 1.</li>
+<li>When we process {B, D} we consider all the places we may reach from either. On a 1, B goes to itself, D goes to D and E. Thus, from {B, D} we get to {B, D, E}</li>
+<li>On a 0 from {B, D}, B and D go to themselves, but B goes to C. So on a 0 from {B, D} we get to {B, C, D}.</li>
+<li>Let’s find out what happens in {B, D, E}. E always falls off, so {B, D, E} does the same thing as {B, D}. On 1, {B, D, E} and on 0, {B, C, D}.</li>
+<li>Something similar happens in {B, C, D}. On 1, {B, D, E} and on a 0, back to itself.</li>
+<li>We have no new states to process. Since if any thread is an accept in an NFA, any state with a C or E is an accept state in our new DFA. These are states {B, D, E} and {B, C, D}.</li>
 </ul>
-</div>
-</div>
-<p>In <a href="#fig-NFAxM1" class="quarto-xref">Figure&nbsp;<span>4.1</span></a> we saw a machine that uses a free transition, free jump, or ~, to create a situation where processing the machine requires us to think of being in multiple states at once. However, in an NFA, intentional parallelism can also be created by forking the processing of an input character to multiple states. In other words, imagine a state in which a transition occurs on an input symbol to more than one state. Let’s look at a small example again as seen in <a href="#fig-NFAxM2" class="quarto-xref">Figure&nbsp;<span>4.2</span></a>.</p>
-<div id="fig-NFAxM2" class="quarto-float quarto-figure quarto-figure-center anchored">
+<p>There we have it. We’ve converted an NFA to a DFA by keep tracking of the flow of all inputs from each state and encoding the subset of states that we’re in as a new state in the DFA. See <a href="#fig-NFAxPower3" class="quarto-xref">Figure&nbsp;<span>5.2</span></a> for the resulting DFA where states are listed in simplified form ({B, C, D} is listed as BCD).</p>
+<div id="fig-NFAxPower3" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-NFAxM2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div aria-describedby="fig-NFAxPower3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="light-content">
-<p><a href="../images/RL/NFAxM2-black.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-3" title="Figure&nbsp;4.2: Parallelism by taking a transition with the same input to two different states."><img src="../images/RL/NFAxM2-black.svg" class="img-fluid figure-img"></a></p>
+<p><a href="../images/RL/NFAxPower3-black.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-3" title="Figure&nbsp;5.2: The results of converting Figure&nbsp;fig-NFAxM4, an NFA, into a DFA."><img src="../images/RL/NFAxPower3-black.svg" class="img-fluid figure-img"></a></p>
 </div>
 <div class="dark-content">
-<p><a href="../images/RL/NFAxM2-white.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-4" title="Figure&nbsp;4.2: Parallelism by taking a transition with the same input to two different states."><img src="../images/RL/NFAxM2-white.svg" class="img-fluid figure-img"></a></p>
+<p><a href="../images/RL/NFAxPower3-white.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-4" title="Figure&nbsp;5.2: The results of converting Figure&nbsp;fig-NFAxM4, an NFA, into a DFA."><img src="../images/RL/NFAxPower3-white.svg" class="img-fluid figure-img"></a></p>
 </div>
 </div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-NFAxM2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;4.2: Parallelism by taking a transition with the same input to two different states.
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-NFAxPower3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5.2: The results of converting <a href="#fig-NFAxM4" class="quarto-xref">Figure&nbsp;<span>5.1</span></a>, an NFA, into a DFA.
 </figcaption>
 </figure>
 </div>
-<p><a href="#fig-NFAxM2" class="quarto-xref">Figure&nbsp;<span>4.2</span></a> demonstrates that we make transition from A on a 1 to two different states. If the input is “111” then the first 1 is consumed and leaves us in the states {B,C}. Just like before with free transitions, we find ourselves in a processing situation in which we may need to process multiple paths. If any of these paths succeed, then the string is accepted. In this case, 111 takes us from A to {B,C} to {D} and then to {D} to finish the processing. The bottom path ends in an accept state and thus we accept this string. Let’s explore this machine in the following exercise.</p>
-<div id="exercise-NFAs" class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Non-deterministic Finite Automata Free Transitions Exercise
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<ul>
-<li>What symbol falls off the machine in <a href="#fig-NFAxM2" class="quarto-xref">Figure&nbsp;<span>4.2</span></a> immediately?</li>
-<li>What string falls off the machine entirely after more than one step in <a href="#fig-NFAxM2" class="quarto-xref">Figure&nbsp;<span>4.2</span></a>?</li>
-<li>What is the language of the machine in <a href="#fig-NFAxM2" class="quarto-xref">Figure&nbsp;<span>4.2</span></a>?</li>
-</ul>
-</div>
-</div>
-<p>These types of transitions are often useful when we would like to process two different paths of thought, similar to a union. In the example above, the figure demonstrates that the string starts with “10” or “11”. Falling off on a 0 in state C allows us to ignore those characters and truly focus on what we care about for that path. Free transitions and forked transitions are great tools for expanding our expressive power in a finite automata with ease. Expressing an OR expression in a DFA might require carefully layering in the pathways in an intermingled fashion, but with an NFA, we can separate out the decisions easily.</p>
-<p>We have seen three elements of non-determinism. We can fall off a machine, ending (rejecting) the processing line for that input. We can take a free transition, extending our processing line for an input (creating parallelism). We may also transition to another state on more than one input! Let’s practice some of the features of NFAs in the following exercise.</p>
-<div id="exercise-NFAs-creating" class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Creating Non-deterministic Finite Automata Exercise
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<ul>
-<li>Take the DFA in <a href="dfas.html#fig-RFAxM2" class="quarto-xref">Figure&nbsp;<span>2.2</span></a> and the DFA in <a href="dfas.html#fig-RFAxM3" class="quarto-xref">Figure&nbsp;<span>2.4</span></a> and create an NFA that accepts strings that are accept by either machine. Creating an “OR” or union of two languages is very easy with NFAs. Free transitions are your friend here.</li>
-<li>Create an NFA that begins with “101”. Allow your machine to let things fall off!</li>
-<li>Create an NFA that ends with “101”. Hint, add a loop to your start state on “0,1”. This allows your machine to “guess” when it is at the end.</li>
-</ul>
-</div>
-</div>
-<p>In the end our NFAs have a slightly different transition table and function. Now, our return could be a set of states, or no states at all. Our transition function may take us from any number of states on a given input symbol (taking free transitions immediately). In C++ code we might now have a processing transition function that looks like:</p>
-<p><code>std::vector&lt;Q&gt; f(std::vector&lt;Q&gt;,A);</code></p>
-<p>However, to formally describe the NFA itself, we can still use a transition table centered around a slightly differ. Let’s make a transition table for the NFA in <a href="#fig-NFAxM3" class="quarto-xref">Figure&nbsp;<span>4.3</span></a>. This NFA has free jumps to two parallel processing segments. Those segments, in turn, have forked transitions. Can you sort out the language of this machine?</p>
-<div id="fig-NFAxM3" class="quarto-float quarto-figure quarto-figure-center anchored">
+<p>Now is a good time to pause, look at the diagrams side-by-side and convince ourselves they are the same. It seems like, as long as we start with a 1, we are accepting. The NFA looks like “starts with a 1 and ends with a 1 or 0,” but since the alphabet is {0, 1}, there are no other options to end up. Thus, we can simplify the idea by drawing a machine that starts with a 1. The DFA that we ended up with is not minimal (the minimal DFA for a language is also unique). We do not concern ourselves much with that in this book, but it is noteworthy that the DFA is “doing more work” than it is accepting. It is keeping track of the last symbol (0 is C, 1 is E) even though it doesn’t change the language because it accepts both. This is not uncommon when converting an NFA to a DFA. One thing to also note is that we only needed 5 states including the null or trap state for rejects rather than the 32 theoretical maximum that is the size of the power set of states.</p>
+<p>Let’s try another. Take a look at the machine in <a href="#fig-NFADFAxM2" class="quarto-xref">Figure&nbsp;<span>5.3</span></a>. We’ve seen this machine before.</p>
+<div id="fig-NFADFAxM2" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-NFAxM3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div aria-describedby="fig-NFADFAxM2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="light-content">
-<p><a href="../images/RL/NFAxM3-black.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-5" title="Figure&nbsp;4.3: Demonstrating the power of NFAs."><img src="../images/RL/NFAxM3-black.svg" class="img-fluid figure-img"></a></p>
+<p><a href="../images/RL/NFAxM4-black.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-5" title="Figure&nbsp;5.3: Recall this machine from Figure&nbsp;fig-NFAxM3."><img src="../images/RL/NFAxM4-black.svg" class="img-fluid figure-img"></a></p>
 </div>
 <div class="dark-content">
-<p><a href="../images/RL/NFAxM3-white.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-6" title="Figure&nbsp;4.3: Demonstrating the power of NFAs."><img src="../images/RL/NFAxM3-white.svg" class="img-fluid figure-img"></a></p>
+<p><a href="../images/RL/NFAxM4-white.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-6" title="Figure&nbsp;5.3: Recall this machine from Figure&nbsp;fig-NFAxM3."><img src="../images/RL/NFAxM4-white.svg" class="img-fluid figure-img"></a></p>
 </div>
 </div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-NFAxM3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;4.3: Demonstrating the power of NFAs.
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-NFADFAxM2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5.3: Recall this machine from <a href="nfas.html#fig-NFAxM3" class="quarto-xref">Figure&nbsp;<span>4.3</span></a>.
 </figcaption>
 </figure>
 </div>
-<p>The transition table of <a href="#fig-NFAxM3" class="quarto-xref">Figure&nbsp;<span>4.3</span></a> is a bit more complex than our previous transition tables as shown in <a href="#fig-transition-table-NFAxM3" class="quarto-xref">Figure&nbsp;<span>4.4</span></a>. Notice that we have a row dedicated to free transitions, ~. In addition we notice that our transitions now leave us in a set of states rather than in a single state. Sometimes that set of states is empty - meaning we fall off the machine. This table looks a little different than our programming minded function from above. This is because, programmatically, we can take the free jumps immediately. However, in the transition table, we show them separately. Take a look at the transition table before we proceed to describing it formally with mathematical language.</p>
-<div id="fig-transition-table-NFAxM3" class="quarto-float quarto-figure quarto-figure-center anchored">
+<p>Again, imagine that we will exhaustively track everywhere the machine can reach - every possible subset it can actually touch - taking free jumps immediately.</p>
+<ul>
+<li>We start in state A, with free transitions to B and D (we take all free transitions immediately). Thus, the start configuration is {A, B, D}.</li>
+<li>From {A, B, D}, if we read a 0, A falls off, B goes to C, and D goes to D Thus we are now in the configuration {C,D}.</li>
+<li>From {A, B, D}, we read a 1, A falls off, B goes to B <em>and</em> F, and D goes to E. Thus we are now in the configuration {B,E,F}.</li>
+<li>From {C,D}, if we read a 0, C goes to B and D goes to itself - leaving us in {B, D}.</li>
+<li>From {C,D}, if we read a 1, C goes to C and D goes to E - leaving us in {C, E}.</li>
+</ul>
+<p>Since any path that accepts is an accepting path, every state that contains an accept state of the NFA, will be an accept state. So far that includes {B,E,F} (for both E and F), {C,E} (for both C and E), and {C,D} (for C). Let’s pause to see how this may look as a diagram thus far in <a href="#fig-NFAxPower1" class="quarto-xref">Figure&nbsp;<span>5.4</span></a>.</p>
+<div id="fig-NFAxPower1" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-transition-table-NFAxM3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<style type="text/css">
-.tg  {border-collapse:collapse;border-spacing:0;}
-
-.tg td{border-color:black; border-bottom: 0px;
-    border-style:solid;font-family:Arial, sans-serif;font-size:14px;
-  overflow:hidden;padding:10px 5px;word-break:normal;}
-
-body.quarto-dark .tg td{border-color:black; border-bottom: 0px;
-    border-style:solid;font-family:Arial, sans-serif;font-size:14px;
-  overflow:hidden;padding:10px 5px;word-break:normal;}
-
-.tg th{border-color:black;border-style:solid;border-bottom:1px;font-family:Arial, sans-serif;font-size:14px;
-  font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
-
-body.quarto-dark .tg th{border-color:white;border-style:solid;border-bottom:1px;font-family:Arial, sans-serif;font-size:14px;
-  font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
-
-.tg .tg-wp8o{border-color:#000000;text-align:center;vertical-align:top}
-body.quarto-dark .tg .tg-wp8o{border-color:#ffffff;text-align:center;vertical-align:center}
-
-.tg .tg-wp8o1{border-color:#000000;border-width:0px 1p 0px 0px;text-align:center;vertical-align:top}
-body.quarto-dark .tg .tg-wp8o1{border-color:#ffffff;border-width:0px 1p 0px 0px;text-align:center;vertical-align:center}
-
-.table {border-bottom: 0px; border-top: 0px}
-.rightcell8888 {border-right: 1px}
-</style>
-
-<table class="tg caption-top table">
-<thead>
-<tr class="header">
-<th class="tg-wp8o rightcell8888" data-quarto-table-cell-role="th">&nbsp;</th>
-<th class="tg-wp8o" data-quarto-table-cell-role="th">A</th>
-<th class="tg-wp8o" data-quarto-table-cell-role="th">B</th>
-<th class="tg-wp8o" data-quarto-table-cell-role="th">C</th>
-<th class="tg-wp8o" data-quarto-table-cell-role="th">D</th>
-<th class="tg-wp8o" data-quarto-table-cell-role="th">E</th>
-<th class="tg-wp8o" data-quarto-table-cell-role="th">F</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td class="tg-wp8o rightcell8888">0</td>
-<td class="tg-wp8o">{}</td>
-<td class="tg-wp8o">{C}</td>
-<td class="tg-wp8o">{B}</td>
-<td class="tg-wp8o">{D}</td>
-<td class="tg-wp8o">{E}</td>
-<td class="tg-wp8o">{}</td>
-</tr>
-<tr class="even">
-<td class="tg-wp8o rightcell8888">1</td>
-<td class="tg-wp8o">{}</td>
-<td class="tg-wp8o">{B, F}</td>
-<td class="tg-wp8o">{C}</td>
-<td class="tg-wp8o">{E}</td>
-<td class="tg-wp8o">{D}</td>
-<td class="tg-wp8o">{}</td>
-</tr>
-<tr class="odd">
-<td class="tg-wp8o rightcell8888">~</td>
-<td class="tg-wp8o">{B,D}</td>
-<td class="tg-wp8o">{}</td>
-<td class="tg-wp8o">{}</td>
-<td class="tg-wp8o">{}</td>
-<td class="tg-wp8o">{}</td>
-<td class="tg-wp8o">{}</td>
-</tr>
-</tbody>
-</table>
+<div aria-describedby="fig-NFAxPower1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="light-content">
+<p><a href="../images/RL/NFAxPower1-black.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-7" title="Figure&nbsp;5.4: Processing an NFA with the power set."><img src="../images/RL/NFAxPower1-black.svg" class="img-fluid figure-img"></a></p>
 </div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-transition-table-NFAxM3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;4.4: Transition Table of <a href="#fig-NFAxM3" class="quarto-xref">Figure&nbsp;<span>4.3</span></a>.
+<div class="dark-content">
+<p><a href="../images/RL/NFAxPower1-white.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-8" title="Figure&nbsp;5.4: Processing an NFA with the power set."><img src="../images/RL/NFAxPower1-white.svg" class="img-fluid figure-img"></a></p>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-NFAxPower1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5.4: Processing an NFA with the power set.
 </figcaption>
 </figure>
 </div>
-<p>So, our old transition function was <span class="math inline">\(Q \times A \rightarrow Q\)</span>. Q is our set of states and A is our input alphabet. This is great for DFAs. For NFAs, our transition table requires <span class="math inline">\(A \cup \sim\)</span> for potential input consideration, to include the free transition. The transition function now returns a set of states. The set of all possible subsets of a set is called the power set and we denote it as <span class="math inline">\(P(Q)\)</span>. Recall that <span class="math inline">\(\times\)</span> is our Cartesian product as seen in <a href="dfas.html#sec-determinism" class="quarto-xref"><span>Section 2.5</span></a>, our determinism section. We’ll tackle more on the power set later, but for now it suffices to say that it means we can land in some, all, or none of the states of Q. Putting things together, our transition function is <span class="math inline">\(Q \times (A \cup \sim) \rightarrow P(Q)\)</span>. Processing then consists of, first looking up the free transitions and taking those immediately, then consuming the input symbol and looking up the transitions for that symbol. This process is repeated until we have consumed all the input symbols (or we hit a halt and accept if using the Ramsey variants). If any of the paths lead us to an accept state, then we accept the string.</p>
-<p>The forks, or parallels in NFAs are sometimes called a guess. The machine is “guessing” whether it should be in state A or state B. Calling it a guess hints at how these sorts of machines are sometimes used in practice - with a backtracking algorithm. While it is outside of the scope of this book, state-space search is rife with pitfalls, and when developing with finite automata (or more likely, their equivalents) we must take care with our machines to avoid poor computational efficiency or performance. Specifically, “poor” guessing can lead to exponential growth in the processing of an NFA. Ultimately, however, we are limited by a certain number of states and branches, which is hinted at in our transition table by the use of the power set, <span class="math inline">\(P(Q)\)</span>.</p>
-</section>
-<section id="sec-powerset" class="level2" data-number="4.2">
-<h2 data-number="4.2" class="anchored" data-anchor-id="sec-powerset"><span class="header-section-number">4.2</span> Power Set</h2>
-<p>The power set of a set is the set of all possible subsets of that set, including the empty set. For example, if we have a set <span class="math inline">\(Q = \{A,B,C\}\)</span>, then the power set of <span class="math inline">\(Q\)</span>, denoted as <span class="math inline">\(P(Q)\)</span>, would be: <span class="math display">\[P(Q) = \{\emptyset, \{A\}, \{B\}, \{C\}, \{A,B\}, \{A,C\}, \{B,C\}, \{A,B,C\}\}\]</span></p>
-<p>Recall that the empty set, <span class="math inline">\(\emptyset\)</span>, is a set with no elements, {}. You’ll notice here that the power set of a set with three elements has 8 subsets. Let’s explore the power set in the following exercises.</p>
-<div id="exercise-power-set" class="callout callout-style-default callout-note callout-titled">
+<p>Like before, states are listed in simplified form in the diagram, such that “BEF” represents the set of states {B, E, F}. The diagram is already growing quite rapidly. After considering only two jumps, we could be in any one of four states. Can you follow the logic to finish the diagram?</p>
+<details>
+<summary>
+The fully converted diagram of the NFA in <a href="nfas.html#fig-NFAxM3" class="quarto-xref">Figure&nbsp;<span>4.3</span></a> using power set construction.
+</summary>
+<div id="fig-NFAxPower2" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-NFAxPower2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="light-content">
+<p><a href="../images/RL/NFAxPower2-black.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-9" title="Figure&nbsp;5.5: The fully converted diagram of the NFA in Figure&nbsp;fig-NFADFAxM2 using the power set construction."><img src="../images/RL/NFAxPower2-black.svg" class="img-fluid figure-img"></a></p>
+</div>
+<div class="dark-content">
+<p><a href="../images/RL/NFAxPower2-white.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-10" title="Figure&nbsp;5.5: The fully converted diagram of the NFA in Figure&nbsp;fig-NFADFAxM2 using the power set construction."><img src="../images/RL/NFAxPower2-white.svg" class="img-fluid figure-img"></a></p>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-NFAxPower2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5.5: The fully converted diagram of the NFA in <a href="#fig-NFADFAxM2" class="quarto-xref">Figure&nbsp;<span>5.3</span></a> using the power set construction.
+</figcaption>
+</figure>
+</div>
+</details>
+<p>Now that we’ve tackled the conversion until we’ve run out of leads, let’s take a look at the diagram. We’ve arranged the diagram such that the three states that include E are grouped on the left. State E tracks an odd # of 1s. The two states with C are grouped along the bottom row and include the states that track an odd number of 0s. You’ll notice these 4 states are all accept states. The start state is somewhat isolated in the middle. Looking at the diagram as a whole, as we move from left to right, we’re flipping modality of 1 and as we move up and down we’re flipping the modality of 0. Lastly, strings that end in a 1 after an odd number of 0s are encoded by F. Looking at the diagram, an input of 1 always leads to an accept state. Thus if we end in a 1, we accept. Why does this work? Well, if we had seen an odd number of 0s, a 1 won’t change that and we’ll stay in an accept state. If we had seen an even number of 0s, we’ll be in the top half of the diagram. If we’re on the right side (even number of 0s), seeing a 1 will take us to {B, E, F}. That’s an odd number of 1s anyway, but it also ends in a 1 so it is an accept state. If we’re on the left side (looking at an odd number of 1s and already accepting), we’ll move to {B, D, F} and accept since F is an accept state. Using this power set construction is really quite an amazing way to convert <strong>any</strong> NFA into a DFA. The number of states can grow exponentially (the power set has size <span class="math inline">\(2^n\)</span>), and typically more states are required than in the NFA counterpart. Even so, it proves that NFAs and DFAs are equivalent in terms of the languages that they can recognize and it provides an algorithmic process for performing the conversion.</p>
+<p>Let’s tackle one last conversion with a NFA that has free transitions, ~. For this we look at another familiar machine from <a href="nfas.html#fig-NFAxM1" class="quarto-xref">Figure&nbsp;<span>4.1</span></a>.</p>
+<div id="fig-NFADFAxM1" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-NFADFAxM1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="light-content">
+<p><a href="../images/RL/NFAxM1-black.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-11" title="Figure&nbsp;5.6: Accepts any string with any number of a’s followed by any number of b’s."><img src="../images/RL/NFAxM1-black.svg" class="img-fluid figure-img"></a></p>
+</div>
+<div class="dark-content">
+<p><a href="../images/RL/NFAxM1-white.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-12" title="Figure&nbsp;5.6: Accepts any string with any number of a’s followed by any number of b’s."><img src="../images/RL/NFAxM1-white.svg" class="img-fluid figure-img"></a></p>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-NFADFAxM1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5.6: Accepts any string with any number of a’s followed by any number of b’s.
+</figcaption>
+</figure>
+</div>
+<p>Let’s pause and track to hack this one without help. Take free jumps, ~, immediately.</p>
+<details>
+<summary>
+Converting <a href="#fig-NFADFAxM1" class="quarto-xref">Figure&nbsp;<span>5.6</span></a> to a DFA
+</summary>
+<div id="fig-NFAxPower4" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-NFAxPower4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="light-content">
+<p><a href="../images/RL/NFAxPower4-black.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-13" title="Figure&nbsp;5.7: Converted the NFA of Figure&nbsp;fig-NFADFAxM1 into a DFA."><img src="../images/RL/NFAxPower4-black.svg" class="img-fluid figure-img"></a></p>
+</div>
+<div class="dark-content">
+<p><a href="../images/RL/NFAxPower4-white.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-14" title="Figure&nbsp;5.7: Converted the NFA of Figure&nbsp;fig-NFADFAxM1 into a DFA."><img src="../images/RL/NFAxPower4-white.svg" class="img-fluid figure-img"></a></p>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-NFAxPower4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5.7: Converted the NFA of <a href="#fig-NFADFAxM1" class="quarto-xref">Figure&nbsp;<span>5.6</span></a> into a DFA.
+</figcaption>
+</figure>
+</div>
+</details>
+<p>Because we take free jumps immediately, strangely, the start state is {A, B}.</p>
+<div id="exercise-nfa-to-dfa" class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Power Set Exercise
+<span class="screen-reader-only">Note</span>NFA to DFA Exercise
 </div>
 </div>
 <div class="callout-body-container callout-body">
 <ul>
-<li>Explain the power set in your own words.</li>
-<li>What is the power set of the set <span class="math inline">\(\{A, B\}\)</span>? How many elements does it have?</li>
-<li>Imagine we added a state to the set Q = {A, B, C} listed above. The new power set would have all the elements P(Q) listed above, and also all those subsets again with the additional element D. So, how many elements does the power set of <span class="math inline">\(\{A, B, C, D\}\)</span> have?</li>
-<li>How many elements does the power set of a set of size <span class="math inline">\(n\)</span> have?</li>
+<li>Convert the NFA in <a href="nfas.html#fig-NFAxM1" class="quarto-xref">Figure&nbsp;<span>4.1</span></a> to a DFA using the power set construction.</li>
+<li>Convert the NFA in <a href="nfas.html#fig-NFAxM2" class="quarto-xref">Figure&nbsp;<span>4.2</span></a> to a DFA using the power set construction. Something strange happens here. Why?</li>
 </ul>
 </div>
 </div>
-<p>Since the power set of a state set from an NFA encompasses all possible subsets of states, it can be used to represent the state of an NFA, encompassing all of its parallel processing into a single descriptor - the set of all states we are in at any particular point of processing the NFA.</p>
-<p>A power set will have <span class="math inline">\(2^n\)</span> subsets, where <span class="math inline">\(n\)</span> is the number of elements of the original set. So a slightly complex NFA, like the one in <a href="#fig-NFAxM3" class="quarto-xref">Figure&nbsp;<span>4.3</span></a> with 6 states, could have as many as 64 subsets. At any given time in processing that NFA, we are in one of those 64 subsets. Thinking of this in a different way, at any given time we are either in a specific state or not. So, we’re either in A or not, in B or not, in C or not, and so on. Since each state has 2 options, then there are <span class="math inline">\(2 \times 2 \times 2 \times 2 \times 2 \times 2\)</span> options.</p>
-<div id="exercise-powerset" class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Power Set Exercise
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<ul>
-<li>How many subsets can the states of <a href="#fig-NFAxM1" class="quarto-xref">Figure&nbsp;<span>4.1</span></a> have?</li>
-<li><a href="#fig-NFAxM2" class="quarto-xref">Figure&nbsp;<span>4.2</span></a> has 4 states. How large is the power set of those states?</li>
-<li>How many elements of the power set of states in <a href="#fig-NFAxM2" class="quarto-xref">Figure&nbsp;<span>4.2</span></a> would be accept states?</li>
-</ul>
-</div>
-</div>
-<p>NFAs give us a stronger power of expression by allowing free jumps and multiple configurations. In the next chapter, we explore the relationship between NFAs and DFAs. We aim to answer the question: do NFAs and DFAs recognize the same set of languages.</p>
-</section>
-<section id="exercises" class="level2" data-number="4.3">
-<h2 data-number="4.3" class="anchored" data-anchor-id="exercises"><span class="header-section-number">4.3</span> Exercises</h2>
-<ol type="1">
-<li>What is the language of the following NFA?</li>
-</ol>
-<div class="light-content">
-<p><a href="../images/RL/NFAxEx1-black.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-7"><img src="../images/RL/NFAxEx1-black.svg" class="img-fluid"></a></p>
-</div>
-<div class="dark-content">
-<p><a href="../images/RL/NFAxEx1-white.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-8"><img src="../images/RL/NFAxEx1-white.svg" class="img-fluid"></a></p>
-</div>
-<ol start="2" type="1">
-<li>What is the language of the following NFA?</li>
-</ol>
-<div class="light-content">
-<p><a href="../images/RL/NFAxEx2-black.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-9"><img src="../images/RL/NFAxEx2-black.svg" class="img-fluid"></a></p>
-</div>
-<div class="dark-content">
-<p><a href="../images/RL/NFAxEx2-white.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-10"><img src="../images/RL/NFAxEx2-white.svg" class="img-fluid"></a></p>
-</div>
-<ol start="3" type="1">
-<li>What is the language of the following NFA?</li>
-</ol>
-<div class="light-content">
-<p><a href="../images/RL/NFAxEx3-black.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-11"><img src="../images/RL/NFAxEx3-black.svg" class="img-fluid"></a></p>
-</div>
-<div class="dark-content">
-<p><a href="../images/RL/NFAxEx3-white.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-12"><img src="../images/RL/NFAxEx3-white.svg" class="img-fluid"></a></p>
-</div>
-<ol start="4" type="1">
-<li>Build an NFA for strings that start with a 0, end with a 0 and may contain any number of 0s and 1s in the middle.</li>
-<li>Build an NFA for strings that begin with either 001 or 10. It may be followed by any number of 0s and 1s.</li>
-<li>Build an NFA with alphabet {1,3,7} that recognizes any string that contains “1337”.</li>
-<li>Build an NFA that accepts binary strings that are 0 mod 4.</li>
-</ol>
 
 
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -1171,13 +1072,13 @@ Figure&nbsp;4.4: Transition Table of <a href="#fig-NFAxM3" class="quarto-xref">F
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../I/rfas.html" class="pagination-link" aria-label="Finite Automata For Developers (RFAs)">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Finite Automata For Developers (RFAs)</span></span>
+      <a href="../I/nfas.html" class="pagination-link" aria-label="Non-deterministic Finite Automata (NFAs)">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Non-deterministic Finite Automata (NFAs)</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../I/nfa_to_dfa.html" class="pagination-link" aria-label="NFAs to DFAs">
-        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">NFAs to DFAs</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../II/context-free-languages.html" class="pagination-link" aria-label="context-free-languages.html">
+        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">context-free-languages.html</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

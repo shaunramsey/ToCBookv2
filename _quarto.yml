@@ -30,12 +30,13 @@ book:
         - I/rfas.qmd
         - I/nfas.qmd
         - I/nfa_to_dfa.qmd
+        - I/rex.qmd
     - part: Part II - Context-Free Languages
       chapters:
-        - II/context-free-languages.qmd
+        - II/cfgs.qmd
     - part: Part III - Turing Machines and Computability
       chapters:
-        - III/turing-machines.qmd
+        - III/tms.qmd
     - book/references.qmd
 
 bibliography: references.bib

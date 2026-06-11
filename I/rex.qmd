@@ -1,0 +1,24 @@
+# Regular Expressions (REX)
+
+In this chapter, we introduce, yet another construct, regular expressions (REX). REX are generally used more often in human contexts. Even so, they can become incredibly complicated. Often REX are seen in a variety of computing contexts from searching, verification (is this a valid email address?), and in lexical analysis. Lexical analysis is the first step your compiler or interpreter might take to translate your code into machine code. In English it might be akin to denoting each part of the sentence by its tags like "SUBJECT", "VERB", "NOUN". In a programming language it might break "a = 3;", into "VARIABLE", "ASSIGNMENT_EXPRESSION", and "INTEGER_LITERAL". In a search, we often use a wildcard, like an asterisk, to "get everything." However, a deeper understanding of regular expressions allow our searches to be more specific and powerful.
+
+::: {.callout-important}
+## Learning Objectives
+- Elements of Regular Expressions (REX)
+- Understanding Existing REX
+- Strategies to Construct REX
+:::
+
+A regular expression describes a language, or set of strings, much like our existing machines. However, a regular expression is constructed by a series of concatenations, unions, and optional repeats. Let's look at a simple example: a b\* + b. In this REX, a is followed by some number of bs or b is by itself. In this way, the REX describes a language. Let's break down the pieces more directly. A regular expression can consist of the following:
+
+- any symbol from your input alphabet, a or b from the alphabet {a,b}
+- symbols concatenated (one after another), ab means (a followed by a b)
+- union or choices denoted by +, "a + b" means either a or b
+- parenthesis to group objects together, a(a+b) means an a followed by either a or b
+- repeating 0 or more times, a\* means 0 or more a's, (a+b)\* means repeat the choice of a or b - 0 or more times - abba is a valid string of this REX
+
+These elements combine to create patterns that can accept a certain language. Let's look at some simple examples.
+
+- A regular expression that begins with "01", would be written as 01(0+1)\*. This means 01 must be seen first but then can be followed by any binary string.
+- A regular expression that ends with "01" would be nearly the ame as (0+1)\*01. The string can be any binary string as long as it is followed by 01.
+- How about containing 01? This REX would be (0+1)\*01(0+1)\*. 01 can be preceded by any binary string or followed by any binary string, just as long as a 01 is in there somewhere.

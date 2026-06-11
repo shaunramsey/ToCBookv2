@@ -34,7 +34,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../II/context-free-languages.html" rel="next">
+<link href="../I/rex.html" rel="next">
 <link href="../I/nfas.html" rel="prev">
 <link href="../favicon.png" rel="icon" type="image/png">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
@@ -384,6 +384,12 @@ window.Quarto = {
  <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">NFAs to DFAs</span></span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../I/rex.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Regular Expressions (REX)</span></span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -397,8 +403,8 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../II/context-free-languages.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">context-free-languages.html</span></span></a>
+  <a href="../II/cfgs.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Context Free Grammars (CFGs)</span></span></a>
   </div>
 </li>
       </ul>
@@ -414,8 +420,8 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../III/turing-machines.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">turing-machines.html</span></span></a>
+  <a href="../III/tms.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Turing Machines (TMs)</span></span></a>
   </div>
 </li>
       </ul>
@@ -431,8 +437,14 @@ window.Quarto = {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link active" data-scroll-target="#exercises"><span class="header-section-number">5.1</span> Exercises</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -648,13 +660,57 @@ Figure&nbsp;5.7: Converted the NFA of <a href="#fig-NFADFAxM1" class="quarto-xre
 </div>
 <div class="callout-body-container callout-body">
 <ul>
-<li>Convert the NFA in <a href="nfas.html#fig-NFAxM1" class="quarto-xref">Figure&nbsp;<span>4.1</span></a> to a DFA using the power set construction.</li>
-<li>Convert the NFA in <a href="nfas.html#fig-NFAxM2" class="quarto-xref">Figure&nbsp;<span>4.2</span></a> to a DFA using the power set construction. Something strange happens here. Why?</li>
+<li>Convert the NFA in <a href="nfas.html#fig-NFAxM2" class="quarto-xref">Figure&nbsp;<span>4.2</span></a> (also shown below) to a DFA using the power set construction. Perhaps you notice something strange here?</li>
 </ul>
+<div class="light-content">
+<p><a href="../images/RL/NFAxM2-black.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-15"><img src="../images/RL/NFAxM2-black.svg" class="img-fluid"></a></p>
 </div>
+<div class="dark-content">
+<p><a href="../images/RL/NFAxM2-white.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-16"><img src="../images/RL/NFAxM2-white.svg" class="img-fluid"></a></p>
+</div>
+</div>
+</div>
+<section id="exercises" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="exercises"><span class="header-section-number">5.1</span> Exercises</h2>
+<ol type="1">
+<li>Convert the following NFA into a DFA.</li>
+</ol>
+<div class="light-content">
+<p><a href="../images/RL/NFAxEx1-black.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-17"><img src="../images/RL/NFAxEx1-black.svg" class="img-fluid"></a></p>
+</div>
+<div class="dark-content">
+<p><a href="../images/RL/NFAxEx1-white.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-18"><img src="../images/RL/NFAxEx1-white.svg" class="img-fluid"></a></p>
+</div>
+<ol start="2" type="1">
+<li>Convert the following NFA into a DFA.</li>
+</ol>
+<div class="light-content">
+<p><a href="../images/RL/NFAxEx2-black.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-19"><img src="../images/RL/NFAxEx2-black.svg" class="img-fluid"></a></p>
+</div>
+<div class="dark-content">
+<p><a href="../images/RL/NFAxEx2-white.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-20"><img src="../images/RL/NFAxEx2-white.svg" class="img-fluid"></a></p>
+</div>
+<ol start="3" type="1">
+<li>Convert the following NFA into a DFA.</li>
+</ol>
+<div class="light-content">
+<p><a href="../images/RL/NFAxEx3-black.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-21"><img src="../images/RL/NFAxEx3-black.svg" class="img-fluid"></a></p>
+</div>
+<div class="dark-content">
+<p><a href="../images/RL/NFAxEx3-white.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-22"><img src="../images/RL/NFAxEx3-white.svg" class="img-fluid"></a></p>
+</div>
+<ol start="4" type="1">
+<li>Convert the following NFA into a DFA.</li>
+</ol>
+<div class="light-content">
+<p><a href="../images/RL/NFADFAxEx1-black.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-23"><img src="../images/RL/NFADFAxEx1-black.svg" class="img-fluid"></a></p>
+</div>
+<div class="dark-content">
+<p><a href="../images/RL/NFADFAxEx1-white.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-24"><img src="../images/RL/NFADFAxEx1-white.svg" class="img-fluid"></a></p>
 </div>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -1077,8 +1133,8 @@ Figure&nbsp;5.7: Converted the NFA of <a href="#fig-NFADFAxM1" class="quarto-xre
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../II/context-free-languages.html" class="pagination-link" aria-label="context-free-languages.html">
-        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">context-free-languages.html</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../I/rex.html" class="pagination-link" aria-label="Regular Expressions (REX)">
+        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Regular Expressions (REX)</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

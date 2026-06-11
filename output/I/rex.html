@@ -6,8 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="description" content="An undergraduate Theory of Computation text designed for developers.">
 
-<title>context-free-languages – Theory of Computation: An Introduction For Programmers</title>
+<title>6&nbsp; Regular Expressions (REX) – Theory of Computation: An Introduction For Programmers</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -33,7 +34,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../III/turing-machines.html" rel="next">
+<link href="../II/cfgs.html" rel="next">
 <link href="../I/nfa_to_dfa.html" rel="prev">
 <link href="../favicon.png" rel="icon" type="image/png">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
@@ -79,15 +80,17 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 
 
-<meta property="og:title" content="Theory of Computation: An Introduction For Programmers">
+<meta property="og:title" content="6&nbsp; Regular Expressions (REX) – Theory of Computation: An Introduction For Programmers">
+<meta property="og:description" content="An undergraduate Theory of Computation text designed for developers.">
 <meta property="og:image" content="https://shaunramsey.github.io/ToCBookv2/images/Icon-512.png">
 <meta property="og:site_name" content="Theory of Computation: An Introduction For Programmers">
-<meta name="twitter:title" content="Theory of Computation: An Introduction For Programmers">
+<meta name="twitter:title" content="6&nbsp; Regular Expressions (REX) – Theory of Computation: An Introduction For Programmers">
+<meta name="twitter:description" content="An undergraduate Theory of Computation text designed for developers.">
 <meta name="twitter:image" content="https://shaunramsey.github.io/ToCBookv2/images/Icon-512.png">
 <meta name="twitter:card" content="summary_large_image">
 </head>
 
-<body class="nav-sidebar floating fullcontent quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+<body class="nav-sidebar floating quarto-light"><script id="quarto-html-before-body" type="application/javascript">
     const toggleBodyColorMode = (bsSheetEl) => {
       const mode = bsSheetEl.getAttribute("data-mode");
       const bodyEl = window.document.querySelector("body");
@@ -258,7 +261,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../II/context-free-languages.html">Part II - Context-Free Languages</a></li><li class="breadcrumb-item"><a href="../II/context-free-languages.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">context-free-languages.html</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../I/sets.html">Part I - Sets and Regular Languages</a></li><li class="breadcrumb-item"><a href="../I/rex.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Regular Expressions (REX)</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -349,6 +352,12 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">NFAs to DFAs</span></span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../I/rex.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Regular Expressions (REX)</span></span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -362,8 +371,8 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../II/context-free-languages.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">context-free-languages.html</span></span></a>
+  <a href="../II/cfgs.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Context Free Grammars (CFGs)</span></span></a>
   </div>
 </li>
       </ul>
@@ -379,8 +388,8 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../III/turing-machines.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">turing-machines.html</span></span></a>
+  <a href="../III/tms.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Turing Machines (TMs)</span></span></a>
   </div>
 </li>
       </ul>
@@ -396,14 +405,64 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
+    </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../II/context-free-languages.html">Part II - Context-Free Languages</a></li><li class="breadcrumb-item"><a href="../II/context-free-languages.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">context-free-languages.html</span></a></li></ol></nav></header>
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../I/sets.html">Part I - Sets and Regular Languages</a></li><li class="breadcrumb-item"><a href="../I/rex.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Regular Expressions (REX)</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Regular Expressions (REX)</span></h1>
+</div>
 
 
 
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
 
 
+</header>
+
+
+<p>In this chapter, we introduce, yet another construct, regular expressions (REX). REX are generally used more often in human contexts. Even so, they can become incredibly complicated. Often REX are seen in a variety of computing contexts from searching, verification (is this a valid email address?), and in lexical analysis. Lexical analysis is the first step your compiler or interpreter might take to translate your code into machine code. In English it might be akin to denoting each part of the sentence by its tags like “SUBJECT”, “VERB”, “NOUN”. In a programming language it might break “a = 3;”, into “VARIABLE”, “ASSIGNMENT_EXPRESSION”, and “INTEGER_LITERAL”. In a search, we often use a wildcard, like an asterisk, to “get everything.” However, a deeper understanding of regular expressions allow our searches to be more specific and powerful.</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Learning Objectives
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>Elements of Regular Expressions (REX)</li>
+<li>Understanding Existing REX</li>
+<li>Strategies to Construct REX</li>
+</ul>
+</div>
+</div>
+<p>A regular expression describes a language, or set of strings, much like our existing machines. However, a regular expression is constructed by a series of concatenations, unions, and optional repeats. Let’s look at a simple example: a b* + b. In this REX, a is followed by some number of bs or b is by itself. In this way, the REX describes a language. Let’s break down the pieces more directly. A regular expression can consist of the following:</p>
+<ul>
+<li>any symbol from your input alphabet, a or b from the alphabet {a,b}</li>
+<li>symbols concatenated (one after another), ab means (a followed by a b)</li>
+<li>union or choices denoted by +, “a + b” means either a or b</li>
+<li>parenthesis to group objects together, a(a+b) means an a followed by either a or b</li>
+<li>repeating 0 or more times, a* means 0 or more a’s, (a+b)* means repeat the choice of a or b - 0 or more times - abba is a valid string of this REX</li>
+</ul>
+<p>These elements combine to create patterns that can accept a certain language. Let’s look at some simple examples.</p>
+<ul>
+<li>A regular expression that begins with “01”, would be written as 01(0+1)*. This means 01 must be seen first but then can be followed by any binary string.</li>
+<li>A regular expression that ends with “01” would be nearly the ame as (0+1)*01. The string can be any binary string as long as it is followed by 01.</li>
+<li>How about containing 01? This REX would be (0+1)*01(0+1)*. 01 can be preceded by any binary string or followed by any binary string, just as long as a 01 is in there somewhere.</li>
+</ul>
 
 
 
@@ -828,8 +887,8 @@ ul.task-list li input[type="checkbox"] {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../III/turing-machines.html" class="pagination-link" aria-label="turing-machines.html">
-        <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">turing-machines.html</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../II/cfgs.html" class="pagination-link" aria-label="Context Free Grammars (CFGs)">
+        <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Context Free Grammars (CFGs)</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

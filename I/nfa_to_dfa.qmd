@@ -162,7 +162,56 @@ Because we take free jumps immediately, strangely, the start state is {A, B}.
 
 ::: {#exercise-nfa-to-dfa .callout-note}
 ## NFA to DFA Exercise
-- Convert the NFA in @fig-NFAxM1 to a DFA using the power set construction. 
-- Convert the NFA in @fig-NFAxM2 to a DFA using the power set construction. Something strange happens here. Why?
+- Convert the NFA in @fig-NFAxM2 (also shown below) to a DFA using the power set construction. Perhaps you notice something strange here?
+
+::: {.light-content}
+![](/images/RL/NFAxM2-black.svg)
 :::
 
+::: {.dark-content}
+![](/images/RL/NFAxM2-white.svg)
+:::
+
+:::
+
+## Exercises
+1. Convert the following NFA into a DFA.
+
+::: {.light-content}
+![](/images/RL/NFAxEx1-black.svg)
+:::
+
+::: {.dark-content}
+![](/images/RL/NFAxEx1-white.svg)
+:::
+
+2. Convert the following NFA into a DFA.
+
+::: {.light-content}
+![](/images/RL/NFAxEx2-black.svg)
+:::
+
+::: {.dark-content}
+![](/images/RL/NFAxEx2-white.svg)
+:::
+
+3. Convert the following NFA into a DFA.
+
+::: {.light-content}
+![](/images/RL/NFAxEx3-black.svg)
+:::
+
+::: {.dark-content}
+![](/images/RL/NFAxEx3-white.svg)
+:::
+
+
+4. Convert the following NFA into a DFA.
+
+::: {.light-content}
+![](/images/RL/NFADFAxEx1-black.svg)
+:::
+
+::: {.dark-content}
+![](/images/RL/NFADFAxEx1-white.svg)
+:::

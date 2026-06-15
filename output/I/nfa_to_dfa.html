@@ -390,6 +390,18 @@ window.Quarto = {
  <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Regular Expressions (REX)</span></span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../I/rex_to_nfa.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">REX to NFAs</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../I/nfa_to_rex.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">NFAs to REX</span></span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -404,7 +416,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../II/cfgs.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Context Free Grammars (CFGs)</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Context Free Grammars (CFGs)</span></span></a>
   </div>
 </li>
       </ul>
@@ -421,7 +433,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../III/tms.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Turing Machines (TMs)</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Turing Machines (TMs)</span></span></a>
   </div>
 </li>
       </ul>
@@ -442,7 +454,9 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#exercises" id="toc-exercises" class="nav-link active" data-scroll-target="#exercises"><span class="header-section-number">5.1</span> Exercises</a></li>
+  <li><a href="#nfa-review" id="toc-nfa-review" class="nav-link active" data-scroll-target="#nfa-review"><span class="header-section-number">5.1</span> NFA Review</a></li>
+  <li><a href="#conversion-by-power-set-construction" id="toc-conversion-by-power-set-construction" class="nav-link" data-scroll-target="#conversion-by-power-set-construction"><span class="header-section-number">5.2</span> Conversion by Power Set Construction</a></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">5.3</span> Exercises</a></li>
   </ul>
 </nav>
     </div>
@@ -486,6 +500,8 @@ window.Quarto = {
 </ul>
 </div>
 </div>
+<section id="nfa-review" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="nfa-review"><span class="header-section-number">5.1</span> NFA Review</h2>
 <p>Let’s begin with a new NFA and a review.</p>
 <div id="exercise-nfa-to-dfa-review" class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -520,6 +536,9 @@ Figure&nbsp;5.1: What is the language of this machine?
 </figcaption>
 </figure>
 </div>
+</section>
+<section id="conversion-by-power-set-construction" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="conversion-by-power-set-construction"><span class="header-section-number">5.2</span> Conversion by Power Set Construction</h2>
 <p>The power set of the set of states of <a href="#fig-NFAxM4" class="quarto-xref">Figure&nbsp;<span>5.1</span></a> is a good place to start thinking about the conversion of the NFA to a DFA. Since the power set can include all possible configurations of the NFA at any given time. The NFA has 5 states, so we need 5 positions to track where a processed string is at any time. Either it is in A or it isn’t, either it is in B or it isn’t, and so on. Combining those we end up with <em>2^5=32</em> potential configurations. However, we’ll likely need much less. At any point in time, we’ll take free jumps immediately (although this machine does not have any). The power set (see <a href="nfas.html#sec-powerset" class="quarto-xref"><span>Section 4.2</span></a>) of the states of the NFA is then the “name” for the states in the new DFA.</p>
 <ul>
 <li>To start, this machine begins in {A}. A is the start state and there are no configurations to or from it.</li>
@@ -670,8 +689,9 @@ Figure&nbsp;5.7: Converted the NFA of <a href="#fig-NFADFAxM1" class="quarto-xre
 </div>
 </div>
 </div>
-<section id="exercises" class="level2" data-number="5.1">
-<h2 data-number="5.1" class="anchored" data-anchor-id="exercises"><span class="header-section-number">5.1</span> Exercises</h2>
+</section>
+<section id="exercises" class="level2" data-number="5.3">
+<h2 data-number="5.3" class="anchored" data-anchor-id="exercises"><span class="header-section-number">5.3</span> Exercises</h2>
 <ol type="1">
 <li>Convert the following NFA into a DFA.</li>
 </ol>

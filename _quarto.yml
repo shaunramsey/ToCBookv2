@@ -31,6 +31,8 @@ book:
         - I/nfas.qmd
         - I/nfa_to_dfa.qmd
         - I/rex.qmd
+        - I/rex_to_nfa.qmd
+        - I/nfa_to_rex.qmd
     - part: Part II - Context-Free Languages
       chapters:
         - II/cfgs.qmd

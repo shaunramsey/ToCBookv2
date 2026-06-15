@@ -24,7 +24,26 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="../site_libs/quarto-nav/quarto-nav.js"></script>
@@ -34,7 +53,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../II/cfgs.html" rel="next">
+<link href="../I/rex_to_nfa.html" rel="next">
 <link href="../I/nfa_to_dfa.html" rel="prev">
 <link href="../favicon.png" rel="icon" type="image/png">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
@@ -358,6 +377,18 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Regular Expressions (REX)</span></span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../I/rex_to_nfa.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">REX to NFAs</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../I/nfa_to_rex.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">NFAs to REX</span></span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -372,7 +403,7 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../II/cfgs.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Context Free Grammars (CFGs)</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Context Free Grammars (CFGs)</span></span></a>
   </div>
 </li>
       </ul>
@@ -389,7 +420,7 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../III/tms.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Turing Machines (TMs)</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Turing Machines (TMs)</span></span></a>
   </div>
 </li>
       </ul>
@@ -405,8 +436,15 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#regular-expressions" id="toc-regular-expressions" class="nav-link active" data-scroll-target="#regular-expressions"><span class="header-section-number">6.1</span> Regular Expressions</a></li>
+  <li><a href="#regular-expression-exercise" id="toc-regular-expression-exercise" class="nav-link" data-scroll-target="#regular-expression-exercise"><span class="header-section-number">6.2</span> Regular Expression Exercise</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -449,22 +487,68 @@ ul.task-list li input[type="checkbox"] {
 </ul>
 </div>
 </div>
+<section id="regular-expressions" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="regular-expressions"><span class="header-section-number">6.1</span> Regular Expressions</h2>
 <p>A regular expression describes a language, or set of strings, much like our existing machines. However, a regular expression is constructed by a series of concatenations, unions, and optional repeats. Let’s look at a simple example: a b* + b. In this REX, a is followed by some number of bs or b is by itself. In this way, the REX describes a language. Let’s break down the pieces more directly. A regular expression can consist of the following:</p>
 <ul>
 <li>any symbol from your input alphabet, a or b from the alphabet {a,b}</li>
-<li>symbols concatenated (one after another), ab means (a followed by a b)</li>
-<li>union or choices denoted by +, “a + b” means either a or b</li>
-<li>parenthesis to group objects together, a(a+b) means an a followed by either a or b</li>
+<li>~, which represents the empty string. (a+~)b means: either “ab” or “b”</li>
+<li>symbols concatenated (one after another), ab means: an a followed by a b</li>
+<li>union or choices denoted by +, “a + b” means: either a or b</li>
+<li>parenthesis to group objects together, a(a+b) means: an a followed by either a or b</li>
 <li>repeating 0 or more times, a* means 0 or more a’s, (a+b)* means repeat the choice of a or b - 0 or more times - abba is a valid string of this REX</li>
 </ul>
 <p>These elements combine to create patterns that can accept a certain language. Let’s look at some simple examples.</p>
 <ul>
-<li>A regular expression that begins with “01”, would be written as 01(0+1)*. This means 01 must be seen first but then can be followed by any binary string.</li>
-<li>A regular expression that ends with “01” would be nearly the ame as (0+1)*01. The string can be any binary string as long as it is followed by 01.</li>
+<li>A regular expression for a set of strings that begin with “01”, would be written as 01(0+1)*. This means 01 must be seen first but then can be followed by any binary string.</li>
+<li>A regular expression that ends with “01” would be nearly the same as (0+1)*01. The string can be any binary string, denoted as (0+1)*, as long as it is followed by 01.</li>
 <li>How about containing 01? This REX would be (0+1)*01(0+1)*. 01 can be preceded by any binary string or followed by any binary string, just as long as a 01 is in there somewhere.</li>
 </ul>
+<p>Let’s try a few:</p>
+<div id="exercise-rex" class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Regular Expressions
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>Describe the strings in the following regular expression: (aa + b)*</li>
+<li>What is the shortest string in the following REX: a(ca)*ba(ca)*?</li>
+<li>Describe the strings in the following regular expression: a(ca)*ba(ca)*. For example, “acacacabaca” is in the language.</li>
+<li>Write a regular expression for strings that contain “abba”.</li>
+<li>Write a regular expression that contains one more “na” followed by “batman”. For example “nanananananananananabatman” is in the language.</li>
+<li>Write a regular expression for any string with an even number of 0’s.</li>
+</ul>
+</div>
+</div>
+<p>We note that there are similarities in the kinds of languages we are seeing with regular expressions and our finite automata. The class of languages that these expressions and automata belong to is called the class of regular languages. In the next two chapters, we’ll show, by construction, that regular expressions can be converted into NFAs and that any NFA can be converted into a REX. This will show that NFAs, DFAs, and REX have the some power of expression and recognize the same kinds of languages. As humans, and developers, we most often use REX for searching in some space (find me everything that contains “kid”), validating form fields (does the entry look like an email address), and lexical analysis. Since REX, NFAs, and DFAs all have the same power, the implementation of a REX can be done, under the hood as a DFA. In practice, this means REX can be implemented with a minified DFA very efficiently or through a power set simulation. Some REX implementations, however, use a recursive backtracking tree-based algorithm based on a REX’s NFA, leading to potentially poor performance in some cases. While beyond the scope of this book, we encourage you to read on about the history and implementation of such things in <span class="citation" data-cites="cox2007">Cox (<a href="../book/references.html#ref-cox2007" role="doc-biblioref">2007</a>)</span>.</p>
+<p>Now it is time to try our hand at some exercises.</p>
+</section>
+<div id="exercise-rex.callout-note">
+<section id="regular-expression-exercise" class="level2" data-number="6.2">
+<h2 data-number="6.2" class="anchored" data-anchor-id="regular-expression-exercise"><span class="header-section-number">6.2</span> Regular Expression Exercise</h2>
+<ul>
+<li><p>Given that n represents any digit, give a regular expression that matches a telephone number with an area code. Use dashes to separate area code and central office code. For example: 555-555-5555 is a string in the language. However, your REX can use n to represent 0+1+2+3+4+5+6+7+8+9.</p></li>
+<li><p>Given an alphabet of {a, @, .}, make a regular expression that includes an a, followed by 0 or more “.a” strings, followed by “@”, followed by an a and one or more “.a” strings. The shortest string in the language is “a@a.a”. Two more example strings are “a@a.a.a” and “a.a.a@a.a.a.a.a”.</p></li>
+<li><p>Give a regular expression for an identifier. Do not worry about ignoring keywords. Example strings in the language include: “my_list”, “_myVar”, and “speed4”. You may use n to represent any digit, and z to represent any character in your REX for simplicity.</p></li>
+<li><p>Give a REX for a string that starts and ends with a 1 and contains at least one other 1. The smallest string in this language is “111”, but it also contains “10011011101”.</p></li>
+<li><p>What is the language of 0+(1+0)*?</p></li>
+<li><p>What is the language of (0+1)*(101+111)?</p></li>
+<li><p>What is the language of (0+1)*(11 + 00)(1+~)(0+1)* ?</p></li>
+</ul>
+</section>
+</div>
 
 
+<div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
+<div id="ref-cox2007" class="csl-entry" role="listitem">
+Cox, Russ. 2007. <em>Regular Expression Matching Can Be Simple and Fast</em>. <a href="https://swtch.com/~rsc/regexp/regexp1.html" class="uri">Https://swtch.com/~rsc/regexp/regexp1.html</a>.
+</div>
+</div>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -887,8 +971,8 @@ ul.task-list li input[type="checkbox"] {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../II/cfgs.html" class="pagination-link" aria-label="Context Free Grammars (CFGs)">
-        <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Context Free Grammars (CFGs)</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../I/rex_to_nfa.html" class="pagination-link" aria-label="REX to NFAs">
+        <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">REX to NFAs</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

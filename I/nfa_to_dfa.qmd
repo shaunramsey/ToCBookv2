@@ -9,6 +9,7 @@ This chapter gives the elements of a proof that the class of languages accepted 
 :::
 
 
+## NFA Review
 
 
 Let's begin with a new NFA and a review.
@@ -32,6 +33,8 @@ Let's begin with a new NFA and a review.
 
 What is the language of this machine?
 :::
+
+## Conversion by Power Set Construction
 
 The power set of the set of states of @fig-NFAxM4 is a good place to start thinking about the conversion of the NFA to a DFA.
 Since the power set can include all possible configurations of the NFA at any given time. The NFA has 5 states, so we need 5 positions to track where a processed string is at any time. Either it is in A or it isn't, either it is in B or it isn't, and so on. Combining those we end up with *2^5=32* potential configurations. However, we'll likely need much less. At any point in time, we'll take free jumps immediately (although this machine does not have any). The power set (see @sec-powerset) of the states of the NFA is then the "name" for the states in the new DFA.

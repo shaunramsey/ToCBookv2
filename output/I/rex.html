@@ -442,7 +442,7 @@ div.csl-indent {
    
   <ul>
   <li><a href="#regular-expressions" id="toc-regular-expressions" class="nav-link active" data-scroll-target="#regular-expressions"><span class="header-section-number">6.1</span> Regular Expressions</a></li>
-  <li><a href="#regular-expression-exercise" id="toc-regular-expression-exercise" class="nav-link" data-scroll-target="#regular-expression-exercise"><span class="header-section-number">6.2</span> Regular Expression Exercise</a></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">6.2</span> Exercises</a></li>
   </ul>
 </nav>
     </div>
@@ -491,7 +491,7 @@ div.csl-indent {
 <h2 data-number="6.1" class="anchored" data-anchor-id="regular-expressions"><span class="header-section-number">6.1</span> Regular Expressions</h2>
 <p>A regular expression describes a language, or set of strings, much like our existing machines. However, a regular expression is constructed by a series of concatenations, unions, and optional repeats. Let’s look at a simple example: a b* + b. In this REX, a is followed by some number of bs or b is by itself. In this way, the REX describes a language. Let’s break down the pieces more directly. A regular expression can consist of the following:</p>
 <ul>
-<li>any symbol from your input alphabet, a or b from the alphabet {a,b}</li>
+<li>any symbol from your input alphabet, sometimes called terminals. a or b from the alphabet {a,b}</li>
 <li>~, which represents the empty string. (a+~)b means: either “ab” or “b”</li>
 <li>symbols concatenated (one after another), ab means: an a followed by a b</li>
 <li>union or choices denoted by +, “a + b” means: either a or b</li>
@@ -529,8 +529,8 @@ div.csl-indent {
 <p>Now it is time to try our hand at some exercises.</p>
 </section>
 <div id="exercise-rex.callout-note">
-<section id="regular-expression-exercise" class="level2" data-number="6.2">
-<h2 data-number="6.2" class="anchored" data-anchor-id="regular-expression-exercise"><span class="header-section-number">6.2</span> Regular Expression Exercise</h2>
+<section id="exercises" class="level2" data-number="6.2">
+<h2 data-number="6.2" class="anchored" data-anchor-id="exercises"><span class="header-section-number">6.2</span> Exercises</h2>
 <ul>
 <li><p>Given that n represents any digit, give a regular expression that matches a telephone number with an area code. Use dashes to separate area code and central office code. For example: 555-555-5555 is a string in the language. However, your REX can use n to represent 0+1+2+3+4+5+6+7+8+9.</p></li>
 <li><p>Given an alphabet of {a, @, .}, make a regular expression that includes an a, followed by 0 or more “.a” strings, followed by “@”, followed by an a and one or more “.a” strings. The shortest string in the language is “a@a.a”. Two more example strings are “a@a.a.a” and “a.a.a@a.a.a.a.a”.</p></li>

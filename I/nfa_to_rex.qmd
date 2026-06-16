@@ -1,1 +1,41 @@
 # NFAs to REX
+
+This chapter's focus is on converting an NFA to a regular expression. By demonstrating the process of turning an NFA to a REX, you can see the underlying proof by construction that every NFA can be written has a REX. 
+
+::: {.callout-important}
+## Learning Objectives
+- Understanding RIPs
+- Understanding the relationsihp between NFAs and Regular Expressions
+:::
+
+## Converting an NFA into A Regular Expression
+
+To convert an NFA into a regular expression, we will make use of yet another type of finite automata. In this automata, edges and transitions will occur on regular expressions rather than terminals. For example, if we could travel from A to B on "a,b", we will relabel this transition to "a+b" such that it matches the regular expression. In addition, we will be using an NFA that has a singular start state with no transitions to it and a singular accept state with no transitions leaving it. Let's create one of these as an example starting with a familiar DFA (see @Fig-RFAxM2) reproduced below.
+
+::: {#fig-NFA2REXxM1}
+::: {.light-content}
+![](/images/RL/RFAxM2-black.svg)
+:::
+
+::: {.dark-content}
+![](/images/RL/RFAxM2-white.svg)
+:::
+
+A simple deterministic finite automata (DFA).
+:::
+
+This DFA does not follow the rules of the specialized NFA that we require, so we'll make one. Add a new start state with an empty transition to the old start state and add a new accept state with an empty transition from the old accept state. This is still functionally the same machine, which is great news. Check out the new machine in @fig-NFAxRIP1.
+
+::: {#fig-NFAxRIP1}
+::: {.light-content}
+![](/images/RL/NFAxRIP1-black.svg)
+:::
+
+::: {.dark-content}
+![](/images/RL/NFAxRIP1-white.svg)
+:::
+
+A new start and accept state have been added to the machine in @fig-NFA2REXxM1.
+:::
+
+At this point, our goal is to rip states out of this machine, repairing the transitions as needed so that we have a machine that recognizes the same language - just with one less state. In the end we should have only our new start and accept states. The transition between them will be the regular expression of the original machine. Let's start by ripping B out of the machine first. 

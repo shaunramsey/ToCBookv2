@@ -13,7 +13,7 @@ In this chapter, we introduce, yet another construct, regular expressions (REX).
 
 A regular expression describes a language, or set of strings, much like our existing machines. However, a regular expression is constructed by a series of concatenations, unions, and optional repeats. Let's look at a simple example: a b\* + b. In this REX, a is followed by some number of bs or b is by itself. In this way, the REX describes a language. Let's break down the pieces more directly. A regular expression can consist of the following:
 
-- any symbol from your input alphabet, a or b from the alphabet {a,b}
+- any symbol from your input alphabet, sometimes called terminals. a or b from the alphabet {a,b}
 - ~, which represents the empty string. (a+~)b means: either "ab" or "b"
 - symbols concatenated (one after another), ab means: an a followed by a b
 - union or choices denoted by +, "a + b" means: either a or b

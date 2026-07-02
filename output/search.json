@@ -14,7 +14,7 @@
     "href": "book/status.html",
     "title": "Theory of Computation v2 Build Information",
     "section": "",
-    "text": "Generated on: 2026-06-16 at 14:22:09\nBuild number 213",
+    "text": "Generated on: 2026-06-25 at 12:14:38\nBuild number 223",
     "crumbs": [
       "Theory of Computation v2 Build Information"
     ]
@@ -319,7 +319,7 @@
     "href": "I/nfa_to_rex.html",
     "title": "8  NFAs to REX",
     "section": "",
-    "text": "8.1 Converting an NFA into A Regular Expression\nThis chapter’s focus is on converting an NFA to a regular expression. By demonstrating the process of turning an NFA to a REX, you can see the underlying proof by construction that every NFA can be written has a REX.\nTo convert an NFA into a regular expression, we will make use of yet another type of finite automata. In this automata, edges and transitions will occur on regular expressions rather than terminals. For example, if we could travel from A to B on “a,b”, we will relabel this transition to “a+b” such that it matches the regular expression. In addition, we will be using an NFA that has a singular start state with no transitions to it and a singular accept state with no transitions leaving it. Let’s create one of these as an example starting with a familiar DFA (see Figure 2.2) reproduced below.\nThis DFA does not follow the rules of the specialized NFA that we require, so we’ll make one. Add a new start state with an empty transition to the old start state and add a new accept state with an empty transition from the old accept state. This is still functionally the same machine, which is great news. Check out the new machine in Figure 8.2.\nAt this point, our goal is to rip states out of this machine, repairing the transitions as needed so that we have a machine that recognizes the same language - just with one less state. In the end we should have only our new start and accept states. The transition between them will be the regular expression of the original machine. Let’s start by ripping B out of the machine first.",
+    "text": "8.1 Converting an NFA into A Regular Expression\nThis chapter’s focus is on converting an NFA to a regular expression. By demonstrating the process of turning an NFA to a REX, you can see the underlying proof by construction that every NFA can be written has a REX.\nTo convert an NFA into a regular expression, we will make use of yet another type of finite automata. In this automata, edges and transitions will occur on regular expressions rather than terminals. For example, if we could travel from A to B on “a,b”, we will relabel this transition to “a+b” such that it matches the regular expression. In addition, we will be using an NFA that has a singular start state with no transitions to it and a singular accept state with no transitions leaving it. Let’s create one of these as an example starting with a familiar DFA (see Figure 2.2) reproduced below.\nThis DFA does not follow the rules of the specialized NFA that we require, so we’ll make one. Add a new start state with an empty transition to the old start state and add a new accept state with an empty transition from the old accept state. This is still functionally the same machine, which is great news. Check out the new machine in Figure 8.2.\nAt this point, our goal is to rip states out of this machine, repairing the transitions as needed so that we have a machine that recognizes the same language - just with one less state. In the end we should have only our new start and accept states. The transition between them will be the regular expression of the original machine. Let’s start by ripping B out of the machine first. Let’s take a look at B in Figure 8.3.\nIf we are going to remove B from this machine, we have to repair the transitions that a node may take through B. B has one transition in from A and two transitions out to A and E. This means, A can get back to itself by going through B. Also, A can get to E by going through B. In general, when removing a node, count the number of incoming transitions and outgoing transitions. The number of transitions that can happen through that node is the multiple of those two numbers. In this case, that is 1 and 2, and 1*2=2. Let’s look at the path from A to B to E. A to B is 1, B to itself is 1, and B to E is a free transition, ~. Using this, we can write a regular expression for the path from A to E. That regular expression is 11*~ but since ~ is a free jump and concatenated with other termainls, we simply write this as 11*. The first one is A to B, we star everything from B to itself (because we can take that 0 or more times) and then we concatenate on the transition from B to E. We’ll do something similar with A to get 01*0. Let’s take a look at our new diagram, without B and using our regular expressions on the labels in Figure 8.4.\nSince A already had a path to itself, the new path that we found (through B) is added to the list of options for A to itself. On the contrary, since A did not have a transition to E before removing B, a new transition is added that encompasses, exhaustively, the path from A to E through B. Our next step is to remove A, which will leave us with only two states. The regular expression on that transition will be the regular expression of our original diagram. Let’s try to rip A ourselves. The results are below.\nThe original language of Figure 8.1 was any string with an odd number of 0’s. Let’s convince ourselves that this is true of the regular expression shown in Figure 8.5. The first loop allows a choice of any number of a 1 or two 0’s with any number of 1’s inside. This can be taken as many times as we like. Thus, to leave this expression, we know we will have seen an even number of 0’s and any number of 1’s. The last part of the expression is a single 0 followed by any number of 1s. So the first part forces an even number of 0’s and the last bit adds a single 0 to make it odd. So, no matter what we have an odd number of 0s.",
     "crumbs": [
       "Part I - Sets and Regular Languages",
       "<span class='chapter-number'>8</span>  <span class='chapter-title'>NFAs to REX</span>"
@@ -330,7 +330,29 @@
     "href": "I/nfa_to_rex.html#converting-an-nfa-into-a-regular-expression",
     "title": "8  NFAs to REX",
     "section": "",
-    "text": "Figure 8.1: A simple deterministic finite automata (DFA).\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 8.2: A new start and accept state have been added to the machine in Figure 8.1.",
+    "text": "Figure 8.1: A simple deterministic finite automata (DFA).\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 8.2: A new start and accept state have been added to the machine in Figure 8.1.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 8.3: Ignoring some edges of Figure 8.2 to highlight the node B.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 8.4: B has been removed from Figure 8.2.\n\n\n\n\n\n\nThe results of removing A from Figure 8.4.\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 8.5: The final regular expression of Figure 8.1.",
+    "crumbs": [
+      "Part I - Sets and Regular Languages",
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>NFAs to REX</span>"
+    ]
+  },
+  {
+    "objectID": "I/nfa_to_rex.html#a-second-example",
+    "href": "I/nfa_to_rex.html#a-second-example",
+    "title": "8  NFAs to REX",
+    "section": "8.2 A Second Example",
+    "text": "8.2 A Second Example\nLet’s take",
+    "crumbs": [
+      "Part I - Sets and Regular Languages",
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>NFAs to REX</span>"
+    ]
+  },
+  {
+    "objectID": "I/nfa_to_rex.html#exercises",
+    "href": "I/nfa_to_rex.html#exercises",
+    "title": "8  NFAs to REX",
+    "section": "8.3 Exercises",
+    "text": "8.3 Exercises",
     "crumbs": [
       "Part I - Sets and Regular Languages",
       "<span class='chapter-number'>8</span>  <span class='chapter-title'>NFAs to REX</span>"

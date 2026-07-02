@@ -1,0 +1,27 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "https://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+
+<svg width="390" height="215" version="1.1" xmlns="http://www.w3.org/2000/svg">
+
+	<path stroke="white" stroke-width="1" fill="none" d="M 153.469,115.633 A 195.000,195.000 0 0 1 246.531,115.633"/>
+	<polygon fill="white" stroke-width="1" points="246.531,115.633 236.865,118.195 239.153,108.883"/>
+	<text fill="white" stroke="white" x="195.800" y="102.300" font-family="Courier New" font-size="14">0</text>
+	<path stroke="white" stroke-width="1" fill="none" d="M 246.531,134.367 A 195.000,195.000 0 0 1 153.469,134.367"/>
+	<polygon fill="white" stroke-width="1" points="153.469,134.367 163.135,131.805 160.847,141.117"/>
+	<text fill="white" stroke="white" x="195.800" y="154.700" font-family="Courier New" font-size="14">0</text>
+	<path stroke="white" stroke-width="1" fill="none" d="M 287.367,153.282 A 20.000,20.000 0 1 1 262.633,153.282"/>
+	<polygon fill="white" stroke-width="1" points="262.633,153.282 260.119,162.961 253.130,156.396"/>
+	<text fill="white" stroke="white" x="270.800" y="204.500" font-family="Courier New" font-size="14">1</text>
+	<path stroke="white" stroke-width="1" fill="none" d="M 286.150,97.267 A 101.250,101.250 0 0 1 322.267,61.150"/>
+	<polygon fill="white" stroke-width="1" points="322.267,61.150 317.122,69.725 312.272,61.454"/>
+	<text fill="white" stroke="white" x="289.774" y="72.474" font-family="Courier New" font-size="14">~</text>
+	<ellipse stroke="#666666" stroke-width="1" fill="none" cx="50.000" cy="50.000" rx="30" ry="30"/>
+	<text fill="#666666" stroke="#666666" x="43.400" y="55.500" font-family="Courier New" font-size="22">S</text>
+	<ellipse stroke="#666666" stroke-width="1" fill="none" cx="125.000" cy="125.000" rx="30" ry="30"/>
+	<text fill="#666666" stroke="#666666" x="118.400" y="130.500" font-family="Courier New" font-size="22">A</text>
+	<ellipse stroke="white" stroke-width="1" fill="none" cx="275.000" cy="125.000" rx="30" ry="30"/>
+	<text fill="white" stroke="white" x="268.400" y="130.500" font-family="Courier New" font-size="22">B</text>
+	<ellipse stroke="#666666" stroke-width="1" fill="none" cx="350.000" cy="50.000" rx="30" ry="30"/>
+	<ellipse stroke="#666666" stroke-width="1" fill="none" cx="350.000" cy="50.000" rx="25" ry="25"/>
+	<text fill="#666666" stroke="#666666" x="343.400" y="55.500" font-family="Courier New" font-size="22">E</text>
+</svg>

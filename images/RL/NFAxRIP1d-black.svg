@@ -1,0 +1,16 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "https://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+
+<svg width="390" height="90" version="1.1" xmlns="http://www.w3.org/2000/svg">
+
+	<polygon stroke="black" stroke-width="1" points="0.000,0.000 28.787,28.787"/>
+	<polygon fill="black" stroke-width="1" points="28.787,28.787 19.191,25.971 25.971,19.191"/>
+	<path stroke="black" stroke-width="1" fill="none" d="M 79.516,44.643 A 757.500,757.500 0 0 1 320.484,44.643"/>
+	<polygon fill="black" stroke-width="1" points="320.484,44.643 311.057,47.981 312.583,38.514"/>
+	<text fill="black" stroke="black" x="149.600" y="27.300" font-family="Courier New" font-size="14">(1+01*0)*01*</text>
+	<ellipse stroke="black" stroke-width="1" fill="none" cx="50.000" cy="50.000" rx="30" ry="30"/>
+	<text fill="black" stroke="black" x="43.400" y="55.500" font-family="Courier New" font-size="22">S</text>
+	<ellipse stroke="black" stroke-width="1" fill="none" cx="350.000" cy="50.000" rx="30" ry="30"/>
+	<ellipse stroke="black" stroke-width="1" fill="none" cx="350.000" cy="50.000" rx="25" ry="25"/>
+	<text fill="black" stroke="black" x="343.400" y="55.500" font-family="Courier New" font-size="22">E</text>
+</svg>

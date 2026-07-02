@@ -426,6 +426,8 @@ ul.task-list li input[type="checkbox"] {
    
   <ul>
   <li><a href="#converting-an-nfa-into-a-regular-expression" id="toc-converting-an-nfa-into-a-regular-expression" class="nav-link active" data-scroll-target="#converting-an-nfa-into-a-regular-expression"><span class="header-section-number">8.1</span> Converting an NFA into A Regular Expression</a></li>
+  <li><a href="#a-second-example" id="toc-a-second-example" class="nav-link" data-scroll-target="#a-second-example"><span class="header-section-number">8.2</span> A Second Example</a></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">8.3</span> Exercises</a></li>
   </ul>
 </nav>
     </div>
@@ -503,7 +505,67 @@ Figure&nbsp;8.2: A new start and accept state have been added to the machine in 
 </figcaption>
 </figure>
 </div>
-<p>At this point, our goal is to rip states out of this machine, repairing the transitions as needed so that we have a machine that recognizes the same language - just with one less state. In the end we should have only our new start and accept states. The transition between them will be the regular expression of the original machine. Let’s start by ripping B out of the machine first.</p>
+<p>At this point, our goal is to rip states out of this machine, repairing the transitions as needed so that we have a machine that recognizes the same language - just with one less state. In the end we should have only our new start and accept states. The transition between them will be the regular expression of the original machine. Let’s start by ripping B out of the machine first. Let’s take a look at B in <a href="#fig-NFAxRIP1b" class="quarto-xref">Figure&nbsp;<span>8.3</span></a>.</p>
+<div id="fig-NFAxRIP1b" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-NFAxRIP1b-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="light-content">
+<p><a href="../images/RL/NFAxRIP1b-black.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-5" title="Figure&nbsp;8.3: Ignoring some edges of Figure&nbsp;fig-NFAxRIP1 to highlight the node B."><img src="../images/RL/NFAxRIP1b-black.svg" class="img-fluid figure-img"></a></p>
+</div>
+<div class="dark-content">
+<p><a href="../images/RL/NFAxRIP1b-white.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-6" title="Figure&nbsp;8.3: Ignoring some edges of Figure&nbsp;fig-NFAxRIP1 to highlight the node B."><img src="../images/RL/NFAxRIP1b-white.svg" class="img-fluid figure-img"></a></p>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-NFAxRIP1b-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;8.3: Ignoring some edges of <a href="#fig-NFAxRIP1" class="quarto-xref">Figure&nbsp;<span>8.2</span></a> to highlight the node B.
+</figcaption>
+</figure>
+</div>
+<p>If we are going to remove B from this machine, we have to repair the transitions that a node may take through B. B has one transition in from A and two transitions out to A and E. This means, A can get back to itself by going through B. Also, A can get to E by going through B. In general, when removing a node, count the number of incoming transitions and outgoing transitions. The number of transitions that can happen through that node is the multiple of those two numbers. In this case, that is 1 and 2, and 1*2=2. Let’s look at the path from A to B to E. A to B is 1, B to itself is 1, and B to E is a free transition, ~. Using this, we can write a regular expression for the path from A to E. That regular expression is 11*~ but since ~ is a free jump and concatenated with other termainls, we simply write this as 11*. The first one is A to B, we star everything from B to itself (because we can take that 0 or more times) and then we concatenate on the transition from B to E. We’ll do something similar with A to get 01*0. Let’s take a look at our new diagram, without B and using our regular expressions on the labels in <a href="#fig-NFAxRIP1c" class="quarto-xref">Figure&nbsp;<span>8.4</span></a>.</p>
+<div id="fig-NFAxRIP1c" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-NFAxRIP1c-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="light-content">
+<p><a href="../images/RL/NFAxRIP1c-black.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-7" title="Figure&nbsp;8.4: B has been removed from Figure&nbsp;fig-NFAxRIP1."><img src="../images/RL/NFAxRIP1c-black.svg" class="img-fluid figure-img"></a></p>
+</div>
+<div class="dark-content">
+<p><a href="../images/RL/NFAxRIP1c-white.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-8" title="Figure&nbsp;8.4: B has been removed from Figure&nbsp;fig-NFAxRIP1."><img src="../images/RL/NFAxRIP1c-white.svg" class="img-fluid figure-img"></a></p>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-NFAxRIP1c-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;8.4: B has been removed from <a href="#fig-NFAxRIP1" class="quarto-xref">Figure&nbsp;<span>8.2</span></a>.
+</figcaption>
+</figure>
+</div>
+<p>Since A already had a path to itself, the new path that we found (through B) is added to the list of options for A to itself. On the contrary, since A did not have a transition to E before removing B, a new transition is added that encompasses, exhaustively, the path from A to E through B. Our next step is to remove A, which will leave us with only two states. The regular expression on that transition will be the regular expression of our original diagram. Let’s try to rip A ourselves. The results are below.</p>
+<details>
+<summary>
+The results of removing A from <a href="#fig-NFAxRIP1c" class="quarto-xref">Figure&nbsp;<span>8.4</span></a>.
+</summary>
+<div id="fig-NFAxRIP1d" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-NFAxRIP1d-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="light-content">
+<p><a href="../images/RL/NFAxRIP1d-black.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-9" title="Figure&nbsp;8.5: The final regular expression of Figure&nbsp;fig-NFA2REXxM1."><img src="../images/RL/NFAxRIP1d-black.svg" class="img-fluid figure-img"></a></p>
+</div>
+<div class="dark-content">
+<p><a href="../images/RL/NFAxRIP1d-white.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-10" title="Figure&nbsp;8.5: The final regular expression of Figure&nbsp;fig-NFA2REXxM1."><img src="../images/RL/NFAxRIP1d-white.svg" class="img-fluid figure-img"></a></p>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-NFAxRIP1d-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;8.5: The final regular expression of <a href="#fig-NFA2REXxM1" class="quarto-xref">Figure&nbsp;<span>8.1</span></a>.
+</figcaption>
+</figure>
+</div>
+</details>
+<p>The original language of <a href="#fig-NFA2REXxM1" class="quarto-xref">Figure&nbsp;<span>8.1</span></a> was any string with an odd number of 0’s. Let’s convince ourselves that this is true of the regular expression shown in <a href="#fig-NFAxRIP1d" class="quarto-xref">Figure&nbsp;<span>8.5</span></a>. The first loop allows a choice of any number of a 1 or two 0’s with any number of 1’s inside. This can be taken as many times as we like. Thus, to leave this expression, we know we will have seen an even number of 0’s and any number of 1’s. The last part of the expression is a single 0 followed by any number of 1s. So the first part forces an even number of 0’s and the last bit adds a single 0 to make it odd. So, no matter what we have an odd number of 0s.</p>
+</section>
+<section id="a-second-example" class="level2" data-number="8.2">
+<h2 data-number="8.2" class="anchored" data-anchor-id="a-second-example"><span class="header-section-number">8.2</span> A Second Example</h2>
+<p>Let’s take</p>
+</section>
+<section id="exercises" class="level2" data-number="8.3">
+<h2 data-number="8.3" class="anchored" data-anchor-id="exercises"><span class="header-section-number">8.3</span> Exercises</h2>
 
 
 </section>

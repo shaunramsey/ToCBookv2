@@ -38,4 +38,61 @@ This DFA does not follow the rules of the specialized NFA that we require, so we
 A new start and accept state have been added to the machine in @fig-NFA2REXxM1.
 :::
 
-At this point, our goal is to rip states out of this machine, repairing the transitions as needed so that we have a machine that recognizes the same language - just with one less state. In the end we should have only our new start and accept states. The transition between them will be the regular expression of the original machine. Let's start by ripping B out of the machine first. 
+At this point, our goal is to rip states out of this machine, repairing the transitions as needed so that we have a machine that recognizes the same language - just with one less state. In the end we should have only our new start and accept states. The transition between them will be the regular expression of the original machine. Let's start by ripping B out of the machine first. Let's take a look at B in @fig-NFAxRIP1b.
+
+::: {#fig-NFAxRIP1b}
+::: {.light-content}
+![](/images/RL/NFAxRIP1b-black.svg)
+:::
+
+::: {.dark-content}
+![](/images/RL/NFAxRIP1b-white.svg)
+:::
+
+Ignoring some edges of @fig-NFAxRIP1 to highlight the node B.
+:::
+
+If we are going to remove B from this machine, we have to repair the transitions that a node may take through B. B has one transition in from A and two transitions out to A and E. This means, A can get back to itself by going through B. Also, A can get to E by going through B. In general, when removing a node, count the number of incoming transitions and outgoing transitions. The number of transitions that can happen through that node is the multiple of those two numbers. In this case, that is 1 and 2, and 1\*2=2. Let's look at the path from A to B to E. A to B is 1, B to itself is 1, and B to E is a free transition, ~. 
+Using this, we can write a regular expression for the path from A to E. That regular expression is 11\*~ but since ~ is a free jump and concatenated with other termainls, we simply write this as 11\*. The first one is A to B, we star everything from B to itself (because we can take that 0 or more times) and then we concatenate on the transition from B to E. We'll do something similar with A to get 01\*0. Let's take a look at our new diagram, without B and using our regular expressions on the labels in @fig-NFAxRIP1c.
+
+::: {#fig-NFAxRIP1c}
+::: {.light-content}
+![](/images/RL/NFAxRIP1c-black.svg)
+:::
+
+::: {.dark-content}
+![](/images/RL/NFAxRIP1c-white.svg)
+:::
+
+B has been removed from @fig-NFAxRIP1.
+:::
+
+Since A already had a path to itself, the new path that we found (through B) is added to the list of options for A to itself. On the contrary, since A did not have a transition to E before removing B, a new transition is added that encompasses, exhaustively, the path from A to E through B. Our next step is to remove A, which will leave us with only two states. The regular expression on that transition will be the regular expression of our original diagram. Let's try to rip A ourselves. The results are below.
+
+<details>
+<summary> The results of removing A from @fig-NFAxRIP1c.</summary>
+
+::: {#fig-NFAxRIP1d}
+::: {.light-content}
+![](/images/RL/NFAxRIP1d-black.svg)
+:::
+
+::: {.dark-content}
+![](/images/RL/NFAxRIP1d-white.svg)
+:::
+
+The final regular expression of @fig-NFA2REXxM1.
+:::
+
+</details>
+
+The original language of @fig-NFA2REXxM1 was any string with an odd number of 0's. Let's convince ourselves that this is true of the regular expression shown in @fig-NFAxRIP1d. The first loop allows a choice of any number of a 1 or two 0's with any number of 1's inside. This can be taken as many times as we like. Thus, to leave this expression, we know we will have seen an even number of 0's and any number of 1's. The last part of the expression is a single 0 followed by any number of 1s. So the first part forces an even number of 0's and the last bit adds a single 0 to make it odd. So, no matter what we have an odd number of 0s.
+
+## A Second Example
+Let's take a look at another example in @fig-NFA2REXxM2.
+
+
+
+
+
+## Exercises

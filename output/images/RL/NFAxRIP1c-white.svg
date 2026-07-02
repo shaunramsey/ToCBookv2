@@ -1,0 +1,24 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "https://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+
+<svg width="390" height="215" version="1.1" xmlns="http://www.w3.org/2000/svg">
+
+	<polygon stroke="white" stroke-width="1" points="0.000,0.000 28.787,28.787"/>
+	<polygon fill="white" stroke-width="1" points="28.787,28.787 19.191,25.971 25.971,19.191"/>
+	<path stroke="white" stroke-width="1" fill="none" d="M 77.733,61.150 A 101.250,101.250 0 0 1 113.850,97.267"/>
+	<polygon fill="white" stroke-width="1" points="113.850,97.267 105.275,92.122 113.546,87.272"/>
+	<text fill="white" stroke="white" x="101.826" y="72.474" font-family="Courier New" font-size="14">~</text>
+	<path stroke="white" stroke-width="1" fill="none" d="M 137.367,153.282 A 20.000,20.000 0 1 1 112.633,153.282"/>
+	<polygon fill="white" stroke-width="1" points="112.633,153.282 110.119,162.961 103.130,156.396"/>
+	<text fill="white" stroke="white" x="99.800" y="204.500" font-family="Courier New" font-size="14">1+01*0</text>
+	<path stroke="white" stroke-width="1" fill="none" d="M 150.698,109.530 A 476.250,476.250 0 0 1 320.160,53.042"/>
+	<polygon fill="white" stroke-width="1" points="320.160,53.042 312.098,58.959 310.825,49.455"/>
+	<text fill="white" stroke="white" x="216.615" y="66.144" font-family="Courier New" font-size="14">01*</text>
+	<ellipse stroke="white" stroke-width="1" fill="none" cx="50.000" cy="50.000" rx="30" ry="30"/>
+	<text fill="white" stroke="white" x="43.400" y="55.500" font-family="Courier New" font-size="22">S</text>
+	<ellipse stroke="white" stroke-width="1" fill="none" cx="125.000" cy="125.000" rx="30" ry="30"/>
+	<text fill="white" stroke="white" x="118.400" y="130.500" font-family="Courier New" font-size="22">A</text>
+	<ellipse stroke="white" stroke-width="1" fill="none" cx="350.000" cy="50.000" rx="30" ry="30"/>
+	<ellipse stroke="white" stroke-width="1" fill="none" cx="350.000" cy="50.000" rx="25" ry="25"/>
+	<text fill="white" stroke="white" x="343.400" y="55.500" font-family="Courier New" font-size="22">E</text>
+</svg>

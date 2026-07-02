@@ -89,7 +89,120 @@ The final regular expression of @fig-NFA2REXxM1.
 The original language of @fig-NFA2REXxM1 was any string with an odd number of 0's. Let's convince ourselves that this is true of the regular expression shown in @fig-NFAxRIP1d. The first loop allows a choice of any number of a 1 or two 0's with any number of 1's inside. This can be taken as many times as we like. Thus, to leave this expression, we know we will have seen an even number of 0's and any number of 1's. The last part of the expression is a single 0 followed by any number of 1s. So the first part forces an even number of 0's and the last bit adds a single 0 to make it odd. So, no matter what we have an odd number of 0s.
 
 ## A Second Example
-Let's take a look at another example in @fig-NFA2REXxM2.
+Let's take a look at another example in @fig-NFAxM5. In this diagram, we see two accept states. The language is a bit complicated to describe, but our ripping process should give us a regular expression which can help with that. Before we begin our rips, see if you can see all the pathways that can lead to an accept state to describe this language.
+
+::: {#fig-NFAxM5}
+::: {.light-content}
+![](/images/RL/NFAxM5-black.svg)
+:::
+
+::: {.dark-content}
+![](/images/RL/NFAxM5-white.svg)
+:::
+
+An interesting machine with a combination of a's, b's, c's and free jumps
+:::
+
+
+<details>
+<summary> The starting point </summary>
+
+To start we generally add a new start state and a new unique accept state. The new start state will have a free transition to the old start state and the original accept states will have free transitions to the new accept state.
+Your resulting image should look like:
+
+::: {.light-content}
+![](/images/RL/NFAxRIP5-black.svg)
+:::
+
+::: {.dark-content}
+![](/images/RL/NFAxRIP5-white.svg)
+:::
+
+</details>
+
+In general, removing nodes with less connections is easier. So we're going to rip in this order for this machine: A, C, E, B and then D. You can follow our steps below. If we remove states in a different order, we will very likely receive a different regular expression. Let's get started.
+
+<details>
+<summary> Removing A from above </summary>
+We note that A has one incoming connection and two outgoing. So, we're looking at two expressions that either add a new connection or "or" into an existing connection.
+
+::: {.light-content}
+![](/images/RL/NFAxRIP5b-black.svg)
+:::
+
+::: {.dark-content}
+![](/images/RL/NFAxRIP5b-white.svg)
+:::
+
+</details>
+
+
+<details>
+<summary> Removing C from above </summary>
+We see that C has one incoming and outgoing connection. Remember that concatentating with ~ simply does nothing, much like concatenating the empty string, "", results in the original string in most programming languages. This results in the following:
+
+::: {.light-content}
+![](/images/RL/NFAxRIP5c-black.svg)
+:::
+
+::: {.dark-content}
+![](/images/RL/NFAxRIP5c-white.svg)
+:::
+
+</details>
+
+<details>
+<summary> Removing E from above </summary>
+Similarly E has one incoming and two outgoing connections. Let's remove it:
+
+::: {.light-content}
+![](/images/RL/NFAxRIP5d-black.svg)
+:::
+
+::: {.dark-content}
+![](/images/RL/NFAxRIP5d-white.svg)
+:::
+
+</details>
+
+<details>
+<summary> Removing B from above </summary>
+
+Things start to get a little interesting because B has two incoming connections (from S and D) and two outgoing connections (to D and acc). This means 4 new pieces: S to D, D to D, S to acc, and D to acc. Most of these already have a connection so we'll be "or"ing in a new pathway.
+
+::: {.light-content}
+![](/images/RL/NFAxRIP5e-black.svg)
+:::
+
+::: {.dark-content}
+![](/images/RL/NFAxRIP5e-white.svg)
+:::
+
+</details>
+
+<details>
+<summary> Removing D from above </summary>
+
+Our final step has only one in and one out, leaving us with a single connection from start to accept with our regular expression sitting on top. If you analyze this regular expression, the first part is the path to accept from A to B to C of our original machine. The longer part is more complicated. It's first part takes you from start to the state D. Then we have a loop for all the ways we can leave D and get back to D. Lastly we have the steps that can take us to an accept, either b (going to state E) or the final piece which takes us from D to E to B to C with each of it's looping bits in tact. Quite a complicated regular expression, but we can see how it encodes the language of the machine quite nicely. You can also see how the order of our RIPs leads to this breakdown of the loop that exists in the machine.
+
+::: {.light-content}
+![](/images/RL/NFAxRIP5f-black.svg)
+:::
+
+::: {.dark-content}
+![](/images/RL/NFAxRIP5f-white.svg)
+:::
+
+</details>
+
+It is time to get our hands dirty and try a few of our own.
+
+
+::: {#exercise-RIPs .callout-note}
+## Creating Regular Expressions from FAs.
+- one
+- two
+:::
 
 
 

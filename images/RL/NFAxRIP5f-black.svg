@@ -1,0 +1,49 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "https://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+
+<svg width="540" height="90" version="1.1" xmlns="http://www.w3.org/2000/svg">
+
+	<polygon stroke="black" stroke-width="1" points="0.000,0.000 28.787,28.787"/>
+	<polygon fill="black" stroke-width="1" points="28.787,28.787 19.191,25.971 25.971,19.191"/>
+	<polygon fill="white" stroke-width="1" points="-5,0 0,5, 5,0"/>
+	<polygon fill="white" stroke-width="1" points="15,0 20,5, 25,0"/>
+	<polygon fill="white" stroke-width="1" points="35,0 40,5, 45,0"/>
+	<polygon fill="white" stroke-width="1" points="55,0 60,5, 65,0"/>
+	<polygon fill="white" stroke-width="1" points="75,0 80,5, 85,0"/>
+	<polygon fill="white" stroke-width="1" points="95,0 100,5, 105,0"/>
+	<polygon fill="white" stroke-width="1" points="115,0 120,5, 125,0"/>
+	<polygon fill="white" stroke-width="1" points="135,0 140,5, 145,0"/>
+	<polygon fill="white" stroke-width="1" points="155,0 160,5, 165,0"/>
+	<polygon fill="white" stroke-width="1" points="175,0 180,5, 185,0"/>
+	<polygon fill="white" stroke-width="1" points="195,0 200,5, 205,0"/>
+	<polygon fill="white" stroke-width="1" points="215,0 220,5, 225,0"/>
+	<polygon fill="white" stroke-width="1" points="235,0 240,5, 245,0"/>
+	<polygon fill="white" stroke-width="1" points="255,0 260,5, 265,0"/>
+	<polygon fill="white" stroke-width="1" points="275,0 280,5, 285,0"/>
+	<polygon fill="white" stroke-width="1" points="295,0 300,5, 305,0"/>
+	<polygon fill="white" stroke-width="1" points="315,0 320,5, 325,0"/>
+	<polygon fill="white" stroke-width="1" points="335,0 340,5, 345,0"/>
+	<polygon fill="white" stroke-width="1" points="355,0 360,5, 365,0"/>
+	<polygon fill="white" stroke-width="1" points="375,0 380,5, 385,0"/>
+	<polygon fill="white" stroke-width="1" points="395,0 400,5, 405,0"/>
+	<polygon fill="white" stroke-width="1" points="415,0 420,5, 425,0"/>
+	<polygon fill="white" stroke-width="1" points="435,0 440,5, 445,0"/>
+	<polygon fill="white" stroke-width="1" points="455,0 460,5, 465,0"/>
+	<polygon fill="white" stroke-width="1" points="475,0 480,5, 485,0"/>
+	<polygon fill="white" stroke-width="1" points="495,0 500,5, 505,0"/>
+	<polygon fill="white" stroke-width="1" points="515,0 520,5, 525,0"/>
+	<polygon fill="white" stroke-width="1" points="535,0 540,5, 545,0"/>
+	<polygon fill="white" stroke-width="1" points="0,-5 5,0, 0,5"/>
+	<polygon fill="white" stroke-width="1" points="0,15 5,20, 0,25"/>
+	<polygon fill="white" stroke-width="1" points="0,35 5,40, 0,45"/>
+	<polygon fill="white" stroke-width="1" points="0,55 5,60, 0,65"/>
+	<polygon fill="white" stroke-width="1" points="0,75 5,80, 0,85"/>
+	<path stroke="black" stroke-width="1" fill="none" d="M 79.768,46.281 A 1695.000,1695.000 0 0 1 470.232,46.281"/>
+	<polygon fill="black" stroke-width="1" points="470.232,46.281 460.962,50.033 462.067,40.508"/>
+	<text fill="black" stroke="black" x="140.600" y="27.300" font-family="Courier New" font-size="14">a*ab*+(~+a*c)(b+ba*c)*(b+ba*ab*)</text>
+	<ellipse stroke="black" stroke-width="1" fill="none" cx="50.000" cy="50.000" rx="30" ry="30"/>
+	<text fill="black" stroke="black" x="43.400" y="55.500" font-family="Courier New" font-size="22">S</text>
+	<ellipse stroke="black" stroke-width="1" fill="none" cx="500.000" cy="50.000" rx="30" ry="30"/>
+	<ellipse stroke="black" stroke-width="1" fill="none" cx="500.000" cy="50.000" rx="25" ry="25"/>
+	<text fill="black" stroke="black" x="480.200" y="55.500" font-family="Courier New" font-size="22">acc</text>
+</svg>

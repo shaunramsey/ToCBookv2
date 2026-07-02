@@ -562,7 +562,112 @@ Figure&nbsp;8.5: The final regular expression of <a href="#fig-NFA2REXxM1" class
 </section>
 <section id="a-second-example" class="level2" data-number="8.2">
 <h2 data-number="8.2" class="anchored" data-anchor-id="a-second-example"><span class="header-section-number">8.2</span> A Second Example</h2>
-<p>Let’s take</p>
+<p>Let’s take a look at another example in <a href="#fig-NFAxM5" class="quarto-xref">Figure&nbsp;<span>8.6</span></a>. In this diagram, we see two accept states. The language is a bit complicated to describe, but our ripping process should give us a regular expression which can help with that. Before we begin our rips, see if you can see all the pathways that can lead to an accept state to describe this language.</p>
+<div id="fig-NFAxM5" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-NFAxM5-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="light-content">
+<p><a href="../images/RL/NFAxM5-black.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-11" title="Figure&nbsp;8.6: An interesting machine with a combination of a’s, b’s, c’s and free jumps"><img src="../images/RL/NFAxM5-black.svg" class="img-fluid figure-img"></a></p>
+</div>
+<div class="dark-content">
+<p><a href="../images/RL/NFAxM5-white.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-12" title="Figure&nbsp;8.6: An interesting machine with a combination of a’s, b’s, c’s and free jumps"><img src="../images/RL/NFAxM5-white.svg" class="img-fluid figure-img"></a></p>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-NFAxM5-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;8.6: An interesting machine with a combination of a’s, b’s, c’s and free jumps
+</figcaption>
+</figure>
+</div>
+<details>
+<summary>
+The starting point
+</summary>
+<p>To start we generally add a new start state and a new unique accept state. The new start state will have a free transition to the old start state and the original accept states will have free transitions to the new accept state. Your resulting image should look like:</p>
+<div class="light-content">
+<p><a href="../images/RL/NFAxRIP5-black.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-13"><img src="../images/RL/NFAxRIP5-black.svg" class="img-fluid"></a></p>
+</div>
+<div class="dark-content">
+<p><a href="../images/RL/NFAxRIP5-white.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-14"><img src="../images/RL/NFAxRIP5-white.svg" class="img-fluid"></a></p>
+</div>
+</details>
+<p>In general, removing nodes with less connections is easier. So we’re going to rip in this order for this machine: A, C, E, B and then D. You can follow our steps below. If we remove states in a different order, we will very likely receive a different regular expression. Let’s get started.</p>
+<details>
+<summary>
+Removing A from above
+</summary>
+<p>We note that A has one incoming connection and two outgoing. So, we’re looking at two expressions that either add a new connection or “or” into an existing connection.</p>
+<div class="light-content">
+<p><a href="../images/RL/NFAxRIP5b-black.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-15"><img src="../images/RL/NFAxRIP5b-black.svg" class="img-fluid"></a></p>
+</div>
+<div class="dark-content">
+<p><a href="../images/RL/NFAxRIP5b-white.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-16"><img src="../images/RL/NFAxRIP5b-white.svg" class="img-fluid"></a></p>
+</div>
+</details>
+<details>
+<summary>
+Removing C from above
+</summary>
+<p>We see that C has one incoming and outgoing connection. Remember that concatentating with ~ simply does nothing, much like concatenating the empty string, ““, results in the original string in most programming languages. This results in the following:</p>
+<div class="light-content">
+<p><a href="../images/RL/NFAxRIP5c-black.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-17"><img src="../images/RL/NFAxRIP5c-black.svg" class="img-fluid"></a></p>
+</div>
+<div class="dark-content">
+<p><a href="../images/RL/NFAxRIP5c-white.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-18"><img src="../images/RL/NFAxRIP5c-white.svg" class="img-fluid"></a></p>
+</div>
+</details>
+<details>
+<summary>
+Removing E from above
+</summary>
+<p>Similarly E has one incoming and two outgoing connections. Let’s remove it:</p>
+<div class="light-content">
+<p><a href="../images/RL/NFAxRIP5d-black.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-19"><img src="../images/RL/NFAxRIP5d-black.svg" class="img-fluid"></a></p>
+</div>
+<div class="dark-content">
+<p><a href="../images/RL/NFAxRIP5d-white.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-20"><img src="../images/RL/NFAxRIP5d-white.svg" class="img-fluid"></a></p>
+</div>
+</details>
+<details>
+<summary>
+Removing B from above
+</summary>
+<p>Things start to get a little interesting because B has two incoming connections (from S and D) and two outgoing connections (to D and acc). This means 4 new pieces: S to D, D to D, S to acc, and D to acc. Most of these already have a connection so we’ll be “or”ing in a new pathway.</p>
+<div class="light-content">
+<p><a href="../images/RL/NFAxRIP5e-black.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-21"><img src="../images/RL/NFAxRIP5e-black.svg" class="img-fluid"></a></p>
+</div>
+<div class="dark-content">
+<p><a href="../images/RL/NFAxRIP5e-white.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-22"><img src="../images/RL/NFAxRIP5e-white.svg" class="img-fluid"></a></p>
+</div>
+</details>
+<details>
+<summary>
+Removing D from above
+</summary>
+<p>Our final step has only one in and one out, leaving us with a single connection from start to accept with our regular expression sitting on top. If you analyze this regular expression, the first part is the path to accept from A to B to C of our original machine. The longer part is more complicated. It’s first part takes you from start to the state D. Then we have a loop for all the ways we can leave D and get back to D. Lastly we have the steps that can take us to an accept, either b (going to state E) or the final piece which takes us from D to E to B to C with each of it’s looping bits in tact. Quite a complicated regular expression, but we can see how it encodes the language of the machine quite nicely. You can also see how the order of our RIPs leads to this breakdown of the loop that exists in the machine.</p>
+<div class="light-content">
+<p><a href="../images/RL/NFAxRIP5f-black.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-23"><img src="../images/RL/NFAxRIP5f-black.svg" class="img-fluid"></a></p>
+</div>
+<div class="dark-content">
+<p><a href="../images/RL/NFAxRIP5f-white.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-24"><img src="../images/RL/NFAxRIP5f-white.svg" class="img-fluid"></a></p>
+</div>
+</details>
+<p>It is time to get our hands dirty and try a few of our own.</p>
+<div id="exercise-RIPs" class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Creating Regular Expressions from FAs.
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>one</li>
+<li>two</li>
+</ul>
+</div>
+</div>
 </section>
 <section id="exercises" class="level2" data-number="8.3">
 <h2 data-number="8.3" class="anchored" data-anchor-id="exercises"><span class="header-section-number">8.3</span> Exercises</h2>
